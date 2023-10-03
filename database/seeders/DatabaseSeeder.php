@@ -12,6 +12,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        // vamos a indicar qué seeders y en que orden queremos correr:
+        $this->call(RecetarioSeeder::class);
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

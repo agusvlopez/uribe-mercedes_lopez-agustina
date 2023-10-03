@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('recetarios', function (Blueprint $table) {
 
-            //id   PK UNSIGNED BIGINT AUTO_INCREMENT
-            //nombre     VARCHAR
-            //ingredientes   TEXT
-            //preparación    TEXT
             $table->id();
+            $table->string('title', 100);
+            $table->text('description');
+            $table->unsignedInteger('price');
             $table->timestamps();
+
         });
     }
 
