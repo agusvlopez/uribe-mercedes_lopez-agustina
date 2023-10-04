@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
-@section('title', 'Recetarios')
+@section('title', 'Blog')
 
 @section('content')
-        <h1>Recetarios</h1>
+        <h1>Blog</h1>
 
 @endsection

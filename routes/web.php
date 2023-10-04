@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/quienes-somos', [\App\Http\Controllers\HomeController::class, 'about']);
+Route::get('/sobre-mi', [\App\Http\Controllers\HomeController::class, 'about']);
 
-Route::get('/recetario/recetas', [\App\Http\Controllers\RecetarioController::class, 'index']);
+Route::get('/recetarios', [\App\Http\Controllers\RecetarioController::class, 'index']);
+
+Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index']);
 
 Route::get('/admin/contenido', [\App\Http\Controllers\AdminContentController::class, 'index']);

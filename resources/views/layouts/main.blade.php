@@ -22,11 +22,15 @@
                             <a class="nav-link" href="<?=url('/');?>">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=url('/quienes-somos');?>">Quienes somos</a>
+                            <a class="nav-link" href="<?=url('/sobre-mi');?>">Sobre mi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=url('/recetario/recetas');?>">Recetario</a>
+                            <a class="nav-link" href="<?=url('/recetarios');?>">Recetarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=url('/blog');?>">Blog</a>
                         </li><li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="<?=url('/admin/contenido');?>">Administración de Contenido</a>
                         </li>
 

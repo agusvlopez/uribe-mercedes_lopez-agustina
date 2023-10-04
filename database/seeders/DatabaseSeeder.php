@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
 
         // vamos a indicar qué seeders y en que orden queremos correr:
+        $this->call(RecetarioSeeder::class);
 
 
         // \App\Models\User::factory(10)->create();
