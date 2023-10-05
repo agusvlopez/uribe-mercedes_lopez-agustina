@@ -12,8 +12,7 @@
     <div class="app">
         <div class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Recetas</a>
-
+                <a class="navbar-brand logo-nav" href="<?=url('/');?>"></a>
             </div>
         </div>
     </div>
