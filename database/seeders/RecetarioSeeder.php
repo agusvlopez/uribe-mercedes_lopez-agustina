@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class RecetarioSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class RecetarioSeeder extends Seeder
     public function run(): void
     {
         //voy a crear recetarios:
-        \DB::table('recetarios')->insert([
+        DB::table('recetarios')->insert([
             [
                 'id' => 1,
                 'title' => 'Recetario General',
