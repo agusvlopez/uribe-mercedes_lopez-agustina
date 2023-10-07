@@ -4,7 +4,6 @@
 
 @section('content')
 
-
         <h1>Recetarios</h1>
 
 @endsection

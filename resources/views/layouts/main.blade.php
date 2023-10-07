@@ -29,7 +29,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=url('/blog');?>">Blog</a>
-                        </li><li class="nav-item">
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=url('/admin/contenido');?>">Administración de Contenido</a>
                         </li>

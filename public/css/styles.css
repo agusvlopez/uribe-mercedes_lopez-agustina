@@ -22,6 +22,15 @@ html, body, #app {
     margin: 0;
 }
 
+.footer-admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+    background-color: #E18818;
+    color: #fff;
+}
+
 .portada{
     background-image: url("../imgs/portada.jpg");
     background-position: center;
@@ -31,7 +40,8 @@ html, body, #app {
     height: 100%;
 }
 
-.portada h2 {
+h2 {
+    font-size: 2.1rem;
     font-weight: 600;
     color: #689168;
 

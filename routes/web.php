@@ -22,3 +22,9 @@ Route::get('/recetarios', [\App\Http\Controllers\RecetarioController::class, 'in
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index']);
 
 Route::get('/admin/contenido', [\App\Http\Controllers\AdminContentController::class, 'index']);
+
+Route::get('/admin/entradas-blog', [\App\Http\Controllers\AdminContentController::class, 'entradasBlog']);
+
+Route::get('/admin/recetarios', [\App\Http\Controllers\AdminContentController::class, 'recetarios']);
+
+Route::get('/admin/recetarios/{id}', [\App\Http\Controllers\AdminContentController::class, 'view']);

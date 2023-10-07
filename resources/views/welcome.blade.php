@@ -8,7 +8,7 @@
 
 <h1 class="none">Pagina Principal</h1>
 
-<div class="portada d-md-flex align-items-center justify-content-center ps-3 pe-3 pt-5">
+<section class="portada d-md-flex align-items-center justify-content-center ps-3 pe-3 pt-5">
     <div class="d-md-flex" >
         <div class="col-md-6 p-4 align-self-center">
             <h2>Nunca es tarde para mejorar tus hábitos.</h2>
@@ -19,5 +19,6 @@
              <img src="{{ asset('imgs/nutricionista-portada.png') }}" alt="Chica sonriente sosteniendo un bowl con frutas y verduras" class="img-fluid">
         </div>
     </div>
-</div>
+</section>
+
 @endsection
