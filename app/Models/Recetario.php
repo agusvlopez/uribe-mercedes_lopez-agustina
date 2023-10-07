@@ -10,8 +10,8 @@ class Recetario extends Model
     //use HasFactory;
 
     //Indicamos el nombre de la tabla
-    protected string $table = "recetarios";
+    protected $table = "recetarios";
 
     //Indicamos el nombre de la clave primaria
-    protected string $primaryKey = "id";
+    protected $primaryKey = "id";
 }

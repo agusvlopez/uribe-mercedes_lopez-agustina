@@ -10,8 +10,8 @@ class Entrada_Blog extends Model
     //use HasFactory;
 
      //Indicamos el nombre de la tabla
-     protected string $table = "entradas_blog";
+     protected $table = "entradas_blog";
 
      //Indicamos el nombre de la clave primaria
-     protected string $primaryKey = "blog_id";
+     protected $primaryKey = "blog_id";
 }
