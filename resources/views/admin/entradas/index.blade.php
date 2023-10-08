@@ -5,7 +5,14 @@
 @section('content')
 
         <div class="container">
-            <h1>Administrar Entradas de Blog</h1>
+            <h1 class="mb-2">Administrar Entradas de Blog</h1>
+
+            <div class="mb-2">
+                <a href="{{ url('/admin/entradas-blog/nueva')}}">Publicar nuevo Blog</a>
+            </div>
+
+
+
             <table class="table table-bordered table-striped">
             <thead>
                 <tr>

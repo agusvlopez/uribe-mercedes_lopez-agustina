@@ -42,7 +42,7 @@ class AdminContentController extends Controller
 
     public function viewRecetario(int $id) {
 
-        $recetario = Recetario::find($id);
+        $recetario = Recetario::findOrFail($id);
 
 
         return view('admin.recetarios.view', [
@@ -54,7 +54,33 @@ class AdminContentController extends Controller
 
 
         return view('admin.entradas.view', [
-            'entrada_blog' => Entrada_Blog::find($id),
+            'entrada_blog' => Entrada_Blog::findOrFail($id),
         ]);
     }
+
+    public function formCreateRecetario()
+    {
+        return view('admin.recetarios.create');
+    }
+
+    public function formCreateEntrada()
+    {
+        return view('admin.entradas.create');
+    }
+
+    /*
+    recibo datos del formulario
+    */
+    public function createProccesRecetario(Request $request)
+    {
+        dd($request);
+    }
+
+
+    public function createProccesEntrada(Request $request)
+    {
+        dd($request);
+    }
+
+
 }

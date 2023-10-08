@@ -4,7 +4,11 @@
 
 @section('content')
 <div class="container">
-        <h1>Administrar Recetarios</h1>
+        <h1 class="mb-2">Administrar Recetarios</h1>
+
+        <div class="mb-2">
+            <a href="{{ url('/admin/recetarios/nueva')}}">Publicar nuevo Recetario</a>
+        </div>
 
         <table class="table table-bordered table-striped">
         <thead>
