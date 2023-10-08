@@ -24,7 +24,7 @@ Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index']);
 Route::get('/admin/contenido', [\App\Http\Controllers\AdminContentController::class, 'index']);
 
 Route::get('/admin/entradas-blog', [\App\Http\Controllers\AdminContentController::class, 'entradasBlog']);
+Route::get('/admin/entradas-blog/{id}', [\App\Http\Controllers\AdminContentController::class, 'viewEntradaBlog']);
 
 Route::get('/admin/recetarios', [\App\Http\Controllers\AdminContentController::class, 'recetarios']);
-
-Route::get('/admin/recetarios/{id}', [\App\Http\Controllers\AdminContentController::class, 'view']);
+Route::get('/admin/recetarios/{id}', [\App\Http\Controllers\AdminContentController::class, 'viewRecetario']);

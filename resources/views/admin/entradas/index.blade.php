@@ -24,9 +24,9 @@
                 <td>{{$entrada->blog_id }}</td>
                 <td>{{$entrada->title}} </td>
                 <td>{{$entrada->content}} </td>
-                <td>$ {{$entrada->author}} </td>
+                <td>{{$entrada->author}} </td>
                 <td>{{$entrada->updated_at}} </td>
-                <td></td>
+                <td><a href="{{url('/admin/entradas-blog/' . $entrada->blog_id )}}" class="btn btn-primary">Ver</a></td>
             </tr>
             @endforeach
         </tbody>

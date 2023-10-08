@@ -40,7 +40,21 @@ class AdminContentController extends Controller
 
     }
 
-    public function view() {
-        return view('admin.recetarios.view');
+    public function viewRecetario(int $id) {
+
+        $recetario = Recetario::find($id);
+
+
+        return view('admin.recetarios.view', [
+            'recetario' => $recetario
+        ]);
+    }
+
+    public function viewEntradaBlog(int $id) {
+
+
+        return view('admin.entradas.view', [
+            'entrada_blog' => Entrada_Blog::find($id),
+        ]);
     }
 }
