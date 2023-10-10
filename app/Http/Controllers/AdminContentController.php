@@ -73,13 +73,27 @@ class AdminContentController extends Controller
     */
     public function createProccesRecetario(Request $request)
     {
-        dd($request);
+        // dd($request);
+        $request->validate(Recetario::$rules, Recetario::$errorMessages);
+
+        $data = $request->except(['_token']);
+
+        Recetario::create($data);
+
+        return redirect('/admin/recetarios');
     }
 
 
     public function createProccesEntrada(Request $request)
     {
-        dd($request);
+
+        $request->validate(Entrada_Blog::$rules, Entrada_Blog::$errorMessages);
+
+        $data = $request->except(['_token']);
+
+        Entrada_Blog::create($data);
+
+        return redirect('/admin/entradas-blog');
     }
 
 

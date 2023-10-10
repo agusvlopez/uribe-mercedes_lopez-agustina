@@ -34,4 +34,19 @@ class Entrada_Blog extends Model
 
      //Indicamos el nombre de la clave primaria
      protected $primaryKey = "blog_id";
+
+    protected $fillable = ['title', 'content', 'author', 'updated_at',];
+
+    public static $rules = [
+        'title' => 'required|min:2',
+        'content' => 'required',
+        'author' => 'required'
+    ];
+
+    public static $errorMessages = [
+        'title.required' => 'El titulo no puede estar vacío.',
+        'title.min' => 'El título debe tener al menos :min caracteres',
+        'content.required' => 'El contenido de la entrada no puede estar vacío.',
+        'author.required' => 'El autor/a no puede estar vacío.'
+    ];
 }

@@ -34,4 +34,19 @@ class Recetario extends Model
 
     //Indicamos el nombre de la clave primaria
     protected $primaryKey = "id";
+
+    protected $fillable = ['title', 'description', 'price',];
+
+    public static $rules = [
+        'title' => 'required',
+        'description' => 'required',
+        'price' => 'required|numeric'
+
+    ];
+
+    public static $errorMessages = [
+        'title.required' => 'El titulo no puede estar vacío.',
+        'description.required' => 'La descripción no puede estar vacía.',
+        'price.required' => 'El precio no puede estar vacío.'
+    ];
 }

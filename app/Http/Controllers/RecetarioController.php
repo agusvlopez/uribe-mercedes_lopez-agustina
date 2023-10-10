@@ -12,8 +12,8 @@ class RecetarioController extends Controller
         //Usamos el modelo para traer todos los datos de la tabla
         $recetarios = Recetario::all();
 
-    //pasaje de variables a las vistas
-    return view('recetario.index', [
+        //pasaje de variables a las vistas
+        return view('recetario.index', [
         'recetarios' => $recetarios,
     ]);
 
