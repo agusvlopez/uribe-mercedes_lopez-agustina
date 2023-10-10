@@ -1,3 +1,7 @@
+<?php
+/**@var \App\Models\Entrada_Blog[] | \Illuminate\Database\Eloquent\Collection $entradas_blog*/
+
+?>
 @extends('layouts.admin')
 
 @section('title', 'Blog')
