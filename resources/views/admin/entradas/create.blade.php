@@ -26,16 +26,25 @@
             id="title"
             name="title"
             class="form-control"
+            @error('title')
+            aria-describedby="error-title"
+            aria-invalid="true"
+            @enderror
+
             >
             @error('title')
-            <p class="text-danger">{{ $message }}</p>
+            <p class="text-danger" id="error-title">{{ $message }}</p>
             @enderror
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">Contenido</label>
-            <textarea id="content" name="content" class="form-control"></textarea>
+            <textarea id="content" name="content" class="form-control"
             @error('content')
-            <p class="text-danger">{{ $message }}</p>
+            aria-describedby="error-content"
+            aria-invalid="true"
+            @enderror></textarea>
+            @error('content')
+            <p class="text-danger" id="error-content">{{ $message }}</p>
             @enderror
         </div>
         <div class="mb-3">
@@ -45,9 +54,13 @@
             id="author"
             name="author"
             class="form-control"
+            @error('author')
+            aria-describedby="error-author"
+            aria-invalid="true"
+            @enderror
             >
             @error('author')
-            <p class="text-danger">{{ $message }}</p>
+            <p class="text-danger" id="error-author">{{ $message }}</p>
             @enderror
         </div>
         <div class="mb-3">

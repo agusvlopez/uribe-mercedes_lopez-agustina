@@ -25,26 +25,38 @@
             type="text"
             id="title"
             name="title"
-            class="form-control">
-
+            class="form-control"
             @error('title')
-            <p class="text-danger">{{ $message }}</p>
+            aria-describedby="error-title"
+            aria-invalid="true"
+            @enderror
+            >
+            @error('title')
+            <p class="text-danger" id="error-title">{{ $message }}</p>
             @enderror
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descripción</label>
             <textarea id="description" name="description" class="form-control"
+            @error('description')
+            aria-describedby="error-description"
+            aria-invalid="true"
+            @enderror
             ></textarea>
             @error('description')
-            <p class="text-danger">{{ $message }}</p>
+            <p class="text-danger" id="error-description">{{ $message }}</p>
             @enderror
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Precio</label>
             <input type="text" id="price" name="price" class="form-control"
+            @error('price')
+            aria-describedby="error-price"
+            aria-invalid="true"
+            @enderror
             >
             @error('price')
-            <p class="text-danger">{{ $message }}</p>
+            <p class="text-danger" id="error-price">{{ $message }}</p>
             @enderror
         </div>
         <div class="mb-3">
