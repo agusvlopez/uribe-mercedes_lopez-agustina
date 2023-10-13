@@ -50,7 +50,12 @@
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Precio</label>
-            <input type="text" id="price" name="price" class="form-control"
+            <input
+            type="text"
+            id="price"
+            name="price"
+            class="form-control @error('price') is-invalid @enderror"
+            value="{{ old('price') }}"
             @error('price')
             aria-describedby="error-price"
             aria-invalid="true"

@@ -47,6 +47,7 @@ class Recetario extends Model
     public static $errorMessages = [
         'title.required' => 'El titulo no puede estar vacío.',
         'description.required' => 'La descripción no puede estar vacía.',
-        'price.required' => 'El precio no puede estar vacío.'
+        'price.required' => 'El precio no puede estar vacío.',
+        'price.numeric' => 'El precio debe ser numérico.'
     ];
 }
