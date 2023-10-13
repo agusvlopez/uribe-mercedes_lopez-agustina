@@ -26,13 +26,13 @@ Route::get('/admin/contenido', [\App\Http\Controllers\AdminContentController::cl
 //admin entradas de blog
 Route::get('/admin/entradas-blog', [\App\Http\Controllers\AdminContentController::class, 'entradasBlog']);
 Route::get('/admin/entradas-blog/nueva', [\App\Http\Controllers\AdminContentController::class, 'formCreateEntrada']);
-Route::post('/admin/entradas-blog/nueva', [\App\Http\Controllers\AdminContentController::class, 'createProccesEntrada']);
+Route::post('/admin/entradas-blog/nueva', [\App\Http\Controllers\AdminContentController::class, 'processCreateEntrada']);
 Route::get('/admin/entradas-blog/{id}', [\App\Http\Controllers\AdminContentController::class, 'viewEntradaBlog'])
     ->whereNumber('id');
 
 //admin recetarios
 Route::get('/admin/recetarios', [\App\Http\Controllers\AdminContentController::class, 'recetarios']);
 Route::get('/admin/recetarios/nueva', [\App\Http\Controllers\AdminContentController::class, 'formCreateRecetario']);
-Route::post('/admin/recetarios/nueva', [\App\Http\Controllers\AdminContentController::class, 'createProccesRecetario']);
+Route::post('/admin/recetarios/nueva', [\App\Http\Controllers\AdminContentController::class, 'processCreateRecetario']);
 Route::get('/admin/recetarios/{id}', [\App\Http\Controllers\AdminContentController::class, 'viewRecetario'])
     ->whereNumber('id');

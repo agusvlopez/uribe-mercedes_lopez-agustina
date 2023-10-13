@@ -71,7 +71,7 @@ class AdminContentController extends Controller
     /*
     recibo datos del formulario
     */
-    public function createProccesRecetario(Request $request)
+    public function processCreateRecetario(Request $request)
     {
         // dd($request);
         $request->validate(Recetario::$rules, Recetario::$errorMessages);
@@ -84,7 +84,7 @@ class AdminContentController extends Controller
     }
 
 
-    public function createProccesEntrada(Request $request)
+    public function processCreateEntrada(Request $request)
     {
 
         $request->validate(Entrada_Blog::$rules, Entrada_Blog::$errorMessages);

@@ -25,7 +25,7 @@
             type="text"
             id="title"
             name="title"
-            class="form-control"
+            class="form-control @error('title') is-invalid @enderror"
             @error('title')
             aria-describedby="error-title"
             aria-invalid="true"
@@ -37,7 +37,7 @@
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descripción</label>
-            <textarea id="description" name="description" class="form-control"
+            <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror"
             @error('description')
             aria-describedby="error-description"
             aria-invalid="true"
@@ -49,7 +49,7 @@
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Precio</label>
-            <input type="text" id="price" name="price" class="form-control"
+            <input type="text" id="price" name="price" class="form-control @error('price') is-invalid @enderror"
             @error('price')
             aria-describedby="error-price"
             aria-invalid="true"
