@@ -26,6 +26,7 @@
             id="title"
             name="title"
             class="form-control"
+            value="{{ old('title') }}"
             @error('title')
             aria-describedby="error-title"
             aria-invalid="true"
@@ -42,14 +43,14 @@
             aria-describedby="error-description"
             aria-invalid="true"
             @enderror
-            ></textarea>
+            >{{ old('description') }}</textarea>
             @error('description')
             <p class="text-danger" id="error-description">{{ $message }}</p>
             @enderror
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Precio</label>
-            <input type="text" id="price" name="price" class="form-control"
+            <input type="text" id="price" name="price" class="form-control" value="{{ old('price') }}"
             @error('price')
             aria-describedby="error-price"
             aria-invalid="true"
@@ -65,7 +66,7 @@
         </div>
         <div class="mb-3">
             <label for="cover_description" class="form-label">Descripción de la imagen</label>
-            <input type="text" id="cover_description" name="cover_description" class="form-control">
+            <input type="text" id="cover_description" name="cover_description" class="form-control" value="{{ old('cover_description') }}">
         </div>
         <button type="submit" class="btn btn-primary">Publicar</button>
     </form>

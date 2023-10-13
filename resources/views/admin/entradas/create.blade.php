@@ -26,6 +26,7 @@
             id="title"
             name="title"
             class="form-control"
+            value="{{ old('title') }}"
             @error('title')
             aria-describedby="error-title"
             aria-invalid="true"
@@ -42,7 +43,7 @@
             @error('content')
             aria-describedby="error-content"
             aria-invalid="true"
-            @enderror></textarea>
+            @enderror>{{ old('content') }}</textarea>
             @error('content')
             <p class="text-danger" id="error-content">{{ $message }}</p>
             @enderror
@@ -54,6 +55,8 @@
             id="author"
             name="author"
             class="form-control"
+            value="{{ old('author') }}"
+
             @error('author')
             aria-describedby="error-author"
             aria-invalid="true"
@@ -69,7 +72,7 @@
         </div>
         <div class="mb-3">
             <label for="cover_description" class="form-label">Descripción de la imagen</label>
-            <input type="text" id="cover_description" name="cover_description" class="form-control">
+            <input type="text" id="cover_description" name="cover_description" class="form-control" value="{{ old('cover_description') }}">
         </div>
         <button type="submit" class="btn btn-primary">Publicar</button>
     </form>

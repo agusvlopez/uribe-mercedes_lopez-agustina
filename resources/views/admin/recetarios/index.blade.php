@@ -33,7 +33,13 @@
             <td>{{$recetario->title}} </td>
             <td>{{$recetario->description}} </td>
             <td>$ {{$recetario->price}} </td>
-            <td> <a href="{{url('/admin/recetarios/' . $recetario->id )}}" class="btn btn-primary">Ver</a></td>
+            <td>
+                <a href="{{url('/admin/recetarios/' . $recetario->id )}}" class="btn btn-primary">Ver</a>
+                <form action="{{ url('/admin/recetarios/' . $recetario->id . '/eliminar')}}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </td>
         </tr>
         @endforeach
     </tbody>
