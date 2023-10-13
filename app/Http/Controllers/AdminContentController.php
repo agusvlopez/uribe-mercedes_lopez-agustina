@@ -80,7 +80,8 @@ class AdminContentController extends Controller
 
         Recetario::create($data);
 
-        return redirect('/admin/recetarios');
+        return redirect('/admin/recetarios')
+            ->with('status.message', 'El recetario <b>' . e($data['title']) . '</b> se publicó con éxito.');
     }
 
 
@@ -93,7 +94,19 @@ class AdminContentController extends Controller
 
         Entrada_Blog::create($data);
 
-        return redirect('/admin/entradas-blog');
+        return redirect('/admin/entradas-blog')
+            ->with('status.message', 'El blog <b>' . e($data['title']) . '</b> se publicó con éxito.');
+    }
+
+    public function processDeleteEntradas(int $id)
+    {
+        $entradas_blog = Entrada_Blog::findOrFail($id);
+
+        $entradas_blog->delete();
+
+        return redirect('/admin/entradas-blog')
+            ->with('status.message', 'El blog <b>' . e('$entradas_blog->title') . '</b> fue eliminada con éxito.');
+
     }
 
 

@@ -37,7 +37,13 @@
                 <td>{{$entrada->content}} </td>
                 <td>{{$entrada->author}} </td>
                 <td>{{$entrada->updated_at}} </td>
-                <td><a href="{{url('/admin/entradas-blog/' . $entrada->blog_id )}}" class="btn btn-primary">Ver</a></td>
+                <td>
+                    <a href="{{url('/admin/entradas-blog/' . $entrada->blog_id )}}" class="btn btn-primary">Ver</a>
+                    <form action="{{ url('/admin/entradas-blog/' . $entrada->blog_id . '/eliminar')}}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

@@ -29,6 +29,7 @@ Route::get('/admin/entradas-blog/nueva', [\App\Http\Controllers\AdminContentCont
 Route::post('/admin/entradas-blog/nueva', [\App\Http\Controllers\AdminContentController::class, 'processCreateEntrada']);
 Route::get('/admin/entradas-blog/{id}', [\App\Http\Controllers\AdminContentController::class, 'viewEntradaBlog'])
     ->whereNumber('id');
+Route::post('/admin/entradas-blog/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'processDeleteEntradas']);
 
 //admin recetarios
 Route::get('/admin/recetarios', [\App\Http\Controllers\AdminContentController::class, 'recetarios']);
@@ -36,3 +37,4 @@ Route::get('/admin/recetarios/nueva', [\App\Http\Controllers\AdminContentControl
 Route::post('/admin/recetarios/nueva', [\App\Http\Controllers\AdminContentController::class, 'processCreateRecetario']);
 Route::get('/admin/recetarios/{id}', [\App\Http\Controllers\AdminContentController::class, 'viewRecetario'])
     ->whereNumber('id');
+Route::post('/admin/recetarios/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'processDeleteRecetario']);
