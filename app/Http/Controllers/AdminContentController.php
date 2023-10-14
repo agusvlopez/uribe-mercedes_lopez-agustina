@@ -79,6 +79,10 @@ class AdminContentController extends Controller
 
         $data = $request->except(['_token']);
 
+        if($request->hasFile('cover')){
+            $data['cover'] = $request->file('cover')->storeAs('coversRecetario');
+        }
+
         Recetario::create($data);
 
         return redirect('/admin/recetarios')
@@ -92,6 +96,10 @@ class AdminContentController extends Controller
         $request->validate(Entrada_Blog::$rules, Entrada_Blog::$errorMessages);
 
         $data = $request->except(['_token']);
+
+        if($request->hasFile('cover')){
+            $data['cover'] = $request->file('cover')->storeAs('coversEntrada');
+        }
 
         Entrada_Blog::create($data);
 
@@ -107,9 +115,22 @@ class AdminContentController extends Controller
     }
 
 
+    public function processEditRecetario(int $id, Request $request)
+    {
+        /** @var Recetario */
+        $recetario = Recetario::findOrFail($id);
+
+        $request->validate(Recetario::$rules, Recetario::$errorMessages);
+
+        $recetario->update($request->except('_token'));
+
+        return redirect('/admin/recetarios')
+            ->with('status.message', 'El recetario <b>' . e($request->input('title')) . '</b> se editó con éxito');
+    }
+
     public function formDeleteRecetario(int $id) {
         return view('admin.recetarios.delete', [
-               'recetario' =>  Recetario::findOrFail($id),
+            'recetario' =>  Recetario::findOrFail($id),
     ]);
     }
 
@@ -127,6 +148,19 @@ class AdminContentController extends Controller
         return view('admin.entradas.edit', [
             'entrada_blog' =>  Entrada_Blog::findOrFail($id),
     ]);
+    }
+
+    public function processEditEntrada(int $id, Request $request)
+    {
+        /** @var Entrada_Blog */
+        $entrada_blog = Entrada_Blog::findOrFail($id);
+
+        $request->validate(Entrada_Blog::$rules, Entrada_Blog::$errorMessages);
+
+        $entrada_blog->update($request->except('_token'));
+
+        return redirect('/admin/entradas-blog')
+            ->with('status.message', 'La entrada <b>' . e($request->input('title')) . '</b> se editó con éxito');
     }
 
     public function formDeleteEntrada(int $id) {

@@ -16,7 +16,7 @@
 
     @endif
 
-    <form action="{{ url('admin/recetarios/nueva') }}" method="post">
+    <form action="{{ url('admin/recetarios/nueva') }}" method="post" enctype="multipart/form-data">
 
         @csrf
         <div class="mb-3">
@@ -26,7 +26,7 @@
             id="title"
             name="title"
             class="form-control @error('title') is-invalid @enderror"
-            value="{{ old('title') }}"
+            value="{{ old('title', $recetario->title) }}"
             @error('title')
             aria-describedby="error-title"
             aria-invalid="true"
@@ -43,7 +43,7 @@
             aria-describedby="error-description"
             aria-invalid="true"
             @enderror
-            >{{ old('description') }}</textarea>
+            >{{ old('description, $recetario->description') }}</textarea>
             @error('description')
             <p class="text-danger" id="error-description">{{ $message }}</p>
             @enderror
@@ -55,7 +55,7 @@
             id="price"
             name="price"
             class="form-control @error('price') is-invalid @enderror"
-            value="{{ old('price') }}"
+            value="{{ old('price', $recetario->price) }}"
             @error('price')
             aria-describedby="error-price"
             aria-invalid="true"
@@ -71,7 +71,7 @@
         </div>
         <div class="mb-3">
             <label for="cover_description" class="form-label">Descripción de la imagen</label>
-            <input type="text" id="cover_description" name="cover_description" class="form-control" value="{{ old('cover_description') }}">
+            <input type="text" id="cover_description" name="cover_description" class="form-control" value="{{ old('cover_description, $recetario->cover_description') }}">
         </div>
         <button type="submit" class="btn btn-primary">Publicar</button>
     </form>

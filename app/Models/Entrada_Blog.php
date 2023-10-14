@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title
  * @property string $content
  * @property string $author
+ * @property string|null $cover
+ * @property string|null $cover_description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog newModelQuery()
@@ -35,7 +37,7 @@ class Entrada_Blog extends Model
      //Indicamos el nombre de la clave primaria
      protected $primaryKey = "blog_id";
 
-    protected $fillable = ['title', 'content', 'author', 'updated_at',];
+    protected $fillable = ['title', 'content', 'author', 'updated_at', 'cover', 'cover_description'];
 
     public static $rules = [
         'title' => 'required|min:2',
