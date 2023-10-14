@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Entrada_Blog;
 use App\Models\Recetario;
+use Database\Seeders\Entradas_BlogsSeeder;
 use Illuminate\Http\Request;
 
 class AdminContentController extends Controller
@@ -98,6 +99,14 @@ class AdminContentController extends Controller
             ->with('status.message', 'El blog <b>' . e($data['title']) . '</b> se publicó con éxito.');
     }
 
+
+    public function formEditRecetario(int $id){
+        return view('admin.recetarios.edit', [
+            'recetario' =>  Recetario::findOrFail($id),
+    ]);
+    }
+
+
     public function formDeleteRecetario(int $id) {
         return view('admin.recetarios.delete', [
                'recetario' =>  Recetario::findOrFail($id),
@@ -112,6 +121,12 @@ class AdminContentController extends Controller
         return redirect('/admin/recetarios')
             ->with('status.message', 'El recetario <b>' . e($recetario->title) . '</b> fue eliminado con éxito.');
 
+    }
+
+    public function formEditEntrada(int $id){
+        return view('admin.entradas.edit', [
+            'entrada_blog' =>  Entrada_Blog::findOrFail($id),
+    ]);
     }
 
     public function formDeleteEntrada(int $id) {

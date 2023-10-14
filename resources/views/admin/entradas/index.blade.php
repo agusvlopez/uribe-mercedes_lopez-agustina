@@ -40,7 +40,11 @@
                 <td>
                     <a href="{{url('/admin/entradas-blog/' . $entrada->blog_id )}}" class="btn btn-primary mb-2">Ver</a>
 
+                    <a href="{{url('/admin/entradas-blog/' . $entrada->blog_id . '/editar')}}" class="btn btn-secondary mb-2">Editar</a>
+
                     <a href="{{url('/admin/entradas-blog/' . $entrada->blog_id . '/eliminar')}}" class="btn btn-danger">Eliminar</a>
+
+
                 </td>
             </tr>
             @endforeach

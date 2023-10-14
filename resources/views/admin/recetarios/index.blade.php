@@ -36,7 +36,10 @@
             <td>
                 <a href="{{url('/admin/recetarios/' . $recetario->id )}}" class="btn btn-primary mb-2">Ver</a>
 
+                <a href="{{url('/admin/recetarios/' . $recetario->id . '/editar')}}" class="btn btn-secondary mb-2">Editar</a>
+
                 <a href="{{url('/admin/recetarios/' . $recetario->id . '/eliminar')}}" class="btn btn-danger">Eliminar</a>
+
 
             </td>
         </tr>

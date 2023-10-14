@@ -29,8 +29,14 @@ Route::get('/admin/entradas-blog/nueva', [\App\Http\Controllers\AdminContentCont
 Route::post('/admin/entradas-blog/nueva', [\App\Http\Controllers\AdminContentController::class, 'processCreateEntrada']);
 Route::get('/admin/entradas-blog/{id}', [\App\Http\Controllers\AdminContentController::class, 'viewEntradaBlog'])
     ->whereNumber('id');
-Route::get('/admin/entradas-blog/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'formDeleteEntrada']);
-Route::post('/admin/entradas-blog/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'processDeleteEntrada']);
+Route::get('/admin/entradas-blog/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'formDeleteEntrada'])
+    ->whereNumber('id');
+Route::post('/admin/entradas-blog/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'processDeleteEntrada'])
+    ->whereNumber('id');
+Route::get('/admin/entradas-blog/{id}/editar', [\App\Http\Controllers\AdminContentController::class, 'formEditEntrada'])
+    ->whereNumber('id');
+Route::post('/admin/entradas-blog/{id}/editar', [\App\Http\Controllers\AdminContentController::class, 'processEditEntrada'])
+    ->whereNumber('id');
 
 //admin recetarios
 Route::get('/admin/recetarios', [\App\Http\Controllers\AdminContentController::class, 'recetarios']);
@@ -38,5 +44,11 @@ Route::get('/admin/recetarios/nueva', [\App\Http\Controllers\AdminContentControl
 Route::post('/admin/recetarios/nueva', [\App\Http\Controllers\AdminContentController::class, 'processCreateRecetario']);
 Route::get('/admin/recetarios/{id}', [\App\Http\Controllers\AdminContentController::class, 'viewRecetario'])
     ->whereNumber('id');
-Route::get('/admin/recetarios/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'formDeleteRecetario']);
-Route::post('/admin/recetarios/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'processDeleteRecetario']);
+Route::get('/admin/recetarios/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'formDeleteRecetario'])
+    ->whereNumber('id');
+Route::post('/admin/recetarios/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'processDeleteRecetario'])
+    ->whereNumber('id');
+Route::get('/admin/recetarios/{id}/editar', [\App\Http\Controllers\AdminContentController::class, 'formEditRecetario'])
+    ->whereNumber('id');
+Route::post('/admin/recetarios/{id}/editar', [\App\Http\Controllers\AdminContentController::class, 'processEditRecetario'])
+    ->whereNumber('id');
