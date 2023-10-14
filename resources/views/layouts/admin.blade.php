@@ -36,7 +36,7 @@
         </nav>
 
 
-        <main class="container">
+        <main class="container py-3">
             @if(\Session::has('status.message'))
                 <div class="alert alert-success m-2">{!! \Session::get('status.message') !!}</div>
             @endif

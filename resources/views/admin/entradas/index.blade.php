@@ -9,10 +9,10 @@
 @section('content')
 
         <div class="container">
-            <h1 class="mb-2">Administrar Entradas de Blog</h1>
+            <h1 class="mb-3">Administrar Entradas de Blog</h1>
 
             <div class="mb-2">
-                <a href="{{ url('/admin/entradas-blog/nueva')}}">Publicar nuevo Blog</a>
+                <a class="letraVerde font-bold d-flex align-items-center" href="{{ url('/admin/entradas-blog/nueva')}}"><span class="iconoMas"></span> Publicar nueva entrada de Blog</a>
             </div>
 
 
@@ -38,11 +38,9 @@
                 <td>{{$entrada->author}} </td>
                 <td>{{$entrada->updated_at}} </td>
                 <td>
-                    <a href="{{url('/admin/entradas-blog/' . $entrada->blog_id )}}" class="btn btn-primary">Ver</a>
-                    <form action="{{ url('/admin/entradas-blog/' . $entrada->blog_id . '/eliminar')}}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
+                    <a href="{{url('/admin/entradas-blog/' . $entrada->blog_id )}}" class="btn btn-primary mb-2">Ver</a>
+
+                    <a href="{{url('/admin/entradas-blog/' . $entrada->blog_id . '/eliminar')}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             @endforeach

@@ -51,6 +51,22 @@ h2 {
 
 }
 
+.letraVerde {
+   color: #83B582;
+   text-decoration: none;
+}
+
+.iconoMas {
+    background-image: url(../imgs/iconos/mas.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 0.2rem;
+}
+
 .portada p {
     color: #4b4c4e;
     font-size: 1.1rem;

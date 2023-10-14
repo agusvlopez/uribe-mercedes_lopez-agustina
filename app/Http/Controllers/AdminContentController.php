@@ -98,14 +98,36 @@ class AdminContentController extends Controller
             ->with('status.message', 'El blog <b>' . e($data['title']) . '</b> se publicó con éxito.');
     }
 
-    public function processDeleteEntradas(int $id)
-    {
-        $entradas_blog = Entrada_Blog::findOrFail($id);
+    public function formDeleteRecetario(int $id) {
+        return view('admin.recetarios.delete', [
+               'recetario' =>  Recetario::findOrFail($id),
+    ]);
+    }
 
-        $entradas_blog->delete();
+    public function processDeleteRecetario(int $id){
+
+        $recetario = Recetario::findOrFail($id);
+        $recetario->delete();
+
+        return redirect('/admin/recetarios')
+            ->with('status.message', 'El recetario <b>' . e($recetario->title) . '</b> fue eliminado con éxito.');
+
+    }
+
+    public function formDeleteEntrada(int $id) {
+        return view('admin.entradas.delete', [
+               'entrada_blog' =>  Entrada_Blog::findOrFail($id),
+    ]);
+    }
+
+    public function processDeleteEntrada(int $id)
+    {
+        $entrada_blog = Entrada_Blog::findOrFail($id);
+
+        $entrada_blog->delete();
 
         return redirect('/admin/entradas-blog')
-            ->with('status.message', 'El blog <b>' . e('$entradas_blog->title') . '</b> fue eliminada con éxito.');
+            ->with('status.message', 'La entrada <b>' . e($entrada_blog->title) . '</b> fue eliminada con éxito.');
 
     }
 

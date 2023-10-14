@@ -9,10 +9,10 @@
 
 @section('content')
 <div class="container">
-        <h1 class="mb-2">Administrar Recetarios</h1>
+        <h1 class="mb-3">Administrar Recetarios</h1>
 
         <div class="mb-2">
-            <a href="{{ url('/admin/recetarios/nueva')}}">Publicar nuevo Recetario</a>
+            <a class="letraVerde font-bold d-flex align-items-center" href="{{ url('/admin/recetarios/nueva')}}"> <span class="iconoMas"></span> Publicar nuevo Recetario</a>
         </div>
 
         <table class="table table-bordered table-striped">
@@ -34,11 +34,10 @@
             <td>{{$recetario->description}} </td>
             <td>$ {{$recetario->price}} </td>
             <td>
-                <a href="{{url('/admin/recetarios/' . $recetario->id )}}" class="btn btn-primary">Ver</a>
-                <form action="{{ url('/admin/recetarios/' . $recetario->id . '/eliminar')}}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                </form>
+                <a href="{{url('/admin/recetarios/' . $recetario->id )}}" class="btn btn-primary mb-2">Ver</a>
+
+                <a href="{{url('/admin/recetarios/' . $recetario->id . '/eliminar')}}" class="btn btn-danger">Eliminar</a>
+
             </td>
         </tr>
         @endforeach
