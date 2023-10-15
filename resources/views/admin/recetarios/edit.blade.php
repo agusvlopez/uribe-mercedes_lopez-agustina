@@ -19,7 +19,7 @@ use App\Models\Recetario;
 
     @endif
 
-    <form action="{{ url('admin/recetarios/' . $recetario->id . 'editar') }}" method="post">
+    <form action="{{ url('admin/recetarios/' . $recetario->id . '/editar') }}" method="post">
 
         @csrf
         <div class="mb-3">
@@ -46,7 +46,7 @@ use App\Models\Recetario;
             aria-describedby="error-description"
             aria-invalid="true"
             @enderror
-            >{{ old('description, $recestario->description') }}</textarea>
+            >{{ old('description', $recetario->description) }}</textarea>
             @error('description')
             <p class="text-danger" id="error-description">{{ $message }}</p>
             @enderror

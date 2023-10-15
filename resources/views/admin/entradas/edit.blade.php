@@ -46,11 +46,11 @@ use App\Models\Entrada_Blog;
             id="content"
             name="content"
             class="form-control @error('content') is-invalid @enderror"
-            value="{{ old('content', $entrada_blog->content) }}"
             @error('content')
             aria-describedby="error-content"
             aria-invalid="true"
-            @enderror>{{ old('content') }}</textarea>
+            @enderror
+            >{{ old('content', $entrada_blog->content) }}</textarea>
             @error('content')
             <p class="text-danger" id="error-content">{{ $message }}</p>
             @enderror
