@@ -22,6 +22,8 @@
                 <th>Titulo</th>
                 <th>Fecha de estreno</th>
                 <th>Precio</th>
+                <th>Imagen</th>
+                <th>Descripción de la imagen</th>
                 <th>Acciones</th>
             </tr>
             <tbody>
@@ -33,6 +35,8 @@
             <td>{{$recetario->title}} </td>
             <td>{{$recetario->description}} </td>
             <td>$ {{$recetario->price}} </td>
+            <td> Imagen </td>
+            <td> {{$recetario->cover_description}} </td>
             <td>
                 <a href="{{url('/admin/recetarios/' . $recetario->id )}}" class="btn btn-primary mb-2">Ver</a>
 

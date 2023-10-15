@@ -74,11 +74,22 @@ use App\Models\Entrada_Blog;
         </div>
         <div class="mb-3">
             <label for="cover" class="form-label">Imagen</label>
-            <input type="file" id="cover" name="cover" class="form-control">
+            <input
+            type="file"
+            id="cover"
+            name="cover"
+            class="form-control"
+            value="{{ old('author', $entrada_blog->cover) }}"
+            >
         </div>
         <div class="mb-3">
             <label for="cover_description" class="form-label">Descripción de la imagen</label>
-            <input type="text" id="cover_description" name="cover_description" class="form-control" value="{{ old('cover_description', $entrada_blog->cover_description) }}">
+            <input
+            type="text"
+            id="cover_description"
+            name="cover_description"
+            class="form-control"
+            value="{{ old('cover_description', $entrada_blog->cover_description) }}">
         </div>
         <button type="submit" class="btn btn-primary">Publicar</button>
     </form>

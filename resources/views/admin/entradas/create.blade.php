@@ -74,7 +74,7 @@
         </div>
         <div class="mb-3">
             <label for="cover_description" class="form-label">Descripción de la imagen</label>
-            <input type="text" id="cover_description" name="cover_description" class="form-control" value="{{ old('title') }}">
+            <input type="text" id="cover_description" name="cover_description" class="form-control" value="{{ old('cover_description') }}">
         </div>
         <button type="submit" class="btn btn-primary">Publicar</button>
     </form>

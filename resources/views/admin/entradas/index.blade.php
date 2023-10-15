@@ -25,6 +25,8 @@
                     <th>Contenido</th>
                     <th>Autor/a</th>
                     <th>Publicación</th>
+                    <th>Imagen</th>
+                    <th>Descripción de la imagen</th>
                     <th>Acciones</th>
                 </tr>
                 <tbody>
@@ -37,6 +39,8 @@
                 <td>{{$entrada->content}} </td>
                 <td>{{$entrada->author}} </td>
                 <td>{{$entrada->updated_at}} </td>
+                <td>Imagen </td>
+                <td>{{$entrada->cover_description}} </td>
                 <td>
                     <a href="{{url('/admin/entradas-blog/' . $entrada->blog_id )}}" class="btn btn-primary mb-2">Ver</a>
 

@@ -70,7 +70,13 @@ use App\Models\Recetario;
         </div>
         <div class="mb-3">
             <label for="cover" class="form-label">Imagen</label>
-            <input type="file" id="cover" name="cover" class="form-control">
+            <input
+            type="file"
+            id="cover"
+            name="cover"
+            class="form-control"
+            value="{{ old('author', $recetario->cover) }}"
+            >
         </div>
         <div class="mb-3">
             <label for="cover_description" class="form-label">Descripción de la imagen</label>

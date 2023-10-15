@@ -80,7 +80,7 @@ class AdminContentController extends Controller
         $data = $request->except(['_token']);
 
         if($request->hasFile('cover')){
-            $data['cover'] = $request->file('cover')->storeAs('coversRecetario');
+            $data['cover'] = $request->file('cover')->store('coversRecetario');
         }
 
         Recetario::create($data);
@@ -98,7 +98,7 @@ class AdminContentController extends Controller
         $data = $request->except(['_token']);
 
         if($request->hasFile('cover')){
-            $data['cover'] = $request->file('cover')->storeAs('coversEntrada');
+            $data['cover'] = $request->file('cover')->store('coversEntrada');
         }
 
         Entrada_Blog::create($data);
