@@ -1,5 +1,6 @@
 <?php
 use App\Models\Clasification;
+use Illuminate\Database\Eloquent\Collection;
 
 /** @var \Illuminate\Support\ViewErrorBag $errors */
 /** @var Clasification|Collection $clasifications */
@@ -60,7 +61,7 @@ use App\Models\Clasification;
             type="text"
             id="author"
             name="author"
-            class="form-control"
+            class="form-control @error('author') is-invalid @enderror"
             value="{{ old('author') }}"
             @error('author')
             aria-describedby="error-author"
@@ -76,20 +77,26 @@ use App\Models\Clasification;
             <select
             name="clasification_id"
             id="clasification_id"
-            class="form-control"
+            class="form-control @error('clasification_id') is-invalid @enderror"
+            @error('clasification_id')
+            aria-describedby="error-clasification_id"
+            aria-invalid="true"
+            @enderror
             >
             <option value="">Seleccioná un valor</option>
             @foreach ($clasifications as $clasification)
                 <option
                 value="{{ $clasification->clasification_id}}"
-                @if (old('clasification_id') == $clasification->clasification_id)
-                    selected
-                @endif
+                @selected(old('clasification_id') == $clasification->clasification_id)
                 >
                     {{ $clasification->name }}
                 </option>
             @endforeach
             </select>
+            @error('clasification_id')
+            <p class="text-danger" id="error-clasification_id">{{ $message }}</p>
+            @enderror
+
         </div>
         <div class="mb-3">
             <label for="cover" class="form-label">Imagen</label>

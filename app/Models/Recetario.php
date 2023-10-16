@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -54,4 +55,5 @@ class Recetario extends Model
         'price.required' => 'El precio no puede estar vacío.',
         'price.numeric' => 'El precio debe ser numérico.'
     ];
+
 }

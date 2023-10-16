@@ -34,7 +34,7 @@
             <td>{{$recetario->id }}</td>
             <td>{{$recetario->title}} </td>
             <td>{{$recetario->description}} </td>
-            <td>$ {{$recetario->price}} </td>
+            <td>${{ number_format(($recetario->price), 2, ",", "." )}} </td>
             <td> Imagen </td>
             <td> {{$recetario->cover_description}} </td>
             <td>

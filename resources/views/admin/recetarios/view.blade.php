@@ -12,7 +12,7 @@
         @endif
         <h1>{{ $recetario->title }}</h1>
         <p class=""><span class="fw-bold">Descripcion del recetario:</span> {{ $recetario->description }}</p>
-        <p class=" mt-4"><span class="fw-bold">Precio: </span>${{ $recetario->price }}</p>
+        <p class=" mt-4"><span class="fw-bold">Precio: </span>${{ number_format(($recetario->price), 2, ",", "." )}}</p>
         <p class=""></p>
     </div>
 </div>

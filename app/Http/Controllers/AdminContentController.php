@@ -154,6 +154,7 @@ class AdminContentController extends Controller
     public function formEditEntrada(int $id){
         return view('admin.entradas.edit', [
             'entrada_blog' =>  Entrada_Blog::findOrFail($id),
+            'clasifications' => Clasification::all(),
     ]);
     }
 

@@ -1,8 +1,13 @@
 <?php
-/** @var \Illuminate\Support\ViewErrorBag $errors */
-/** @var Entrada_Blog $entrada */
 
+use App\Models\Clasification;
+use Illuminate\Database\Eloquent\Collection;
 use App\Models\Entrada_Blog;
+
+/** @var \Illuminate\Support\ViewErrorBag $errors */
+/** @var Entrada_Blog $entrada_blog */
+/** @var Clasification|Collection $clasifications */
+
 ?>
 
 @extends('layouts.admin')
@@ -61,7 +66,7 @@ use App\Models\Entrada_Blog;
             type="text"
             id="author"
             name="author"
-            class="form-control"
+            class="form-control @error('author') is-invalid @enderror"
             value="{{ old('author', $entrada_blog->author) }}"
             @error('author')
             aria-describedby="error-author"
@@ -70,6 +75,31 @@ use App\Models\Entrada_Blog;
             >
             @error('author')
             <p class="text-danger" id="error-author">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="class mb-3">
+            <label for="clasification_id" class="form-label">Clasificación</label>
+            <select
+            name="clasification_id"
+            id="clasification_id"
+            class="form-control @error('clasification_id') is-invalid @enderror"
+            @error('clasification_id')
+            aria-describedby="error-clasification_id"
+            aria-invalid="true"
+            @enderror
+            >
+            <option value="">Seleccioná un valor</option>
+            @foreach ($clasifications as $clasification)
+                <option
+                value="{{ $clasification->clasification_id}}"
+                @selected(old('clasification_id', $clasification->clasification_id) == $entrada_blog->clasification_id)
+                >
+                    {{ $clasification->name }}
+                </option>
+            @endforeach
+            </select>
+            @error('clasification_id')
+            <p class="text-danger" id="error-clasification_id">{{ $message }}</p>
             @enderror
         </div>
         <div class="mb-3">

@@ -12,7 +12,7 @@
         <p>Estas por eliminar el siguiente recetario:</p>
         <p><span class="fw-bold">Nombre:</span> {{ $recetario->title }}</p>
         <p class=""><span class="fw-bold">Descripcion del recetario:</span> {{ $recetario->description }}</p>
-        <p class=" mt-4"><span class="fw-bold">Precio: </span>${{ $recetario->price }}</p>
+        <p class=" mt-4"><span class="fw-bold">Precio: </span>${{ number_format(($recetario->price), 2, ",", "." )}}</p>
         <div class="d-flex align-content-center p-2">
             <h2 class="text-dark">¿Confirmar eliminación?</h2>
             <form action="{{ url('/admin/recetarios/' . $recetario->id . '/eliminar')}}" method="POST">
