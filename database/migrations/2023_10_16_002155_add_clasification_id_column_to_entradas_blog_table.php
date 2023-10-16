@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('entradas_blog', function (Blueprint $table) {
-            $table->string('cover')->nullable();
-            $table->string('cover_description')->nullable();
+
+            $table->unsignedTinyInteger('clasification_id')->after('blog_id');
+
+            //Definimos la FK
+            $table->foreign('clasification_id')->references('clasification_id')->on('clasifications');
+
         });
     }
 
@@ -23,7 +27,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('entradas_blog', function (Blueprint $table) {
-            $table->dropColumn(['cover', 'cover_description']);
+            $table->dropColumn('clasification_id');
         });
     }
 };

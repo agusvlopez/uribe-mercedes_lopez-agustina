@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('recetarios', function (Blueprint $table) {
-            $table->string('cover')->nullable();
-            $table->string('cover_description')->nullable();
+        Schema::create('clasifications', function (Blueprint $table) {
+            $table->tinyIncrements('clasification_id');
+            $table->string('name', 30);
+            $table->timestamps();
         });
     }
 
@@ -22,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('recetarios', function (Blueprint $table) {
-            $table->dropColumn(['cover', 'cover_description']);
-        });
+        Schema::dropIfExists('clasifications');
     }
 };

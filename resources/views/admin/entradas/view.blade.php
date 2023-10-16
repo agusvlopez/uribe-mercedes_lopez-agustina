@@ -8,7 +8,7 @@
 
     <div class="bg-white rounded shadow-lg p-4">
         @if ($entrada_blog->cover !== null)
-            <img class="w-25 mb-2" src="{{ url('storage/' . $entrada_blog->cover)}}" alt="{{ $entrada_blog->cover_description }}" class="rounded mb-4">
+            <img class="w-25 mb-2" src="{{ asset('storage/' . $entrada_blog->cover)}}" alt="{{ $entrada_blog->cover_description }}" class="rounded mb-4">
         @endif
 
         <h1>{{ $entrada_blog->title }}</h1>
