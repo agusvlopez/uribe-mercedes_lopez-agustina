@@ -25,6 +25,7 @@
                     <th>Contenido</th>
                     <th>Autor/a</th>
                     <th>Publicación</th>
+                    <th>Clasificación</th>
                     <th>Imagen</th>
                     <th>Descripción de la imagen</th>
                     <th>Acciones</th>
@@ -39,6 +40,7 @@
                 <td>{{$entrada->content}} </td>
                 <td>{{$entrada->author}} </td>
                 <td>{{$entrada->updated_at}} </td>
+                <td>{{$entrada->clasification->name}} </td>
                 <td>Imagen </td>
                 <td>{{$entrada->cover_description}} </td>
                 <td>

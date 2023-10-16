@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Recetario wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Recetario whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Recetario whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Recetario whereCover($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Recetario whereCoverDescription($value)
  * @mixin \Eloquent
  */
 class Recetario extends Model

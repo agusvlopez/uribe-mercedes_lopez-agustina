@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * App\Models\Entrada_Blog
  *
  * @property int $blog_id
+ * * @property int $clasification_id
  * @property string $title
  * @property string $content
  * @property string $author
@@ -25,6 +27,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereUpdatedAt($value)
+ * @property-read \App\Models\Clasification $clasification
+ * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereClasificationId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereCover($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereCoverDescription($value)
  * @mixin \Eloquent
  */
 class Entrada_Blog extends Model
@@ -51,4 +57,13 @@ class Entrada_Blog extends Model
         'content.required' => 'El contenido de la entrada no puede estar vacío.',
         'author.required' => 'El autor/a no puede estar vacío.'
     ];
+
+    //Relaciones
+
+    public function clasification(): BelongsTo
+    {
+        return $this->belongsTo(Clasification::class, 'clasification_id', 'clasification_id');
+    }
+
+
 }
