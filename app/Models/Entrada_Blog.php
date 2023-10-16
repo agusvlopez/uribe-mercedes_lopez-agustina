@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Entrada_Blog
@@ -68,5 +69,11 @@ class Entrada_Blog extends Model
         return $this->belongsTo(Clasification::class, 'clasification_id', 'clasification_id');
     }
 
-
+    /**
+     * Cambiar el formato de fecha al mostrarlo
+     */
+     public function getUpdatedAtAttribute($value)
+     {
+         return Carbon::parse($value)->format('d/m/Y');
+     }
 }
