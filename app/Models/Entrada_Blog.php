@@ -43,7 +43,7 @@ class Entrada_Blog extends Model
      //Indicamos el nombre de la clave primaria
      protected $primaryKey = "blog_id";
 
-    protected $fillable = ['title', 'content', 'author', 'updated_at', 'cover', 'cover_description'];
+    protected $fillable = ['clasification_id','title', 'content', 'author', 'updated_at', 'cover', 'cover_description'];
 
     public static $rules = [
         'title' => 'required|min:2',

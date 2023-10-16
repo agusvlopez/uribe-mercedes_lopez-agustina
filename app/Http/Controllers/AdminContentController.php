@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clasification;
 use App\Models\Entrada_Blog;
 use App\Models\Recetario;
 use Database\Seeders\Entradas_BlogsSeeder;
@@ -18,7 +19,11 @@ class AdminContentController extends Controller
     {
         {
         //Usamos el modelo para traer todos los datos de la tabla
-            $entradas_blog = Entrada_Blog::all();
+            // $entradas_blog = Entrada_Blog::all();
+
+        //Como agregamos la tabla clasifications asociada con la tabla entradas_blog no debemos usar el metodo all() como hicimos arriba, sino que queremos que cargue los datos de esa relación:
+            $entradas_blog = Entrada_Blog::with('clasification')->get();
+
 
         //pasaje de variables a las vistas
             return view('admin.entradas.index', [
@@ -66,7 +71,9 @@ class AdminContentController extends Controller
 
     public function formCreateEntrada()
     {
-        return view('admin.entradas.create');
+        return view('admin.entradas.create', [
+            'clasifications' => Clasification::all(),
+        ]);
     }
 
     /*

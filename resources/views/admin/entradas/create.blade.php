@@ -1,5 +1,8 @@
 <?php
+use App\Models\Clasification;
+
 /** @var \Illuminate\Support\ViewErrorBag $errors */
+/** @var Clasification|Collection $clasifications */
 ?>
 
 @extends('layouts.admin')
@@ -67,6 +70,26 @@
             @error('author')
             <p class="text-danger" id="error-author">{{ $message }}</p>
             @enderror
+        </div>
+        <div class="class mb-3">
+            <label for="clasification_id" class="form-label">Clasificación</label>
+            <select
+            name="clasification_id"
+            id="clasification_id"
+            class="form-control"
+            >
+            <option value="">Seleccioná un valor</option>
+            @foreach ($clasifications as $clasification)
+                <option
+                value="{{ $clasification->clasification_id}}"
+                @if (old('clasification_id') == $clasification->clasification_id)
+                    selected
+                @endif
+                >
+                    {{ $clasification->name }}
+                </option>
+            @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label for="cover" class="form-label">Imagen</label>
