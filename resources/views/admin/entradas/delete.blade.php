@@ -15,7 +15,7 @@
 
         <div class="d-flex align-content-center p-2">
             <h2 class="text-dark">¿Confirmar eliminación?</h2>
-            <form action="{{ url('/admin/entradas-blog/' . $entrada_blog->blog_id . '/eliminar')}}" method="POST">
+            <form action="{{ route('admin.blog.process.delete', ['id' => $entrada_blog->blog_id] )}}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-danger p-2 ms-3">Eliminar</button>
             </form>

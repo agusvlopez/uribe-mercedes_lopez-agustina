@@ -24,7 +24,7 @@ use App\Models\Entrada_Blog;
     <p class="mb-3 text-danger"> Hay campos con errores de validación. Por favor, verificar y corregir los valores indicados.</p>
 
     @endif
-    <form action="{{ url('admin/entradas-blog/' . $entrada_blog->blog_id . '/editar') }}" method="post">
+    <form action="{{ route('admin.blog.process.edit', ['id' => $entrada_blog->blog_id]) }}" method="post">
 
         @csrf
         <div class="mb-3">

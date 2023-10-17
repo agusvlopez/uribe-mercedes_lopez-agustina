@@ -12,7 +12,7 @@
             <h1 class="mb-3">Administrar Entradas de Blog</h1>
 
             <div class="mb-2">
-                <a class="letraVerde font-bold d-flex align-items-center" href="{{ url('/admin/entradas-blog/nueva')}}"><span class="iconoMas"></span> Publicar nueva entrada de Blog</a>
+                <a class="letraVerde font-bold d-flex align-items-center" href="{{ route('admin.blog.form.create')}}"><span class="iconoMas"></span> Publicar nueva entrada de Blog</a>
             </div>
 
 
@@ -44,11 +44,11 @@
                 <td>Imagen </td>
                 <td>{{$entrada->cover_description}} </td>
                 <td>
-                    <a href="{{url('/admin/entradas-blog/' . $entrada->blog_id )}}" class="btn btn-primary mb-2">Ver</a>
+                    <a href="{{ route('admin.blog.view', ['id' => $entrada->blog_id]   )}}" class="btn btn-primary mb-2">Ver</a>
 
-                    <a href="{{url('/admin/entradas-blog/' . $entrada->blog_id . '/editar')}}" class="btn btn-secondary mb-2">Editar</a>
+                    <a href="{{ route('admin.blog.form.edit', ['id' => $entrada->blog_id] )}}" class="btn btn-secondary mb-2">Editar</a>
 
-                    <a href="{{url('/admin/entradas-blog/' . $entrada->blog_id . '/eliminar')}}" class="btn btn-danger">Eliminar</a>
+                    <a href="{{ route('admin.blog.form.delete', ['id' => $entrada->blog_id] )}}" class="btn btn-danger">Eliminar</a>
 
 
                 </td>

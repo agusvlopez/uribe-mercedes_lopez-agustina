@@ -15,7 +15,7 @@
         <p class=" mt-4"><span class="fw-bold">Precio: </span>${{ number_format(($recetario->price), 2, ",", "." )}}</p>
         <div class="d-flex align-content-center p-2">
             <h2 class="text-dark">¿Confirmar eliminación?</h2>
-            <form action="{{ url('/admin/recetarios/' . $recetario->id . '/eliminar')}}" method="POST">
+            <form action="{{ route('admin.recetarios.process.delete', ['id' => $recetario->id] )}}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-danger p-2 ms-3">Eliminar</button>
             </form>

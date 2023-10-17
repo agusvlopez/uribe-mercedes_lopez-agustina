@@ -93,7 +93,8 @@ class AdminContentController extends Controller
 
         Recetario::create($data);
 
-        return redirect('/admin/recetarios')
+        return redirect()
+            ->route('admin.recetarios')
             ->with('status.message', 'El recetario <b>' . e($data['title']) . '</b> se publicó con éxito.');
     }
 
@@ -111,7 +112,8 @@ class AdminContentController extends Controller
 
         Entrada_Blog::create($data);
 
-        return redirect('/admin/entradas-blog')
+        return redirect()
+            ->route('admin.blog')
             ->with('status.message', 'El blog <b>' . e($data['title']) . '</b> se publicó con éxito.');
     }
 
@@ -132,7 +134,8 @@ class AdminContentController extends Controller
 
         $recetario->update($request->except('_token'));
 
-        return redirect('/admin/recetarios')
+        return redirect()
+            ->route('admin.recetarios')
             ->with('status.message', 'El recetario <b>' . e($request->input('title')) . '</b> se editó con éxito');
     }
 
@@ -152,7 +155,8 @@ class AdminContentController extends Controller
         }
 
 
-        return redirect('/admin/recetarios')
+        return redirect()
+            ->route('admin.recetarios')
             ->with('status.message', 'El recetario <b>' . e($recetario->title) . '</b> fue eliminado con éxito.');
 
     }
@@ -173,7 +177,8 @@ class AdminContentController extends Controller
 
         $entrada_blog->update($request->except('_token'));
 
-        return redirect('/admin/entradas-blog')
+        return redirect()
+            ->route('admin.blog')
             ->with('status.message', 'La entrada <b>' . e($request->input('title')) . '</b> se editó con éxito');
     }
 
@@ -194,6 +199,7 @@ class AdminContentController extends Controller
         }
 
         return redirect('/admin/entradas-blog')
+            ->route('admin.blog')
             ->with('status.message', 'La entrada <b>' . e($entrada_blog->title) . '</b> fue eliminada con éxito.');
 
     }

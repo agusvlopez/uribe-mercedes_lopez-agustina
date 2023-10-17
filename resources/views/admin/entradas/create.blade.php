@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Collection;
     <p class="mb-3 text-danger"> Hay campos con errores de validación. Por favor, verificar y corregir los valores indicados.</p>
 
     @endif
-    <form action="{{ url('admin/entradas-blog/nueva') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.blog.process.create') }}" method="post" enctype="multipart/form-data">
 
         @csrf
         <div class="mb-3">

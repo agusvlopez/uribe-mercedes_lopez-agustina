@@ -16,7 +16,7 @@
 
         @endif
 
-        <form action="{{ url('iniciar-sesion') }}" method="post">
+        <form action="{{ route('auth.login.process') }}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>

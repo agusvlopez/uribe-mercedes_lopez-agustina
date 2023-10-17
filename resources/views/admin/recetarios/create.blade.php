@@ -16,7 +16,7 @@
 
     @endif
 
-    <form action="{{ url('admin/recetarios/nueva') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.recetarios.process.create') }}" method="post" enctype="multipart/form-data">
 
         @csrf
         <div class="mb-3">

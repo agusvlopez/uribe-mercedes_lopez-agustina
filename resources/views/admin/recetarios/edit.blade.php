@@ -19,7 +19,7 @@ use App\Models\Recetario;
 
     @endif
 
-    <form action="{{ url('admin/recetarios/' . $recetario->id . '/editar') }}" method="post">
+    <form action="{{ route('admin.recetarios.process.edit', ['id' => $recetario->id]) }}" method="post">
 
         @csrf
         <div class="mb-3">
