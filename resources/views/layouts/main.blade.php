@@ -33,7 +33,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?=url('/admin/contenido');?>">Administración de Contenido</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=url('/iniciar-sesion');?>">Iniciar Sesión</a>
+                        </li>
                     </ul>
                 </div>
             </div>

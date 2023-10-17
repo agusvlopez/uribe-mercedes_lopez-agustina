@@ -30,6 +30,8 @@
                     <li>
                         <a class="nav-link" href="<?=url('/admin/entradas-blog');?>">Administración de Entradas de Blog</a>
                     </li>
+
+
                     </ul>
                 </div>
             </div>

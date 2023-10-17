@@ -17,6 +17,10 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/sobre-mi', [\App\Http\Controllers\HomeController::class, 'about']);
 
+//Autenticación
+Route::get('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'formLogin']);
+Route::post('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'processLogin']);
+
 Route::get('/recetarios', [\App\Http\Controllers\RecetarioController::class, 'index']);
 
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index']);
