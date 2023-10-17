@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
  * App\Models\User
  *
  * @property int $id
- * @property string $name
+ * @property string|null $name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property mixed $password
@@ -70,5 +70,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+    ];
+
+    public static $rules = [
+        'email' => 'required',
+        'password' => 'required',
+
+    ];
+
+    public static $errorMessages = [
+        'email.required' => 'Debe ingresar un email.',
+        'password.required' => 'Debe ingresar una contraseña.',
     ];
 }

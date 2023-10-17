@@ -56,16 +56,4 @@ class Recetario extends Model
         'price.numeric' => 'El precio debe ser numérico.'
     ];
 
-    // /**
-    //  * Cambiar el formato del precio
-    //  */
-    // public function price(): Attribute
-    // {
-
-    //     return Attribute::make(
-    //         function($value) {
-    //             return $value / 100;
-    //         }
-    //     );
-    // }
 }

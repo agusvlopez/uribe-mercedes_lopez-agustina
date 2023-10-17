@@ -12,36 +12,49 @@
     <div class="app">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand logo-nav" href="<?=url('/');?>"></a>
+                <a class="navbar-brand logo-nav" href="<?=route('home');?>"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=url('/');?>">Home</a>
+                            <a class="nav-link" href="<?=route('home');?>">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=url('/sobre-mi');?>">Sobre mi</a>
+                            <a class="nav-link" href="<?=route('about');?>">Sobre mi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=url('/recetarios');?>">Recetarios</a>
+                            <a class="nav-link" href="<?=route('recetarios.index');?>">Recetarios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=url('/blog');?>">Blog</a>
+                            <a class="nav-link" href="<?=route('blog.index');?>">Blog</a>
                         </li>
+                        @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=url('/admin/contenido');?>">Administración de Contenido</a>
+                            <a class="nav-link" href="<?=route('admin.index');?>">Administración</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=url('/iniciar-sesion');?>">Iniciar Sesión</a>
+                            <form action="<?=route('auth.logout.process');?>" method="post">
+                                @csrf
+                               <button type="submit" class="btn">Cerrar sesión</button>
+                            </form>
                         </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=route('auth.login.process');?>">Iniciar Sesión</a>
+                        </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
         </nav>
 
         <main>
+            @if(\Session::has('status.message'))
+                <div class="alert alert-success m-2">{!! \Session::get('status.message') !!}</div>
+            @endif
 
             @yield('content')
         </main>

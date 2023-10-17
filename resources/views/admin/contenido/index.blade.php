@@ -7,8 +7,8 @@
 <h1>Administración de contenido</h1>
 <p>Elige qué tipo de contenido vas a administrar</p>
 <div class="flex justify-content-center mx-auto p-3">
-    <a class="btn btn-secondary m-2" href="<?=url('/admin/recetarios');?>">Administrar Recetarios</a>
-    <a class="btn btn-secondary m-2" href="<?=url('/admin/entradas-blog');?>">Administrar Entradas de Blog</a>
+    <a class="btn btn-secondary m-2" href="<?=route('admin.recetarios');?>">Administrar Recetarios</a>
+    <a class="btn btn-secondary m-2" href="<?=route('admin.blog');?>">Administrar Entradas de Blog</a>
 </div>
 </div>
 @endsection

@@ -13,46 +13,105 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home');
 
-Route::get('/sobre-mi', [\App\Http\Controllers\HomeController::class, 'about']);
+Route::get('/sobre-mi', [\App\Http\Controllers\HomeController::class, 'about'])
+    ->name('about');
 
 //Autenticación
-Route::get('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'formLogin']);
-Route::post('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'processLogin']);
+Route::get('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'formLogin'])
+    ->name('auth.login.form');
 
-Route::get('/recetarios', [\App\Http\Controllers\RecetarioController::class, 'index']);
+Route::post('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'processLogin'])
+    ->name('auth.login.process');
 
-Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index']);
+Route::post('/cerrar-sesion', [\App\Http\Controllers\AuthController::class, 'processLogout'])
+    ->name('auth.logout.process');
 
-Route::get('/admin/contenido', [\App\Http\Controllers\AdminContentController::class, 'index']);
+Route::get('/recetarios', [\App\Http\Controllers\RecetarioController::class, 'index'])
+    ->name('recetarios.index');
 
-//admin entradas de blog
-Route::get('/admin/entradas-blog', [\App\Http\Controllers\AdminContentController::class, 'entradasBlog']);
-Route::get('/admin/entradas-blog/nueva', [\App\Http\Controllers\AdminContentController::class, 'formCreateEntrada']);
-Route::post('/admin/entradas-blog/nueva', [\App\Http\Controllers\AdminContentController::class, 'processCreateEntrada']);
+Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])
+    ->name('blog.index');;
+
+Route::get('/admin/contenido', [\App\Http\Controllers\AdminContentController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('admin.index');
+
+//Admin entradas de blog
+Route::get('/admin/entradas-blog', [\App\Http\Controllers\AdminContentController::class, 'entradasBlog'])
+    ->middleware(['auth'])
+    ->name('admin.blog');
+
+Route::get('/admin/entradas-blog/nueva', [\App\Http\Controllers\AdminContentController::class, 'formCreateEntrada'])
+    ->middleware(['auth'])
+    ->name('admin.blog.form.create');
+
+Route::post('/admin/entradas-blog/nueva', [\App\Http\Controllers\AdminContentController::class, 'processCreateEntrada'])
+    ->middleware(['auth'])
+    ->name('admin.blog.process.create');
+
 Route::get('/admin/entradas-blog/{id}', [\App\Http\Controllers\AdminContentController::class, 'viewEntradaBlog'])
-    ->whereNumber('id');
-Route::get('/admin/entradas-blog/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'formDeleteEntrada'])
-    ->whereNumber('id');
-Route::post('/admin/entradas-blog/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'processDeleteEntrada'])
-    ->whereNumber('id');
-Route::get('/admin/entradas-blog/{id}/editar', [\App\Http\Controllers\AdminContentController::class, 'formEditEntrada'])
-    ->whereNumber('id');
-Route::post('/admin/entradas-blog/{id}/editar', [\App\Http\Controllers\AdminContentController::class, 'processEditEntrada'])
-    ->whereNumber('id');
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->name('admin.blog.view');
 
-//admin recetarios
-Route::get('/admin/recetarios', [\App\Http\Controllers\AdminContentController::class, 'recetarios']);
-Route::get('/admin/recetarios/nueva', [\App\Http\Controllers\AdminContentController::class, 'formCreateRecetario']);
-Route::post('/admin/recetarios/nueva', [\App\Http\Controllers\AdminContentController::class, 'processCreateRecetario']);
+Route::get('/admin/entradas-blog/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'formDeleteEntrada'])
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->name('admin.blog.form.delete');
+
+Route::post('/admin/entradas-blog/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'processDeleteEntrada'])
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->name('admin.blog.process.delete');
+
+Route::get('/admin/entradas-blog/{id}/editar', [\App\Http\Controllers\AdminContentController::class, 'formEditEntrada'])
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->name('admin.blog.form.edit');
+
+Route::post('/admin/entradas-blog/{id}/editar', [\App\Http\Controllers\AdminContentController::class, 'processEditEntrada'])
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->name('admin.blog.process.edit');
+
+
+//Admin recetarios
+Route::get('/admin/recetarios', [\App\Http\Controllers\AdminContentController::class, 'recetarios'])
+    ->middleware(['auth'])
+    ->name('admin.recetarios');
+
+Route::get('/admin/recetarios/nueva', [\App\Http\Controllers\AdminContentController::class, 'formCreateRecetario'])
+    ->middleware(['auth'])
+    ->name('admin.recetarios.form.create');
+
+Route::post('/admin/recetarios/nueva', [\App\Http\Controllers\AdminContentController::class, 'processCreateRecetario'])
+    ->middleware(['auth'])
+    ->name('admin.recetarios.process.create');
+
 Route::get('/admin/recetarios/{id}', [\App\Http\Controllers\AdminContentController::class, 'viewRecetario'])
-    ->whereNumber('id');
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->name('admin.recetarios.view');
+
 Route::get('/admin/recetarios/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'formDeleteRecetario'])
-    ->whereNumber('id');
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->name('admin.recetarios.form.delete');
+
 Route::post('/admin/recetarios/{id}/eliminar', [\App\Http\Controllers\AdminContentController::class, 'processDeleteRecetario'])
-    ->whereNumber('id');
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->name('admin.recetarios.process.delete');
+
 Route::get('/admin/recetarios/{id}/editar', [\App\Http\Controllers\AdminContentController::class, 'formEditRecetario'])
-    ->whereNumber('id');
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->name('admin.recetarios.form.edit');
+
 Route::post('/admin/recetarios/{id}/editar', [\App\Http\Controllers\AdminContentController::class, 'processEditRecetario'])
-    ->whereNumber('id');
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->name('admin.recetarios.process.edit');

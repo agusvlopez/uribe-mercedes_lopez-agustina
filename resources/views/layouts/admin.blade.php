@@ -12,26 +12,30 @@
     <div class="app">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand logo-nav" href="<?=url('/');?>"></a>
+                <a class="navbar-brand logo-nav" href="<?=route('home');?>"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                     <li>
-                        <a class="nav-link" href="<?=url('/');?>">Home</a>
+                        <a class="nav-link" href="<?=route('home');?>">Home</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="<?=url('/admin/contenido');?>">Administración de Contenido</a>
+                        <a class="nav-link" href="<?=route('admin.index');?>">Administración</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="<?=url('/admin/recetarios');?>">Administración de Recetarios</a>
+                        <a class="nav-link" href="<?=route('admin.recetarios');?>">Administración de Recetarios</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="<?=url('/admin/entradas-blog');?>">Administración de Entradas de Blog</a>
+                        <a class="nav-link" href="<?=route('admin.blog');?>">Administración de Entradas de Blog</a>
                     </li>
-
-
+                    <li>
+                        <form action="<?=route('auth.logout.process');?>" method="post">
+                            @csrf
+                           <button type="submit" class="nav-link">Cerrar sesión</button>
+                        </form>
+                    </li>
                     </ul>
                 </div>
             </div>
