@@ -7,6 +7,7 @@ use App\Models\Entrada_Blog;
 use App\Models\Recetario;
 use Database\Seeders\Entradas_BlogsSeeder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminContentController extends Controller
 {
@@ -146,6 +147,11 @@ class AdminContentController extends Controller
         $recetario = Recetario::findOrFail($id);
         $recetario->delete();
 
+        if($recetario->cover && Storage::has($recetario->cover)) {
+            Storage::delete($recetario->cover);
+        }
+
+
         return redirect('/admin/recetarios')
             ->with('status.message', 'El recetario <b>' . e($recetario->title) . '</b> fue eliminado con éxito.');
 
@@ -182,6 +188,10 @@ class AdminContentController extends Controller
         $entrada_blog = Entrada_Blog::findOrFail($id);
 
         $entrada_blog->delete();
+
+        if($entrada_blog->cover && Storage::has($entrada_blog->cover)) {
+            Storage::delete($entrada_blog->cover);
+        }
 
         return redirect('/admin/entradas-blog')
             ->with('status.message', 'La entrada <b>' . e($entrada_blog->title) . '</b> fue eliminada con éxito.');
