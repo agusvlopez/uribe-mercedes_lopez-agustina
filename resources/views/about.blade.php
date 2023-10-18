@@ -5,9 +5,9 @@
 @section('content')
     <div class="container">
         <h1 class="d-none">Sobre mi</h1>
-        <div class="row mt-5 p-4">
+        <div class="row mt-5 p-4 mb-5">
             <div class="col-12 col-md-6">
-                <img class="img-fluid d-block rounded-3" src="{{ asset('imgs/nutricionista-ana_perez.jpg') }}" alt="Foto de la nutricionista Ana Perez">
+                <img class="img-fluid d-block rounded-3 shadow" src="{{ asset('imgs/nutricionista-ana_perez.jpg') }}" alt="Foto de la nutricionista Ana Perez">
             </div>
             <div class="col-12 col-md-6 fs-5">
                 <h2>¡Hola!</h2>

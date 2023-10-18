@@ -6,4 +6,4 @@ Turno: Noche
 Comisión: DWN4BV
 Apellido y nombre: Uribe Mercedes y Lopez Agustina
 Docente: Gallino Santiago
-Carácter de entrega (1er parcial).
+Carácter de entrega: 1er parcial.

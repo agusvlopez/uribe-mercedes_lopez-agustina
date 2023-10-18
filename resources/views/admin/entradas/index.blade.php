@@ -37,7 +37,7 @@
                 ?>
                 <td>{{$entrada->blog_id }}</td>
                 <td>{{$entrada->title}} </td>
-                <td>{{$entrada->content}} </td>
+                <td>{{$entrada->recortar_descripcion()}} </td>
                 <td>{{$entrada->author}} </td>
                 <td>{{$entrada->updated_at}} </td>
                 <td>{{$entrada->clasification->name}} </td>
@@ -49,8 +49,6 @@
                     <a href="{{ route('admin.blog.form.edit', ['id' => $entrada->blog_id] )}}" class="btn btn-secondary mb-2 d-block">Editar</a>
 
                     <a href="{{ route('admin.blog.form.delete', ['id' => $entrada->blog_id] )}}" class="btn btn-danger d-block">Eliminar</a>
-
-
                 </td>
             </tr>
             @endforeach

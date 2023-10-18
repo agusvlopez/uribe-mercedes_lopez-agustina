@@ -33,9 +33,9 @@
             ?>
             <td>{{$recetario->id }}</td>
             <td>{{$recetario->title}} </td>
-            <td>{{$recetario->description}} </td>
+            <td>{{$recetario->recortar_descripcion()}} </td>
             <td>${{ number_format(($recetario->price), 2, ",", "." )}} </td>
-            <td> <img class="w-25 mb-2" src="{{ asset('storage/' . $recetario->cover)}}" alt="{{ $recetario->cover_description }}" class="rounded mb-4"></td>
+            <td> <img class="w-100 mb-2" src="{{ asset('storage/' . $recetario->cover)}}" alt="{{ $recetario->cover_description }}" class="rounded mb-4"></td>
             <td> {{$recetario->cover_description}} </td>
             <td>
                 <a href="{{route('admin.recetarios.view', ['id' => $recetario->id]   )}}" class="btn btn-primary mb-2 d-block">Ver</a>

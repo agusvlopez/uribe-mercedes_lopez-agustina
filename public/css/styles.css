@@ -3,6 +3,7 @@
 html, body, #app {
     height: 100%;
     color: #4b4c4e;
+    background-color: whitesmoke;
 }
 
 #app {
@@ -103,6 +104,9 @@ h2 {
     border: none;
 }
 
+.bg-nav {
+    background-color: #edf7ed;
+}
 .bg-verde-screen {
     background-color: #8daf8d85;
 }

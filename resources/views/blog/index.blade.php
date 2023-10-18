@@ -17,11 +17,11 @@
                 @endforeach
             </div>
 
-            <div class="">
+            <div>
                 <div class="row g-0 justify-content-center">
                 @foreach ($entradas_blog as $entrada_blog)
 
-                    <div class="card mb-4" style="max-width: 740px;">
+                    <div class="card mb-4" style="max-width: 740px; border:none;">
                         <div class="row g-0 shadow">
                           <div class="col-md-4">
                             <img src="{{ asset('storage/' . $entrada_blog->cover)}}" class="img-fluid rounded-start" alt="{{ $entrada_blog->cover_description }}">
@@ -32,7 +32,7 @@
                               <p class="card-text">{{$entrada_blog->recortar_descripcion()}}</p>
                               <p><small class="bg-verde badge rounded-pill text-light">{{$entrada_blog->clasification->name}}</small></p>
                             </div>
-                            <div class="d-flex justify-content-end">
+                            <div class="d-flex justify-content-end pb-3">
                                 <a href="{{route('blog.view', ['id' => $entrada_blog->blog_id]   )}}" class="link me-4">Seguir leyendo »</a>
                             </div>
                           </div>
