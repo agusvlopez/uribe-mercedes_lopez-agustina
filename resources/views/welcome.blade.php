@@ -6,9 +6,9 @@
 @section('content')
 
 
-<h1 class="none">Pagina Principal</h1>
+<h1 class="none">Página Principal</h1>
 
-<section class="portada d-md-flex align-items-center justify-content-center ps-3 pe-3 pt-5">
+<section class="portada d-md-flex align-items-center justify-content-center ps-3 pe-3 pt-5 mb-5">
     <div class="d-md-flex" >
         <div class="col-md-6 p-4 align-self-center">
             <h2>Nunca es tarde para mejorar tus hábitos.</h2>
@@ -19,6 +19,24 @@
              <img src="{{ asset('imgs/nutricionista-portada.png') }}" alt="Chica sonriente sosteniendo un bowl con frutas y verduras" class="img-fluid">
         </div>
     </div>
+
+
 </section>
 
+<div class="container mb-5">
+        <div class="row d-flex align-items-center">
+            <div class="col-md-6">
+                <h2>Conocé mis recetarios</h2>
+                <p class="mt-3">Mis recetarios están llenos de secretos, ingredientes exquisitos y sabores que al mismo tiempo son saludables. Atrevete a explorar nuevas recetas sencillas sin caer en lo insulso.</p>
+                <p>Las recetas son sanas, sabrosas y variadas, habiendo opciones apta celíacos, vegetarianas y veganas.</p>
+                <h3>Comenzá a disfrutar hoy los beneficios de un estilo de vida saludable.</h3>
+                <div class="d-flex justify-content-end mt-4">
+                    <a href="<?=route('recetarios.index');?>" class="link fs-5 text-end">Ver todos los recetarios »</a>
+                </div>
+            </div>
+            <div  class="col-md-6">
+                <img src="{{ asset('imgs/recetarios-inicio.png') }}" alt="Libro de recetarios" class="img-fluid">
+            </div>
+        </div>
+    </div>
 @endsection

@@ -56,4 +56,22 @@ class Recetario extends Model
         'price.numeric' => 'El precio debe ser numérico.'
     ];
 
+        /**
+    * Esta funcion devuelve las primeras 10 palabras de un parrafo
+    * @param int $cantidad Esta es la cantidad de palabras a reducir (opcional)
+    * @return string La cantidad de palabras solicitadas con ... al final
+    */
+    public function recortar_descripcion(int $cantidad = 30):string {
+        $texto = $this->description;
+
+        $array = explode(" ",$texto);
+        if(count($array)<= $cantidad) {
+            $resultado = $texto;
+        }else {
+            array_splice($array, $cantidad);
+            $resultado = implode(" ", $array)."...";
+        }
+        return $resultado;
+
+       }
 }

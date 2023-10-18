@@ -70,10 +70,30 @@ class Entrada_Blog extends Model
     }
 
     /**
-     * Cambiar el formato de fecha al mostrarlo
-     */
-     public function getUpdatedAtAttribute($value)
-     {
+    * Cambiar el formato de fecha al mostrarlo
+    */
+    public function getUpdatedAtAttribute($value)
+    {
          return Carbon::parse($value)->format('d/m/Y');
-     }
+    }
+
+
+    /**
+    * Esta funcion devuelve las primeras 10 palabras de un parrafo
+    * @param int $cantidad Esta es la cantidad de palabras a reducir (opcional)
+    * @return string La cantidad de palabras solicitadas con ... al final
+    */
+    public function recortar_descripcion(int $cantidad = 30):string {
+        $texto = $this->content;
+
+        $array = explode(" ",$texto);
+        if(count($array)<= $cantidad) {
+            $resultado = $texto;
+        }else {
+            array_splice($array, $cantidad);
+            $resultado = implode(" ", $array)."...";
+        }
+        return $resultado;
+
+       }
 }

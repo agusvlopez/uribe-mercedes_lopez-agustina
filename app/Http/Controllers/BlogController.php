@@ -41,7 +41,6 @@ class BlogController extends Controller
             'entradas_blog' =>  $entradas_blog,
             'clasification' =>  $clasification,
         ]);
-
-
     }
+
 }

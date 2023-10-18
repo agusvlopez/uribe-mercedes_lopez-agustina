@@ -2,6 +2,7 @@
 
 html, body, #app {
     height: 100%;
+    color: #4b4c4e;
 }
 
 #app {
@@ -44,16 +45,20 @@ h1 {
     color: #3f3f3f;
     font-weight: 700;
 }
+
 h2 {
     font-size: 2.1rem;
     font-weight: 600;
     color: #689168;
-
 }
 
 .letraVerde {
    color: #83B582;
    text-decoration: none;
+}
+
+.letraGris {
+    color: #3f3f3f;
 }
 
 .iconoMas {
@@ -98,20 +103,29 @@ h2 {
     border: none;
 }
 
+.bg-verde-screen {
+    background-color: #8daf8d85;
+}
+
 .bg-verde {
     background-color: #689168;
 }
 .bg-verde:hover {
     background-color: #436143;
 }
+.bg-verde:active {
+    background-color: #436143;
+}
 
 .link {
     color: #FD8D14;
     font-weight: 500;
+    text-decoration: none;
 }
 .link:hover {
     color: #b1630f;
     font-weight: 600;
+    text-decoration: none;
 }
 @media screen and (min-width:576px) {}
 
