@@ -4,11 +4,14 @@
 
 @section('content')
         <h1>Sobre mi</h1>
-        <section>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <img class="img-fluid d-block rounded-3 mt-5" src="" alt="Foto">
+            </div>
             <div class="col-12 col-md-6 p-4 fs-5">
                 <h2>¡Hola!</h2>
                     <h3>Soy Mercedes Lopez</h3>
-                    <p>Hace más de 10 años que me encuentro involucrada en el campo de la Nutrición, y hace 5 años que trabajo activamente como Nutricionista Matriculada.</p>
+                    <p>Hace más de 10 años que me encuentro involucrada en el campo de la Nutrición, y hace 5 años que trabajo activamente como <strong>Nutricionista Matriculada</strong>.</p>
 
                     <p>Soy una persona sumamente empática, que sabe escuchar, con una mirada particularmente reflexiva.</p>
 
@@ -18,9 +21,7 @@
 
                     <h3>Me hace muy feliz, y disfruto mucho conectar con mis pacientes!</h3>
             </div>
-            <div class="col-12 col-md-6">
-                <img class="img-fluid d-block rounded-3 mt-5" src="" alt="Foto">
-            </div>
-        </section>
+
+        </div>
 
 @endsection
