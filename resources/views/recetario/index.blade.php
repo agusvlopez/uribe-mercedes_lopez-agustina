@@ -25,12 +25,12 @@
             </div>
         </div>
 
-        <div class="container mt-5">
+        <div class="container mt-5 mb-5">
         <div class="row g-0">
             <h2 class="text-center">Todos los recetarios</h2>
         @foreach ($recetarios as $recetario)
 
-            <div class="card m-3 p-4 catalogo">
+            <div class="card m-3 catalogo">
                 <img src="{{ asset('storage/' . $recetario->cover)}}" class="card-img-top img-fluid shadow" alt="{{ $recetario->cover_description }}">
             <h2 class="mt-3 card-title text-center fw-normal fs-5">{{$recetario->title}}</h2>
             <div class="card-body mt-1 mb-1 shadow-sm ">

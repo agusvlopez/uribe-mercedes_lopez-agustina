@@ -24,7 +24,7 @@
 </section>
 
 <div class="container mb-5">
-        <div class="row d-flex align-items-center bg-light">
+        <div class="row d-flex align-items-center">
             <div class="col-md-6">
                 <h2>Conocé mis recetarios</h2>
                 <p class="mt-3">Mis recetarios están llenos de secretos, ingredientes exquisitos y sabores que al mismo tiempo son saludables. Atrevete a explorar nuevas recetas sencillas sin caer en lo insulso.</p>
@@ -40,7 +40,7 @@
         </div>
 </div>
 <div class="container mb-5">
-    <div class="row d-flex align-items-center bg-light">
+    <div class="row d-flex align-items-center">
         <div  class="col-md-6">
             <img src="{{ asset('imgs/blog-1.jpg') }}" alt="Imagen de comida saludable" class="img-fluid rounded-2 w-75 p-5">
         </div>
