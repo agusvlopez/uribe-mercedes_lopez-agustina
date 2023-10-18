@@ -3,14 +3,15 @@
 @section('title', 'Sobre mi')
 
 @section('content')
-        <h1>Sobre mi</h1>
-        <div class="row">
+    <div class="container">
+        <h1 class="d-none">Sobre mi</h1>
+        <div class="row mt-5 p-4">
             <div class="col-12 col-md-6">
-                <img class="img-fluid d-block rounded-3 mt-5" src="" alt="Foto">
+                <img class="img-fluid d-block rounded-3" src="{{ asset('imgs/nutricionista-ana_perez.jpg') }}" alt="Foto de la nutricionista Ana Perez">
             </div>
-            <div class="col-12 col-md-6 p-4 fs-5">
+            <div class="col-12 col-md-6 fs-5">
                 <h2>¡Hola!</h2>
-                    <h3>Soy Mercedes Lopez</h3>
+                    <h3>Soy Ana Perez</h3>
                     <p>Hace más de 10 años que me encuentro involucrada en el campo de la Nutrición, y hace 5 años que trabajo activamente como <strong>Nutricionista Matriculada</strong>.</p>
 
                     <p>Soy una persona sumamente empática, que sabe escuchar, con una mirada particularmente reflexiva.</p>
@@ -23,5 +24,5 @@
             </div>
 
         </div>
-
+    </div>
 @endsection

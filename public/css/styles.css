@@ -81,6 +81,38 @@ h2 {
     height: 55px;
 }
 
+.precio {
+    font-weight: 500;
+    color: #FD8D14;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    text-align: center;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+}
+
+.catalogo {
+    width: calc(50% - 2rem);
+    margin: 1rem;
+    border: none;
+}
+
+.bg-verde {
+    background-color: #689168;
+}
+.bg-verde:hover {
+    background-color: #436143;
+}
+
+.link {
+    color: #FD8D14;
+    font-weight: 500;
+}
+.link:hover {
+    color: #b1630f;
+    font-weight: 600;
+}
 @media screen and (min-width:576px) {}
 
 @media screen and (min-width:993px) {}

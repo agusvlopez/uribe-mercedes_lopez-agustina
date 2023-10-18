@@ -41,14 +41,14 @@
                 <td>{{$entrada->author}} </td>
                 <td>{{$entrada->updated_at}} </td>
                 <td>{{$entrada->clasification->name}} </td>
-                <td>Imagen </td>
+                <td><img class="w-100 mb-2" src="{{ asset('storage/' . $entrada->cover)}}" alt="{{ $entrada->cover_description }}" class="rounded mb-4"></td>
                 <td>{{$entrada->cover_description}} </td>
                 <td>
-                    <a href="{{ route('admin.blog.view', ['id' => $entrada->blog_id]   )}}" class="btn btn-primary mb-2">Ver</a>
+                    <a href="{{ route('admin.blog.view', ['id' => $entrada->blog_id]   )}}" class="btn btn-primary mb-2 d-block">Ver</a>
 
-                    <a href="{{ route('admin.blog.form.edit', ['id' => $entrada->blog_id] )}}" class="btn btn-secondary mb-2">Editar</a>
+                    <a href="{{ route('admin.blog.form.edit', ['id' => $entrada->blog_id] )}}" class="btn btn-secondary mb-2 d-block">Editar</a>
 
-                    <a href="{{ route('admin.blog.form.delete', ['id' => $entrada->blog_id] )}}" class="btn btn-danger">Eliminar</a>
+                    <a href="{{ route('admin.blog.form.delete', ['id' => $entrada->blog_id] )}}" class="btn btn-danger d-block">Eliminar</a>
 
 
                 </td>

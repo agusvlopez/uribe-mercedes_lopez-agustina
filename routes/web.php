@@ -32,8 +32,20 @@ Route::post('/cerrar-sesion', [\App\Http\Controllers\AuthController::class, 'pro
 Route::get('/recetarios', [\App\Http\Controllers\RecetarioController::class, 'index'])
     ->name('recetarios.index');
 
+Route::get('/recetarios/{id}', [\App\Http\Controllers\RecetarioController::class, 'viewRecetario'])
+    ->whereNumber('id')
+    ->name('recetario.view');
+
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])
-    ->name('blog.index');;
+    ->name('blog.index');
+
+Route::get('/blog/{id}', [\App\Http\Controllers\BlogController::class, 'viewEntradaBlog'])
+    ->whereNumber('id')
+    ->name('blog.view');
+
+Route::get('/blog/clasification/{id}', [\App\Http\Controllers\BlogController::class, 'viewBlogClasification'])
+    ->whereNumber('id')
+    ->name('blog.clasification.view');
 
 Route::get('/admin/contenido', [\App\Http\Controllers\AdminContentController::class, 'index'])
     ->middleware(['auth'])
