@@ -198,7 +198,7 @@ class AdminContentController extends Controller
             Storage::delete($entrada_blog->cover);
         }
 
-        return redirect('/admin/entradas-blog')
+        return redirect()
             ->route('admin.blog')
             ->with('status.message', 'La entrada <b>' . e($entrada_blog->title) . '</b> fue eliminada con éxito.');
 

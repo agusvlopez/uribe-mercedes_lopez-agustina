@@ -109,7 +109,7 @@ use App\Models\Entrada_Blog;
             id="cover"
             name="cover"
             class="form-control"
-            value="{{ old('author', $entrada_blog->cover) }}"
+            value="{{ old('cover', $entrada_blog->cover) }}"
             >
         </div>
         <div class="mb-3">

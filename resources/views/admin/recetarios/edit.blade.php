@@ -75,7 +75,7 @@ use App\Models\Recetario;
             id="cover"
             name="cover"
             class="form-control"
-            value="{{ old('author', $recetario->cover) }}"
+            value="{{ old('cover', $recetario->cover) }}"
             >
         </div>
         <div class="mb-3">
