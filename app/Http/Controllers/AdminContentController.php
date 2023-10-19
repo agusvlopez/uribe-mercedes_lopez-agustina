@@ -188,13 +188,13 @@ class AdminContentController extends Controller
 
         if($request->hasFile('cover')){
             $data['cover'] = $request->file('cover')->store('coversEntrada');
-            $oldCover = $entrada_blog->cover;
+            $oldCoverEntrada = $entrada_blog->cover;
         }
 
         $entrada_blog->update($data);
 
-        if($oldCover && Storage::has($oldCover)){
-            Storage::delete($oldCover);
+        if($oldCoverEntrada && Storage::has($oldCoverEntrada)){
+            Storage::delete($oldCoverEntrada);
         }
 
         return redirect()

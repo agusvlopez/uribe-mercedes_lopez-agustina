@@ -33,6 +33,8 @@
                           </div>
                     </div>
                   </div>
+                  @elseif (!$clasification)
+                  <p>No existe ninguna entrada con esa clasificación.</p>
         @endif
      @endforeach
     </div>
