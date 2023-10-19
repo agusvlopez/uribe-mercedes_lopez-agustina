@@ -54,6 +54,8 @@
         <main>
             @if(\Session::has('status.message'))
                 <div class="alert alert-success m-2">{!! \Session::get('status.message') !!}</div>
+            @elseif (\Session::has('danger.message'))
+            <div class="alert alert-danger m-2">{!! \Session::get('danger.message') !!}</div>
             @endif
 
             @yield('content')

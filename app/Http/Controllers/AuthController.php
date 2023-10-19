@@ -22,7 +22,7 @@ class AuthController extends Controller
         if(!Auth::attempt($credentials)){
             return redirect()
             ->route('auth.login.form')
-            ->with('status.message', 'Los datos ingresados no coinciden con nuestros registros.')
+            ->with('danger.message', 'Los datos ingresados no coinciden con nuestros registros.')
             ->withInput();
         };
 
