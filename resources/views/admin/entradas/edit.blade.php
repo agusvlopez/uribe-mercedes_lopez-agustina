@@ -24,7 +24,7 @@ use App\Models\Entrada_Blog;
     <p class="mb-3 text-danger"> Hay campos con errores de validación. Por favor, verificar y corregir los valores indicados.</p>
 
     @endif
-    <form action="{{ route('admin.blog.process.edit', ['id' => $entrada_blog->blog_id]) }}" method="post">
+    <form action="{{ route('admin.blog.process.edit', ['id' => $entrada_blog->blog_id]) }}" method="post" enctype="multipart/form-data">
 
         @csrf
         <div class="mb-3">
@@ -103,15 +103,25 @@ use App\Models\Entrada_Blog;
             @enderror
         </div>
         <div class="mb-3">
-            <label for="cover" class="form-label">Imagen</label>
+            @if ($entrada_blog->cover && Storage::has($entrada_blog->cover))
+			<label for="cover_actual" class="form-label">Imagen Actual</label>
+			<img src="{{ asset('storage/' . $entrada_blog->cover)}}" alt="{{ $entrada_blog->cover_description }}" class="img-fluid shadow-sm d-block w-25">
+			<input class="form-control" type="hidden" id="cover_actual" name="cover_actual" required value="<?=  $entrada_blog->cover ?>">
+            @else
+                <p>No existe ninguna imagen.</p>
+            @endif
+		</div>
+
+        <div class="mb-3">
+            <label for="cover" class="form-label">Nueva imagen</label>
             <input
             type="file"
             id="cover"
             name="cover"
             class="form-control"
-            value="{{ old('cover', $entrada_blog->cover) }}"
             >
         </div>
+
         <div class="mb-3">
             <label for="cover_description" class="form-label">Descripción de la imagen</label>
             <input

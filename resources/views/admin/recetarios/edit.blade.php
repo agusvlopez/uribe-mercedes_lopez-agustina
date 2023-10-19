@@ -19,7 +19,7 @@ use App\Models\Recetario;
 
     @endif
 
-    <form action="{{ route('admin.recetarios.process.edit', ['id' => $recetario->id]) }}" method="post">
+    <form action="{{ route('admin.recetarios.process.edit', ['id' => $recetario->id]) }}" method="post" enctype="multipart/form-data">
 
         @csrf
         <div class="mb-3">
@@ -68,6 +68,15 @@ use App\Models\Recetario;
             <p class="text-danger" id="error-price">{{ $message }}</p>
             @enderror
         </div>
+        <div class="mb-3">
+            @if ($recetario->cover && Storage::has($recetario->cover))
+			<label for="cover_actual" class="form-label">Imagen Actual</label>
+			<img src="{{ asset('storage/' . $recetario->cover)}}" alt="{{ $recetario->cover_description }}" class="img-fluid shadow-sm d-block w-25">
+			<input class="form-control" type="hidden" id="cover_actual" name="cover_actual" required value="<?=  $recetario->cover ?>">
+            @else
+                <p>No existe ninguna imagen.</p>
+            @endif
+		</div>
         <div class="mb-3">
             <label for="cover" class="form-label">Imagen</label>
             <input

@@ -132,8 +132,18 @@ class AdminContentController extends Controller
 
         $request->validate(Recetario::$rules, Recetario::$errorMessages);
 
-        $recetario->update($request->except('_token'));
+        $data = $request->except(['_token']);
 
+        if($request->hasFile('cover')){
+            $data['cover'] = $request->file('cover')->store('coversRecetario');
+            $oldCover = $recetario->cover;
+        }
+
+        $recetario->update($data);
+
+        if($oldCover && Storage::has($oldCover)){
+            Storage::delete($oldCover);
+        }
         return redirect()
             ->route('admin.recetarios')
             ->with('status.message', 'El recetario <b>' . e($request->input('title')) . '</b> se editó con éxito');
@@ -153,7 +163,6 @@ class AdminContentController extends Controller
         if($recetario->cover && Storage::has($recetario->cover)) {
             Storage::delete($recetario->cover);
         }
-
 
         return redirect()
             ->route('admin.recetarios')
@@ -175,7 +184,18 @@ class AdminContentController extends Controller
 
         $request->validate(Entrada_Blog::$rules, Entrada_Blog::$errorMessages);
 
-        $entrada_blog->update($request->except('_token'));
+        $data = $request->except(['_token']);
+
+        if($request->hasFile('cover')){
+            $data['cover'] = $request->file('cover')->store('coversEntrada');
+            $oldCover = $entrada_blog->cover;
+        }
+
+        $entrada_blog->update($data);
+
+        if($oldCover && Storage::has($oldCover)){
+            Storage::delete($oldCover);
+        }
 
         return redirect()
             ->route('admin.blog')
