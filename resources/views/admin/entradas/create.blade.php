@@ -118,6 +118,7 @@ use Illuminate\Database\Eloquent\Collection;
                     name="consejos[]"
                     class="form-check-input"
                     value="{{ $consejo->consejo_id }}"
+                    @checked(collect(old('$consejos', []))->has($consejo->consejo_id))
                 >
                 <span class="form-check-label">{{ $consejo->name}}</span>
             </label>
