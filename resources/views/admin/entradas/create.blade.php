@@ -1,9 +1,11 @@
 <?php
 use App\Models\Clasification;
+use App\Models\Consejo;
 use Illuminate\Database\Eloquent\Collection;
 
 /** @var \Illuminate\Support\ViewErrorBag $errors */
 /** @var Clasification|Collection $clasifications */
+/** @var Consejo|Collection $consejos */
 ?>
 
 @extends('layouts.admin')
@@ -106,6 +108,23 @@ use Illuminate\Database\Eloquent\Collection;
             <label for="cover_description" class="form-label">Descripción de la imagen</label>
             <input type="text" id="cover_description" name="cover_description" class="form-control" value="{{ old('cover_description') }}">
         </div>
+        <fieldset class="mb-3">
+            <legend>Consejos</legend>
+
+            @foreach ($consejos as $consejo)
+            <label class="me-2">
+                <input
+                    type="checkbox"
+                    name="consejos[]"
+                    class="form-check-input"
+                    value="{{ $consejo->consejo_id }}"
+                >
+                <span class="form-check-label">{{ $consejo->name}}</span>
+            </label>
+
+
+            @endforeach
+        </fieldset>
         <button type="submit" class="btn btn-primary">Publicar</button>
     </form>
 </div>

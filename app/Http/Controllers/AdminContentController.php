@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consejo;
 use App\Models\Clasification;
 use App\Models\Entrada_Blog;
 use App\Models\Recetario;
+use Database\Seeders\ConsejoSeeder;
 use Database\Seeders\Entradas_BlogsSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -74,6 +76,7 @@ class AdminContentController extends Controller
     {
         return view('admin.entradas.create', [
             'clasifications' => Clasification::all(),
+            'consejos' => Consejo::all(),
         ]);
     }
 
@@ -110,7 +113,10 @@ class AdminContentController extends Controller
             $data['cover'] = $request->file('cover')->store('coversEntrada');
         }
 
-        Entrada_Blog::create($data);
+        /** @var Entrada_Blog */
+        $entrada_blog = Entrada_Blog::create($data);
+
+        $entrada_blog->consejos()->attach($request->input('consejos', []));
 
         return redirect()
             ->route('admin.blog')
@@ -211,6 +217,8 @@ class AdminContentController extends Controller
     public function processDeleteEntrada(int $id)
     {
         $entrada_blog = Entrada_Blog::findOrFail($id);
+
+        $entrada_blog->consejos()->detach();
 
         $entrada_blog->delete();
 

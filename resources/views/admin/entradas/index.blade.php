@@ -45,11 +45,15 @@
                 <td><img class="w-100 mb-2" src="{{ asset('storage/' . $entrada->cover)}}" alt="{{ $entrada->cover_description }}" class="rounded mb-4"></td>
                 <td>{{$entrada->cover_description}} </td>
                 <td>
-                    @foreach ($entrada->consejos as $consejo)
-                    <span class="badge bg-secondary"> {{ $consejo->name }}</span>
+                    @if($entrada->consejos->isNotEmpty())
+                        @foreach ($entrada->consejos as $consejo)
+                        <span class="badge bg-secondary"> {{ $consejo->name }}</span>
+                        @endforeach
+                    @else
+                        <span class="small">No tiene consejos asignados</span>
+                    @endif
 
 
-                    @endforeach
                 </td>
                 <td>
                     <a href="{{ route('admin.blog.view', ['id' => $entrada->blog_id]   )}}" class="btn btn-primary mb-2 d-block">Ver</a>
