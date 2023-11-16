@@ -49,5 +49,33 @@ class Entradas_BlogsSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ]);
+
+        DB::table('blogs_tiene_consejos')->insert([
+            [
+                'blog_id' => 1,
+                'consejo_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'blog_id' => 1,
+                'consejo_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'blog_id' => 2,
+                'consejo_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'blog_id' => 2,
+                'consejo_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+        ]);
     }
 }

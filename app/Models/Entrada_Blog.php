@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -96,4 +97,15 @@ class Entrada_Blog extends Model
         return $resultado;
 
        }
+
+
+    public function consejos(): BelongsToMany
+    {
+        return $this->belongsToMany(Consejo::class, 'blogs_tiene_consejos',
+        'blog_id',
+        'consejo_id',
+        'blog_id',
+        'consejo_id'
+        );
+    }
 }

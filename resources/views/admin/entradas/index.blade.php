@@ -28,6 +28,7 @@
                     <th>Clasificación</th>
                     <th>Imagen</th>
                     <th>Descripción de la imagen</th>
+                    <th>Consejos</th>
                     <th>Acciones</th>
                 </tr>
                 <tbody>
@@ -43,6 +44,13 @@
                 <td>{{$entrada->clasification->name}} </td>
                 <td><img class="w-100 mb-2" src="{{ asset('storage/' . $entrada->cover)}}" alt="{{ $entrada->cover_description }}" class="rounded mb-4"></td>
                 <td>{{$entrada->cover_description}} </td>
+                <td>
+                    @foreach ($entrada->consejos as $consejo)
+                    <span class="badge bg-secondary"> {{ $consejo->name }}</span>
+
+
+                    @endforeach
+                </td>
                 <td>
                     <a href="{{ route('admin.blog.view', ['id' => $entrada->blog_id]   )}}" class="btn btn-primary mb-2 d-block">Ver</a>
 

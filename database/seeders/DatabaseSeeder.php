@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
 
         // vamos a indicar qué seeders y en que orden queremos correr:
         $this->call(UserSeeder::class);
+        $this->call(ConsejoSeeder::class);
         $this->call(RecetarioSeeder::class);
         $this->call(ClasificationSeeder::class);
         $this->call(Entradas_BlogsSeeder::class);
