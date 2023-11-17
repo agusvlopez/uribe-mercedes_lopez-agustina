@@ -1,5 +1,7 @@
 <?php
-/**@var \App\Models\Entrada_Blog[] | \Illuminate\Database\Eloquent\Collection $entradas_blog*/
+use Illuminate\Pagination\LengthAwarePaginator;
+
+/**@var \App\Models\Entrada_Blog[] | \Illuminate\Database\Eloquent\Collection|LengthAwarePaginator $entradas_blog*/
 
 ?>
 @extends('layouts.admin')
@@ -67,6 +69,8 @@
         </tbody>
     </thead>
     </table>
+
+    {{ $entradas_blog->links() }}
     </div>
 
 

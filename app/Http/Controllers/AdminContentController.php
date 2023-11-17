@@ -25,7 +25,7 @@ class AdminContentController extends Controller
             // $entradas_blog = Entrada_Blog::all();
 
         //Como agregamos la tabla clasifications asociada con la tabla entradas_blog no debemos usar el metodo all() como hicimos arriba, sino que queremos que cargue los datos de esa relación:
-            $entradas_blog = Entrada_Blog::with(['clasification', 'consejos'])->get();
+            $entradas_blog = Entrada_Blog::with(['clasification', 'consejos'])->paginate(2);
 
 
         //pasaje de variables a las vistas
