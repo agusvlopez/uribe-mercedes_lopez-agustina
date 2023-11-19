@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('portales'),
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'admin'
             ],
         ]);
     }

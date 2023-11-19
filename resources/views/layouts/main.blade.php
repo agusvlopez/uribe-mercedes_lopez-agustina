@@ -45,6 +45,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?=route('auth.login.process');?>">Iniciar Sesión</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=route('auth.register.process');?>">Registrarse</a>
+                        </li>
                         @endauth
                     </ul>
                 </div>

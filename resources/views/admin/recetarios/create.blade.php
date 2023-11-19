@@ -73,9 +73,7 @@
             <label for="cover_description" class="form-label">Descripción de la imagen</label>
             <input type="text" id="cover_description" name="cover_description" class="form-control" value="{{ old('cover_description') }}">
         </div>
-        <fieldset>
-            <legend>Consejos</legend>
-        </fieldset>
+
         <button type="submit" class="btn btn-primary">Publicar</button>
     </form>
 </div>

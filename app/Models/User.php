@@ -50,6 +50,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -75,7 +76,6 @@ class User extends Authenticatable
     public static $rules = [
         'email' => 'required',
         'password' => 'required',
-
     ];
 
     public static $errorMessages = [

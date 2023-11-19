@@ -37,21 +37,12 @@
             <td>${{ number_format(($recetario->price), 2, ",", "." )}} </td>
             <td> <img class="w-100 mb-2" src="{{ asset('storage/' . $recetario->cover)}}" alt="{{ $recetario->cover_description }}" class="rounded mb-4"></td>
             <td> {{$recetario->cover_description}} </td>
-            <dd>
-                @forelse ($entrada_blog->consejos as $consejo)
-                    <span class="badge bg-secondary"> {{ $consejo->name }}</span>
-                @empty
-                    <span class="small">No tiene consejos asignados</span>
-                @endforelse
-            </dd>
             <td>
                 <a href="{{route('admin.recetarios.view', ['id' => $recetario->id]   )}}" class="btn btn-primary mb-2 d-block">Ver</a>
 
                 <a href="{{route('admin.recetarios.form.edit', ['id' => $recetario->id] )}}" class="btn btn-secondary mb-2 d-block">Editar</a>
 
                 <a href="{{route('admin.recetarios.form.delete', ['id' => $recetario->id] )}}" class="btn btn-danger d-block">Eliminar</a>
-
-
             </td>
         </tr>
         @endforeach
