@@ -19,11 +19,9 @@ class RecetarioController extends Controller
 
     }
 
-
-    public function viewRecetario(int $id) {
-
+    public function viewRecetario(int $id)
+    {
         $recetario = Recetario::findOrFail($id);
-
 
         return view('recetario.view', [
             'recetario' => $recetario

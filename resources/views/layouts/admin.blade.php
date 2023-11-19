@@ -44,7 +44,7 @@
 
         <main class="container py-3">
             @if(\Session::has('status.message'))
-                <div class="alert alert-success m-2">{!! \Session::get('status.message') !!}</div>
+                <div class="m-2 alert alert-{{ \Session::get('status.type', 'success') }}">{!! \Session::get('status.message') !!}</div>
             @endif
 
             <div>

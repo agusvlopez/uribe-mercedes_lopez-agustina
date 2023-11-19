@@ -9,7 +9,6 @@
 
 @section('content')
 <div>
-
         <div class="bg-verde-screen pt-3 pb-3">
             <div class="container">
                 <div class="row d-flex align-items-center p-2">

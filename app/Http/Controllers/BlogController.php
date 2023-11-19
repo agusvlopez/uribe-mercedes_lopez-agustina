@@ -22,14 +22,15 @@ class BlogController extends Controller
         ]);
     }
 
-    public function viewEntradaBlog(int $id) {
-
+    public function viewEntradaBlog(int $id)
+    {
         return view('blog.view', [
             'entrada_blog' => Entrada_Blog::findOrFail($id),
         ]);
     }
 
-    public function viewBlogClasification(int $id) {
+    public function viewBlogClasification(int $id)
+    {
         $entradas_blog =  Entrada_Blog::all();
         $clasification =  Clasification::findOrFail($id);
 

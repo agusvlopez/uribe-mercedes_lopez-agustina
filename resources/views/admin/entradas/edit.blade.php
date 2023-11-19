@@ -1,13 +1,14 @@
 <?php
 
 use App\Models\Clasification;
+use App\Models\Consejo;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\Entrada_Blog;
 
 /** @var \Illuminate\Support\ViewErrorBag $errors */
 /** @var Entrada_Blog $entrada_blog */
 /** @var Clasification|Collection $clasifications */
-
+/** @var Consejo|Collection $consejos */
 ?>
 
 @extends('layouts.admin')
@@ -130,6 +131,25 @@ use App\Models\Entrada_Blog;
             name="cover_description"
             class="form-control"
             value="{{ old('cover_description', $entrada_blog->cover_description) }}">
+        </div>
+
+        <div class="mb-3">
+            <fieldset class="mb-3">
+                <legend>Consejos</legend>
+
+                @foreach($consejos as $consejo)
+                <label class="me-4">
+                    <input
+                        type="checkbox"
+                        name="consejos[]"
+                        class="form-check-input"
+                        value="{{ $consejo->consejo_id }}"
+                        @checked(in_array($consejo->consejo_id, old('consejos', $entrada_blog->consejos->pluck('consejo_id')->all() )))
+                    >
+                    <span class="form-check-label">{{ $consejo->name }}</span>
+                </label>
+                @endforeach
+            </fieldset>
         </div>
         <button type="submit" class="btn btn-primary">Publicar</button>
     </form>
