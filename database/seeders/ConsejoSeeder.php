@@ -51,7 +51,5 @@ class ConsejoSeeder extends Seeder
                 'updated_at' => now(),
             ]
         ]);
-
-
     }
 }

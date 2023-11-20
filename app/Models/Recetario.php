@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * App\Models\Recetario
@@ -61,7 +62,8 @@ class Recetario extends Model
     * @param int $cantidad Esta es la cantidad de palabras a reducir (opcional)
     * @return string La cantidad de palabras solicitadas con ... al final
     */
-    public function recortar_descripcion(int $cantidad = 30):string {
+    public function recortar_descripcion(int $cantidad = 30):string
+    {
         $texto = $this->description;
 
         $array = explode(" ",$texto);
@@ -73,5 +75,13 @@ class Recetario extends Model
         }
         return $resultado;
 
-       }
+    }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'user_tiene_recetarios',
+           'user_id',
+           'recetario_id'
+        );
+    }
 }

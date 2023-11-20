@@ -15,6 +15,7 @@
     <div class="flex justify-content-center mx-auto p-3 text-center">
         <a class="btn btn-secondary m-2 bg-verde" href="<?=route('admin.recetarios');?>">Administrar Recetarios</a>
         <a class="btn btn-secondary m-2 bg-verde" href="<?=route('admin.blog');?>">Administrar Entradas de Blog</a>
+        <a class="btn btn-secondary m-2 bg-verde" href="<?=route('admin.users');?>">Ver compras de clientes</a>
     </div>
 </div>
 @endsection

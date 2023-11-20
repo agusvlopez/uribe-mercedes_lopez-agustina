@@ -6,8 +6,7 @@ use App\Models\Consejo;
 use App\Models\Clasification;
 use App\Models\Entrada_Blog;
 use App\Models\Recetario;
-use Database\Seeders\ConsejoSeeder;
-use Database\Seeders\Entradas_BlogsSeeder;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -46,6 +45,17 @@ class AdminContentController extends Controller
             ]);
     }
 
+    public function users()
+    {
+        //Usamos el modelo para traer todos los datos de la tabla
+        $users =  User::with(['recetarios'])->get();
+
+        //pasaje de variables a las vistas
+        return view('admin.users.index', [
+                'users' => $users,
+            ]);
+    }
+
     public function viewRecetario(int $id)
     {
         $recetario = Recetario::findOrFail($id);
@@ -59,6 +69,13 @@ class AdminContentController extends Controller
     {
         return view('admin.entradas.view', [
             'entrada_blog' => Entrada_Blog::findOrFail($id),
+        ]);
+    }
+
+    public function viewUser(int $id)
+    {
+        return view('admin.users.view', [
+            'user' => User::findOrFail($id),
         ]);
     }
 

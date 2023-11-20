@@ -149,3 +149,15 @@ Route::post('/admin/recetarios/{id}/editar', [\App\Http\Controllers\AdminContent
     ->middleware(['auth'])
     ->middleware(['user-role:admin'])
     ->name('admin.recetarios.process.edit');
+
+//Admin usuarios
+Route::get('/admin/usuarios', [\App\Http\Controllers\AdminContentController::class, 'users'])
+    ->middleware(['auth'])
+    ->middleware(['user-role:admin'])
+    ->name('admin.users');
+
+Route::get('/admin/usuarios/{id}', [\App\Http\Controllers\AdminContentController::class, 'viewUser'])
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->middleware(['user-role:admin'])
+    ->name('admin.users.view');

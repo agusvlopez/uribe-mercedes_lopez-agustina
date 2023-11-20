@@ -1,6 +1,5 @@
 <?php
 /**@var \App\Models\Recetario[] | \Illuminate\Database\Eloquent\Collection $recetarios*/
-
 ?>
 
 @extends('layouts.admin')

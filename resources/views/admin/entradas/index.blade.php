@@ -17,8 +17,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
                 <a class="letraVerde font-bold d-flex align-items-center" href="{{ route('admin.blog.form.create')}}"><span class="iconoMas"></span> Publicar nueva entrada de Blog</a>
             </div>
 
-
-
             <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -54,14 +52,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
                     @else
                         <span class="small">No tiene consejos asignados</span>
                     @endif
-
-
                 </td>
                 <td>
                     <a href="{{ route('admin.blog.view', ['id' => $entrada->blog_id]   )}}" class="btn btn-primary mb-2 d-block">Ver</a>
-
                     <a href="{{ route('admin.blog.form.edit', ['id' => $entrada->blog_id] )}}" class="btn btn-secondary mb-2 d-block">Editar</a>
-
                     <a href="{{ route('admin.blog.form.delete', ['id' => $entrada->blog_id] )}}" class="btn btn-danger d-block">Eliminar</a>
                 </td>
             </tr>
@@ -69,9 +63,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
         </tbody>
     </thead>
     </table>
-
-    {{ $entradas_blog->links() }}
+        {{ $entradas_blog->links() }}
     </div>
-
 
 @endsection
