@@ -69,10 +69,9 @@ use App\Models\Recetario;
             @enderror
         </div>
         <div class="mb-3">
+            <div class="mb-2">Imagen actual</div>
             @if ($recetario->cover && Storage::has($recetario->cover))
-			<label for="cover_actual" class="form-label">Imagen Actual</label>
 			<img src="{{ asset('storage/' . $recetario->cover)}}" alt="{{ $recetario->cover_description }}" class="img-fluid shadow-sm d-block w-25">
-			<input class="form-control" type="hidden" id="cover_actual" name="cover_actual" required value="<?=  $recetario->cover ?>">
             @else
                 <p>No existe ninguna imagen.</p>
             @endif
@@ -84,8 +83,8 @@ use App\Models\Recetario;
             id="cover"
             name="cover"
             class="form-control"
-            value="{{ old('cover', $recetario->cover) }}"
             >
+            <div>Seleccioná una nueva imagen si querés cambiarla.</div>
         </div>
         <div class="mb-3">
             <label for="cover_description" class="form-label">Descripción de la imagen</label>

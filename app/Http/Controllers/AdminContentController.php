@@ -165,6 +165,7 @@ class AdminContentController extends Controller
         $request->validate(Recetario::$rules, Recetario::$errorMessages);
 
         $data = $request->except(['_token']);
+        $oldCover = null;
 
         if($request->hasFile('cover'))
         {

@@ -104,23 +104,22 @@ use App\Models\Entrada_Blog;
             @enderror
         </div>
         <div class="mb-3">
+            <div class="mb-2">Imagen actual</div>
             @if ($entrada_blog->cover && Storage::has($entrada_blog->cover))
-			<label for="cover_actual" class="form-label">Imagen Actual</label>
 			<img src="{{ asset('storage/' . $entrada_blog->cover)}}" alt="{{ $entrada_blog->cover_description }}" class="img-fluid shadow-sm d-block w-25">
-			<input class="form-control" type="hidden" id="cover_actual" name="cover_actual" required value="<?=  $entrada_blog->cover ?>">
             @else
                 <p>No existe ninguna imagen.</p>
             @endif
 		</div>
-
         <div class="mb-3">
-            <label for="cover" class="form-label">Nueva imagen</label>
+            <label for="cover" class="form-label">Imagen</label>
             <input
             type="file"
             id="cover"
             name="cover"
             class="form-control"
             >
+            <div>Seleccioná una nueva imagen si querés cambiarla.</div>
         </div>
 
         <div class="mb-3">

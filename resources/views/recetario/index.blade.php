@@ -30,7 +30,7 @@
         @foreach ($recetarios as $recetario)
 
             <div class="card m-3 catalogo">
-                <img src="{{ asset('storage/' . $recetario->cover)}}" class="card-img-top img-fluid shadow" alt="{{ $recetario->cover_description }}">
+                <img src="{{ asset('/storage/' . $recetario->cover)}}" class="card-img-top img-fluid shadow" alt="{{ $recetario->cover_description }}">
             <h3 class="mt-3 card-title text-center fw-normal fs-5">{{$recetario->title}}</h3>
             <div class="card-body mt-1 mb-1 shadow-sm ">
                 <p class="card-text mb-4 fw-lighter">{{$recetario->recortar_descripcion()}}</p>
