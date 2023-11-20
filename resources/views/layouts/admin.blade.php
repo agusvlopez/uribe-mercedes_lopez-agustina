@@ -12,7 +12,7 @@
     <div class="app">
         <nav class="navbar navbar-expand-lg bg-nav">
             <div class="container-fluid">
-                <a class="navbar-brand logo-nav" href="<?=route('home');?>"></a>
+                <a class="navbar-brand logo-nav" href="<?=route('home');?>"><span class="visually-hidden">Logo de Ana Perez</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
