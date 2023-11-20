@@ -5,12 +5,9 @@
 @section('content')
 
 <div class="container mx-auto">
-
-<h1 class="d-none">Blog</h1>
     <div class="row">
-
         <div class="p-4 fs-5">
-            <h2 class="mb-3 text-center">Blog de Salud y Bienestar</h2>
+            <h1 class="mb-3 text-center">Blog de Salud y Bienestar</h1>
 
             <div class="d-md-flex mb-3 justify-content-center">
                 @foreach ($clasifications as $clasification)
@@ -21,7 +18,6 @@
             <div>
                 <div class="row g-0 justify-content-center">
                 @foreach ($entradas_blog as $entrada_blog)
-
                     <div class="card mb-4 shadow" style="max-width: 740px; border:none;">
                         <div class="row g-0">
                           <div class="col-md-4">
@@ -30,7 +26,7 @@
 
                           <div class="col-md-8">
                             <div class="card-body">
-                              <h3 class="card-title border-bottom pb-2">{{$entrada_blog->title}}</h3>
+                              <h2 class="card-title border-bottom pb-2">{{$entrada_blog->title}}</h2>
                               <p class="card-text">{{$entrada_blog->recortar_descripcion()}}</p>
                               <p><small class="bg-verde badge rounded-pill text-light">{{$entrada_blog->clasification->name}}</small></p>
                               <p><small>Publicado el {{$entrada_blog->updated_at}}</small></p>
@@ -43,7 +39,6 @@
                         </div>
                       </div>
                 @endforeach
-
         </div>
     </div>
 </div>
