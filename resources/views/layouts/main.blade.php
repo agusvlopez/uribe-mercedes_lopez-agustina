@@ -72,7 +72,7 @@
             @yield('content')
         </main>
         <footer class="footer">
-            <p>Da Vinci &copy; 2023</p>
+            <p class="fw-bold">Da Vinci &copy; 2023</p>
         </footer>
     </div>
 </body>

@@ -61,7 +61,7 @@
 
         </main>
         <footer class="footer-admin">
-                <p>Da Vinci &copy; 2023</p>
+                <p class="fw-bold">Da Vinci &copy; 2023</p>
         </footer>
     </div>
 </body>
