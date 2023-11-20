@@ -16,14 +16,42 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'id' => 1,
-                'name' => '',
+                'name' => 'Juan',
                 'email' => 'juan_perez@gmail.com',
                 'password' => Hash::make('portales'),
                 'created_at' => now(),
                 'updated_at' => now(),
                 'role' => 'admin'
             ],
+        ]);
+
+
+        DB::table('user_tiene_recetarios')->insert([
+            [
+                'user_id' => 1,
+                'recetario_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'user_id' => 3,
+                'recetario_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'user_id' => 4,
+                'recetario_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'user_id' => 1,
+                'recetario_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
         ]);
     }
 }

@@ -16,7 +16,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="<?=route('home');?>">Home</a>
@@ -49,6 +49,14 @@
                             <a class="nav-link" href="<?=route('auth.register.process');?>">Registrarse</a>
                         </li>
                         @endauth
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <!-- Agrega esta sección para mostrar el nombre del usuario -->
+                            @if(Auth::check())
+                                <span class="nav-link fw-bold">¡Hola {{ Auth::user()->name }}!</span>
+                            @endif
+                        </li>
                     </ul>
                 </div>
             </div>

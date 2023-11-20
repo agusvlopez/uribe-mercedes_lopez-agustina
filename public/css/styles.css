@@ -87,6 +87,14 @@ h2 {
     height: 55px;
 }
 
+.user-icon{
+    background-image: url("../imgs/iconos/user.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 35px;
+}
+
 .precio {
     font-weight: 500;
     color: #FD8D14;

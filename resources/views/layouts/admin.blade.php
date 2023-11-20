@@ -16,26 +16,34 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul class="navbar-nav">
-                    <li>
-                        <a class="nav-link" href="<?=route('home');?>">Home</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="<?=route('admin.index');?>">Administración</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="<?=route('admin.recetarios');?>">Administración de Recetarios</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="<?=route('admin.blog');?>">Administración de Entradas de Blog</a>
-                    </li>
-                    <li>
-                        <form action="<?=route('auth.logout.process');?>" method="post">
-                            @csrf
-                           <button type="submit" class="nav-link">Cerrar sesión</button>
-                        </form>
-                    </li>
+                        <li>
+                            <a class="nav-link" href="<?=route('home');?>">Home</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="<?=route('admin.index');?>">Administración</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="<?=route('admin.recetarios');?>">Administración de Recetarios</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="<?=route('admin.blog');?>">Administración de Entradas de Blog</a>
+                        </li>
+                        <li>
+                            <form action="<?=route('auth.logout.process');?>" method="post">
+                                @csrf
+                            <button type="submit" class="nav-link">Cerrar sesión</button>
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <!-- Agrega esta sección para mostrar el nombre del usuario -->
+                            @if(Auth::check())
+                                <span class="nav-link fw-bold">¡Hola {{ Auth::user()->name }}!</span>
+                            @endif
+                        </li>
                     </ul>
                 </div>
             </div>
