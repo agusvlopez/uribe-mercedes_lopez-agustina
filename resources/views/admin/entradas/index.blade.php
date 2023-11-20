@@ -14,7 +14,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
             <h1 class="mb-3">Administrar Entradas de Blog</h1>
 
             <div class="mb-2">
-                <a class="letraVerde font-bold d-flex align-items-center" href="{{ route('admin.blog.form.create')}}"><span class="iconoMas"></span> Publicar nueva entrada de Blog</a>
+                <a class="letraVerde font-bold d-flex align-items-center" href="{{ route('admin.blog.form.create')}}"><span class="iconoMas"></span> Publicar nueva Entrada de Blog</a>
             </div>
 
             <table class="table table-bordered table-striped">

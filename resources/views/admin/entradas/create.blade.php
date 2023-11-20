@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Collection;
 
         @csrf
         <div class="mb-3">
-            <label for="title" class="form-label">Título</label>
+            <label for="title" class="form-label">Título (mínimo 2 caracteres)</label>
             <input
             type="text"
             id="title"

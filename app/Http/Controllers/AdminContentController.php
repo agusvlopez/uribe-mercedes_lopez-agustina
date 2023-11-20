@@ -116,10 +116,9 @@ class AdminContentController extends Controller
 
     public function processCreateEntrada(Request $request)
     {
+        $request->validate(Entrada_Blog::$rules, Entrada_Blog::$errorMessages);
         try
         {
-            $request->validate(Entrada_Blog::$rules, Entrada_Blog::$errorMessages);
-
             $data = $request->except(['_token']);
 
             if($request->hasFile('cover'))
@@ -142,10 +141,10 @@ class AdminContentController extends Controller
         catch(\Exception $e)
         {
             return redirect()
-            ->back()
-            ->with('status.message', 'Error al crear el blog')
-            ->with('status.type', 'danger')
-            ->withInput();
+                ->back()
+                ->with('status.message', 'Error al crear el blog')
+                ->with('status.type', 'danger')
+                ->withInput();
         }
     }
 
@@ -218,13 +217,13 @@ class AdminContentController extends Controller
 
     public function processEditEntrada(int $id, Request $request)
     {
+        /** @var Entrada_Blog */
+        $entrada_blog = Entrada_Blog::findOrFail($id);
+
+        $request->validate(Entrada_Blog::$rules, Entrada_Blog::$errorMessages);
+
         try
         {
-            /** @var Entrada_Blog */
-            $entrada_blog = Entrada_Blog::findOrFail($id);
-
-            $request->validate(Entrada_Blog::$rules, Entrada_Blog::$errorMessages);
-
             $data = $request->except(['_token']);
             $oldCoverEntrada = null;
 
