@@ -77,11 +77,13 @@ class Recetario extends Model
 
     }
 
-    public function users(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'user_tiene_recetarios',
-           'user_id',
-           'recetario_id'
-        );
-    }
+    // public function users(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(User::class, 'user_tiene_recetarios',
+    //        'user_id',
+    //        'recetario_id',
+    //        'id',
+    //        'id'
+    //     );
+    // }
 }

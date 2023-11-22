@@ -88,8 +88,10 @@ class User extends Authenticatable
     public function recetarios(): BelongsToMany
     {
         return $this->belongsToMany(Recetario::class, 'user_tiene_recetarios',
-            'user_id',
-            'recetario_id'
+            'user_id',  // clave foránea de la tabla user_tiene_recetarios que apunta a users
+            'recetario_id', // clave foránea de la tabla user_tiene_recetarios que apunta a recetarios
+            'id', // clave primaria de users
+            'id' // clave primaria de recetarios
         );
     }
 }

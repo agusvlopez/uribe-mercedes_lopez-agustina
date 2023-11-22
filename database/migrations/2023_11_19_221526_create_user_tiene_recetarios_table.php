@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_tiene_recetarios', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users', 'id');
-            $table->unsignedTinyInteger('recetario_id');
-            $table->foreign('recetario_id')->references('id')->on('recetarios');
+            $table->foreignId('recetario_id')->constrained('recetarios', 'id');
             $table->primary(['user_id', 'recetario_id']);
             $table->timestamps();
         });
