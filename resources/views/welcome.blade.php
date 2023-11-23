@@ -6,11 +6,11 @@
 @section('content')
 
 
-<h1 class="none">Página Principal</h1>
+<h1 class="visually-hidden">Página Principal</h1>
 
 <section class="portada d-md-flex align-items-center justify-content-center ps-3 pe-3 pt-5 mb-5">
     <div class="d-md-flex" >
-        <div class="col-md-6 p-4 align-self-center">
+        <div class="col-md-6 p-4 align-self-center bg-light">
             <h2>Nunca es tarde para mejorar tus hábitos.</h2>
             <p>Estoy comprometida a ayudarte a <strong>mejorar tus hábitos</strong> a través de <strong>recetas saludables</strong>, fáciles y variadas. Mis <strong>recetarios</strong> son la clave para alcanzar una <strong>alimentación equilibrada</strong> y nutritiva.</p>
             <p>¡El momento de cambiar tus hábitos es ahora!</p>

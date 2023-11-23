@@ -14,13 +14,10 @@ use App\Models\Recetario;
     <h1>Editar el recetario: {{ $recetario->title }}</h1>
 
     @if ($errors->any())
-
     <p class="mb-3 text-danger"> Hay campos con errores de validación. Por favor, verificar y corregir los valores indicados.</p>
-
     @endif
 
     <form action="{{ route('admin.recetarios.process.edit', ['id' => $recetario->id]) }}" method="post" enctype="multipart/form-data">
-
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Título</label>

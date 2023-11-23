@@ -11,13 +11,10 @@
     <h1>Publicar un nuevo Recetario</h1>
 
     @if ($errors->any())
-
     <p class="mb-3 text-danger"> Hay campos con errores de validación. Por favor, verificar y corregir los valores indicados.</p>
-
     @endif
 
     <form action="{{ route('admin.recetarios.process.create') }}" method="post" enctype="multipart/form-data">
-
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Título</label>
@@ -73,7 +70,6 @@
             <label for="cover_description" class="form-label">Descripción de la imagen</label>
             <input type="text" id="cover_description" name="cover_description" class="form-control" value="{{ old('cover_description') }}">
         </div>
-
         <button type="submit" class="btn btn-primary">Publicar</button>
     </form>
 </div>

@@ -21,12 +21,10 @@ use App\Models\Entrada_Blog;
     <h1>Editar el blog: {{ $entrada_blog->title }}</h1>
 
     @if ($errors->any())
-
     <p class="mb-3 text-danger"> Hay campos con errores de validación. Por favor, verificar y corregir los valores indicados.</p>
-
     @endif
-    <form action="{{ route('admin.blog.process.edit', ['id' => $entrada_blog->blog_id]) }}" method="post" enctype="multipart/form-data">
 
+    <form action="{{ route('admin.blog.process.edit', ['id' => $entrada_blog->blog_id]) }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Título (mínimo 2 caracteres)</label>
@@ -40,7 +38,6 @@ use App\Models\Entrada_Blog;
             aria-describedby="error-title"
             aria-invalid="true"
             @enderror
-
             >
             @error('title')
             <p class="text-danger" id="error-title">{{ $message }}</p>
@@ -121,7 +118,6 @@ use App\Models\Entrada_Blog;
             >
             <div>Seleccioná una nueva imagen si querés cambiarla.</div>
         </div>
-
         <div class="mb-3">
             <label for="cover_description" class="form-label">Descripción de la imagen</label>
             <input
@@ -131,7 +127,6 @@ use App\Models\Entrada_Blog;
             class="form-control"
             value="{{ old('cover_description', $entrada_blog->cover_description) }}">
         </div>
-
         <div class="mb-3">
             <fieldset class="mb-3">
                 <legend>Consejos</legend>

@@ -25,10 +25,13 @@
                             <a class="nav-link" href="<?=route('admin.index');?>">Administración</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="<?=route('admin.recetarios');?>">Administración de Recetarios</a>
+                            <a class="nav-link" href="<?=route('admin.recetarios');?>">Recetarios</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="<?=route('admin.blog');?>">Administración de Entradas de Blog</a>
+                            <a class="nav-link" href="<?=route('admin.blog');?>">Entradas de Blog</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="<?=route('admin.users');?>">Clientes</a>
                         </li>
                         <li>
                             <form action="<?=route('auth.logout.process');?>" method="post">

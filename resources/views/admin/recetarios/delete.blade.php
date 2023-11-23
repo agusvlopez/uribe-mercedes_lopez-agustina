@@ -7,7 +7,7 @@
 <div class="container mx-auto m-4">
 
     <div class="bg-white rounded shadow-lg p-4">
-        <img class="w-25 mb-2" src="{{ asset('storage/' . $recetario->cover)}}" alt="{{ $recetario->cover_description }}" class="rounded mb-4">
+        <img class="w-25 rounded mb-4" src="{{ asset('storage/' . $recetario->cover)}}" alt="{{ $recetario->cover_description }}">
         <h1 class="mb-3">Eliminar {{ $recetario->title }}</h1>
         <p>Estas por eliminar el siguiente recetario:</p>
         <p><span class="fw-bold">Nombre:</span> {{ $recetario->title }}</p>

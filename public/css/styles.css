@@ -16,7 +16,7 @@ html, body, #app {
     justify-content: center;
     align-items: center;
     height: 75px;
-    background-color: #83B582;
+    background-color: #3b723a;
     color: #fff;
 }
 
@@ -29,7 +29,7 @@ html, body, #app {
     justify-content: center;
     align-items: center;
     height: 75px;
-    background-color: #E18818;
+    background-color: #bd5109;
     color: #fff;
 }
 
@@ -97,7 +97,7 @@ h2 {
 
 .precio {
     font-weight: 500;
-    color: #FD8D14;
+    color: #b16202;
     font-size: 1.1rem;
     padding: 0.5rem;
     text-align: center;
@@ -120,7 +120,7 @@ h2 {
 }
 
 .bg-verde {
-    background-color: #689168;
+    background-color: #437543;
 }
 .bg-verde:hover {
     background-color: #436143;
@@ -130,13 +130,13 @@ h2 {
 }
 
 .link {
-    color: #FD8D14;
-    font-weight: 500;
+    color: #b16202;
+    font-weight: 700;
     text-decoration: none;
 }
 .link:hover {
-    color: #b1630f;
-    font-weight: 600;
+    color: #a55c0e;
+    font-weight: 700;
     text-decoration: none;
 }
 @media screen and (min-width:576px) {}

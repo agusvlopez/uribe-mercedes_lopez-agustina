@@ -18,12 +18,10 @@ use Illuminate\Database\Eloquent\Collection;
     <h1>Publicar un nuevo Blog</h1>
 
     @if ($errors->any())
-
     <p class="mb-3 text-danger"> Hay campos con errores de validación. Por favor, verificar y corregir los valores indicados.</p>
-
     @endif
-    <form action="{{ route('admin.blog.process.create') }}" method="post" enctype="multipart/form-data">
 
+    <form action="{{ route('admin.blog.process.create') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Título (mínimo 2 caracteres)</label>
@@ -37,7 +35,6 @@ use Illuminate\Database\Eloquent\Collection;
             aria-describedby="error-title"
             aria-invalid="true"
             @enderror
-
             >
             @error('title')
             <p class="text-danger" id="error-title">{{ $message }}</p>
@@ -98,7 +95,6 @@ use Illuminate\Database\Eloquent\Collection;
             @error('clasification_id')
             <p class="text-danger" id="error-clasification_id">{{ $message }}</p>
             @enderror
-
         </div>
         <div class="mb-3">
             <label for="cover" class="form-label">Imagen</label>
@@ -122,8 +118,6 @@ use Illuminate\Database\Eloquent\Collection;
                 >
                 <span class="form-check-label">{{ $consejo->name}}</span>
             </label>
-
-
             @endforeach
         </fieldset>
         <button type="submit" class="btn btn-primary">Publicar</button>

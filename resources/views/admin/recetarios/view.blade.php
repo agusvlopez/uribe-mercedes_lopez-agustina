@@ -5,10 +5,9 @@
 @section('content')
 
 <div class="container mx-auto m-4">
-
     <div class="bg-white rounded shadow-lg p-4">
         @if ($recetario->cover !== null)
-            <img class="w-25 mb-2" src="{{ asset('storage/' . $recetario->cover) }}" alt="{{ $recetario->cover_description }}" class="rounded mb-4">
+            <img class="w-25rounded mb-4" src="{{ asset('storage/' . $recetario->cover) }}" alt="{{ $recetario->cover_description }}">
         @else
         Acá iria una imagen
         @endif
