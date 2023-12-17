@@ -8,6 +8,7 @@ use App\Models\Entrada_Blog;
 use App\Models\Recetario;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -120,6 +121,13 @@ class AdminContentController extends Controller
         try
         {
             $data = $request->except(['_token']);
+
+            $user = Auth::user();
+            if($user){
+                // Asigna el autor antes de validar y almacenar los datos
+                $data['author'] = $user->name ?? $user->email;
+            }
+
 
             if($request->hasFile('cover'))
             {

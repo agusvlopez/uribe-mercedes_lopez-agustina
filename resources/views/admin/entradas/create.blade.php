@@ -16,15 +16,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 <div class="container mx-auto m-4">
     <h1>Publicar un nuevo Blog</h1>
-
-    @if (auth()->check())
-    <?php
-        // Obtiene la información del usuario autenticado
-        $user = auth()->user();
-        // Define el valor predeterminado para el campo 'author'
-        $authorValue = $user->name ?? $user->email;
-    ?>
-    @endif
     @if ($errors->any())
     <p class="mb-3 text-danger"> Hay campos con errores de validación. Por favor, verificar y corregir los valores indicados.</p>
     @endif
@@ -62,24 +53,7 @@ use Illuminate\Database\Eloquent\Collection;
             <p class="text-danger" id="error-content">{{ $message }}</p>
             @enderror
         </div>
-        <div class="mb-3">
-            <label for="author" class="form-label">Autor/a</label>
-            <input
-            type="text"
-            id="author"
-            name="author"
-            class="form-control @error('author') is-invalid @enderror"
-            value="{{ old('author', $authorValue) }}"
-            @error('author')
-            aria-describedby="error-author"
-            aria-invalid="true"
-            @enderror
-            readonly
-            >
-            @error('author')
-            <p class="text-danger" id="error-author">{{ $message }}</p>
-            @enderror
-        </div>
+
         <div class="class mb-3">
             <label for="clasification_id" class="form-label">Clasificación</label>
             <select

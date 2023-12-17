@@ -58,23 +58,6 @@ use App\Models\Entrada_Blog;
             <p class="text-danger" id="error-content">{{ $message }}</p>
             @enderror
         </div>
-        <div class="mb-3">
-            <label for="author" class="form-label">Autor/a</label>
-            <input
-            type="text"
-            id="author"
-            name="author"
-            class="form-control @error('author') is-invalid @enderror"
-            value="{{ old('author', $entrada_blog->author) }}"
-            @error('author')
-            aria-describedby="error-author"
-            aria-invalid="true"
-            @enderror
-            >
-            @error('author')
-            <p class="text-danger" id="error-author">{{ $message }}</p>
-            @enderror
-        </div>
         <div class="class mb-3">
             <label for="clasification_id" class="form-label">Clasificación</label>
             <select

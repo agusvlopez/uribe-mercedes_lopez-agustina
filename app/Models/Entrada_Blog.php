@@ -50,7 +50,6 @@ class Entrada_Blog extends Model
     public static $rules = [
         'title' => 'required|min:2',
         'content' => 'required',
-        'author' => 'required',
         'clasification_id' => 'required|    exists:clasifications',
     ];
 
@@ -58,7 +57,6 @@ class Entrada_Blog extends Model
         'title.required' => 'El titulo no puede estar vacío.',
         'title.min' => 'El título debe tener al menos :min caracteres',
         'content.required' => 'El contenido de la entrada no puede estar vacío.',
-        'author.required' => 'El autor/a no puede estar vacío.',
         'clasification_id.required' => 'La clasificación de la entrada no puede estar vacía.',
         'clasification_id.exists' => 'El valor de la clasificación no es válido.',
     ];
