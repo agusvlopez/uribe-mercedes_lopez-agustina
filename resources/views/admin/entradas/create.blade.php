@@ -17,6 +17,14 @@ use Illuminate\Database\Eloquent\Collection;
 <div class="container mx-auto m-4">
     <h1>Publicar un nuevo Blog</h1>
 
+    @if (auth()->check())
+    <?php
+        // Obtiene la información del usuario autenticado
+        $user = auth()->user();
+        // Define el valor predeterminado para el campo 'author'
+        $authorValue = $user->name ?? $user->email;
+    ?>
+    @endif
     @if ($errors->any())
     <p class="mb-3 text-danger"> Hay campos con errores de validación. Por favor, verificar y corregir los valores indicados.</p>
     @endif
@@ -61,11 +69,12 @@ use Illuminate\Database\Eloquent\Collection;
             id="author"
             name="author"
             class="form-control @error('author') is-invalid @enderror"
-            value="{{ old('author') }}"
+            value="{{ old('author', $authorValue) }}"
             @error('author')
             aria-describedby="error-author"
             aria-invalid="true"
             @enderror
+            readonly
             >
             @error('author')
             <p class="text-danger" id="error-author">{{ $message }}</p>
@@ -114,7 +123,8 @@ use Illuminate\Database\Eloquent\Collection;
                     name="consejos[]"
                     class="form-check-input"
                     value="{{ $consejo->consejo_id }}"
-                    @checked(collect(old('$consejos', []))->has($consejo->consejo_id))
+                    @checked(in_array($consejo->consejo_id, old('consejos', [])))
+                    <?php /* @checked(collect(old('consejos', []))->contains($consejo->consejo_id)) */?>
                 >
                 <span class="form-check-label">{{ $consejo->name}}</span>
             </label>
