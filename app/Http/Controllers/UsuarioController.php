@@ -9,23 +9,19 @@ class UsuarioController extends Controller
 {
     public function viewUser($id)
     {
-        // Busca al usuario por su ID
         $usuario = User::find($id);
 
-        // Verifica si el usuario existe
         if ($usuario) {
-            // Aquí puedes acceder a las propiedades del usuario
             $nombre = $usuario->name;
             $email = $usuario->email;
             $rol = $usuario->role;
 
-            // Puedes pasar los datos a una vista o realizar cualquier otra lógica
             return view('user.view', [
                 'usuario' => $usuario,
             ]);
         } else {
-            // Manejo de la situación en la que el usuario no existe
-            return redirect()->route('home')->with('danger.message', 'El usuario no fue encontrado.');
+            return redirect()->route('home')
+                ->with('danger.message', 'El usuario no fue encontrado.');
         }
     }
 
@@ -35,7 +31,6 @@ class UsuarioController extends Controller
             'usuario' =>  User::findOrFail($id),
     ]);
     }
-
 
     public function processEditUser(Request $request, $id)
     {

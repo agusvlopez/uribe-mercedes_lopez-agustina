@@ -97,7 +97,7 @@ class User extends Authenticatable
             'recetario_id', // clave foránea de la tabla user_tiene_recetarios que apunta a recetarios
             'id', // clave primaria de users
             'id' // clave primaria de recetarios
-        );
+        )->withTimestamps();
     }
 }
 

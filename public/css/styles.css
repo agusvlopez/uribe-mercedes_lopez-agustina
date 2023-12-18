@@ -73,6 +73,17 @@ h2 {
     margin-right: 0.2rem;
 }
 
+.iconoCarrito {
+    background-image: url(../imgs/iconos/carrito.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    margin-right: 0.2rem;
+}
+
 .portada p {
     color: #4b4c4e;
     font-size: 1.1rem;

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarritoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -180,6 +181,13 @@ Route::get('/admin/usuarios/{id}', [\App\Http\Controllers\AdminContentController
     ->middleware(['auth'])
     ->middleware(['user-role:admin'])
     ->name('admin.users.view');
+
+//Carrito
+Route::get('/carrito', [CarritoController::class, 'showForm'])
+    ->name('carrito.index');
+Route::post('/carrito/agregar/{recetarioId}', [CarritoController::class, 'agregarAlCarrito'])
+    ->whereNumber('recetarioId')
+    ->name('carrito.agregar');
 
 //Mercado pago
 Route::get('/pago', [\App\Http\Controllers\MercadoPagoController::class, 'showForm'])

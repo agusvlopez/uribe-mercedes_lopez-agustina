@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recetario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use MercadoPago\Client\Preference\PreferenceClient;
 use MercadoPago\MercadoPagoConfig;
 
@@ -11,8 +12,12 @@ class MercadoPagoController extends Controller
 {
     public function showForm()
     {
-        $recetarios = Recetario::whereIn('id', [1, 3])->get();
+        // $recetarios = Recetario::whereIn('id', [1, 3])->get();
+        // Obtén el usuario autenticado
+        $usuario = Auth::user();
 
+        // Obtén los recetarios del usuario
+        $recetarios = $usuario->recetarios;
         $items = [];
         $totalPrice = 0;
 

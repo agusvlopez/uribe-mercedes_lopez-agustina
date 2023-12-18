@@ -43,6 +43,8 @@ class Recetario extends Model
 
     protected $fillable = ['title', 'description', 'price', 'cover', 'cover_description'];
 
+    public $timestamps = true;
+
     public static $rules = [
         'title' => 'required',
         'description' => 'required',

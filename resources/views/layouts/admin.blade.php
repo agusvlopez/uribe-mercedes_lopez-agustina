@@ -47,6 +47,11 @@
                                 <a class="nav-link fw-bold" href="{{route('user.view', ['id' => Auth::user()->id])}}">¡Hola {{ Auth::user()->name }}!</a>
                             @endif
                         </li>
+                        <li class="nav-item">
+                            @if(Auth::check())
+                                <a class="nav-link fw-bold" href="{{ route('carrito.index') }}"><span class="iconoCarrito"></span></a>
+                            @endif
+                        </li>
                     </ul>
                 </div>
             </div>

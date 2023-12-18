@@ -16,6 +16,12 @@
             <h1 class="border-bottom pb-2 mb-2">{{ $recetario->title }}</h1>
             <p class=""><span class="fw-bold">Descripcion del recetario:</span> {{ $recetario->description }}</p>
             <p class=" mt-4"><span class="fw-bold">Precio: </span>${{ number_format(($recetario->price), 2, ",", "." )}}</p>
+            <div class="d-flex justify-content-end">
+                <form action="{{ route('carrito.agregar', ['recetarioId' => $recetario->id]) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn p-2 shadow mt-2 bg-verde text-light">Agregar al carrito</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

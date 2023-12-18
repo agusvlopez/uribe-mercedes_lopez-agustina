@@ -37,7 +37,6 @@
                     <a href="{{route('recetario.view', ['id' => $recetario->id]   )}}" class="btn p-2 shadow d-block w-50 mx-auto m-2 bg-verde text-light text-uppercase">Ver más</a>
                 </div>
             </div>
-
         @endforeach
         </div>
     </div>
