@@ -32,6 +32,24 @@ Route::get('/registro', [\App\Http\Controllers\AuthController::class, 'formRegis
 Route::post('/registro', [\App\Http\Controllers\AuthController::class, 'processRegister'])
     ->name('auth.register.process');
 
+//Usuario
+Route::get('/usuario/{id}', [\App\Http\Controllers\UsuarioController::class, 'viewUser'])
+    ->whereNumber('id')
+    ->name('user.view');
+
+Route::get('/usuario/{id}/editar', [\App\Http\Controllers\UsuarioController::class, 'formEditUser'])
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->middleware(['user-role:admin'])
+    ->name('user.form.edit');
+
+Route::post('/usuario/{id}/editar', [\App\Http\Controllers\UsuarioController::class, 'processEditUser'])
+    ->whereNumber('id')
+    ->middleware(['auth'])
+    ->middleware(['user-role:admin'])
+    ->name('user.process.edit');
+
+//Recetarios
 Route::get('/recetarios', [\App\Http\Controllers\RecetarioController::class, 'index'])
     ->name('recetarios.index');
 
@@ -39,6 +57,7 @@ Route::get('/recetarios/{id}', [\App\Http\Controllers\RecetarioController::class
     ->whereNumber('id')
     ->name('recetario.view');
 
+//Blog
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])
     ->name('blog.index');
 

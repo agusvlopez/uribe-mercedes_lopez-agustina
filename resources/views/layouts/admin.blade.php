@@ -44,7 +44,7 @@
                         <li class="nav-item">
                             <!-- Agrega esta sección para mostrar el nombre del usuario -->
                             @if(Auth::check())
-                                <span class="nav-link fw-bold">¡Hola {{ Auth::user()->name }}!</span>
+                                <a class="nav-link fw-bold" href="{{route('user.view', ['id' => Auth::user()->id])}}">¡Hola {{ Auth::user()->name }}!</a>
                             @endif
                         </li>
                     </ul>

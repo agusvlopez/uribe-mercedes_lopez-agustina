@@ -80,6 +80,11 @@ class User extends Authenticatable
         'password' => 'required',
     ];
 
+    public static $updateRules = [
+        'email' => 'required|email',
+        'password' => 'nullable|min:6', // La contraseña es opcional en actualizaciones y debe tener al menos 6 caracteres si se proporciona.
+    ];
+
     public static $errorMessages = [
         'email.required' => 'Debe ingresar un email.',
         'password.required' => 'Debe ingresar una contraseña.',
