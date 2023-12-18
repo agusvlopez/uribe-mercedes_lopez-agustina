@@ -161,3 +161,13 @@ Route::get('/admin/usuarios/{id}', [\App\Http\Controllers\AdminContentController
     ->middleware(['auth'])
     ->middleware(['user-role:admin'])
     ->name('admin.users.view');
+
+//Mercado pago
+Route::get('/pago', [\App\Http\Controllers\MercadoPagoController::class, 'showForm'])
+    ->name('mp.pago');
+Route::get('/pago/exito', [\App\Http\Controllers\MercadoPagoController::class, 'success'])
+    ->name('mp.success');
+Route::get('/pago/pendiente', [\App\Http\Controllers\MercadoPagoController::class, 'pending'])
+    ->name('mp.pending');
+Route::get('/pago/error', [\App\Http\Controllers\MercadoPagoController::class, 'failure'])
+    ->name('mp.failure');

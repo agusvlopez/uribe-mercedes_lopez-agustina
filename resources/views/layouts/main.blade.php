@@ -31,10 +31,11 @@
                             <a class="nav-link" href="<?=route('blog.index');?>">Blog</a>
                         </li>
                         @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?=route('admin.index');?>">Administración</a>
-                        </li>
-
+                        @if (Auth::user()->role == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?=route('admin.index');?>">Administración</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <form action="<?=route('auth.logout.process');?>" method="post">
                                 @csrf
@@ -52,7 +53,6 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <!-- Agrega esta sección para mostrar el nombre del usuario -->
                             @if(Auth::check())
                                 <span class="nav-link fw-bold">¡Hola {{ Auth::user()->name }}!</span>
                             @endif
