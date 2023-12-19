@@ -89,7 +89,6 @@ use Illuminate\Database\Eloquent\Collection;
         </div>
         <fieldset class="mb-3">
             <legend>Consejos</legend>
-
             @foreach ($consejos as $consejo)
             <label class="me-2">
                 <input

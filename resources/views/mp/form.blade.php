@@ -30,8 +30,8 @@ use Illuminate\Database\Eloquent\Collection;
                 <tr>
                     <td>{{ $recetario->title }}</td>
                     <td>{{ $recetario->price }}</td>
-                    <td>1</td>
-                    <td>{{ $recetario->price * 1}}</td>
+                    <td>{{ $recetario->pivot->cantidad }}</td>
+                    <td>{{ $recetario->price * $recetario->pivot->cantidad }}</td>
                 </tr>
             @endforeach
                 <tr>

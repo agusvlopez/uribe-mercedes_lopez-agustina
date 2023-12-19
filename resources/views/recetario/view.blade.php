@@ -17,8 +17,13 @@
             <p class=""><span class="fw-bold">Descripcion del recetario:</span> {{ $recetario->description }}</p>
             <p class=" mt-4"><span class="fw-bold">Precio: </span>${{ number_format(($recetario->price), 2, ",", "." )}}</p>
             <div class="d-flex justify-content-end">
-                <form action="{{ route('carrito.agregar', ['recetarioId' => $recetario->id]) }}" method="POST">
+                <form action="{{ route('carrito.agregar') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="recetario_id[]" value="{{ $recetario->id }}">
+
+                    <label for="cantidad_{{ $recetario->id }}">Cantidad para {{ $recetario->title }}:</label>
+                    <input type="number" name="cantidad[{{ $recetario->id }}]" value="1" min="1"><br>
+
                     <button type="submit" class="btn p-2 shadow mt-2 bg-verde text-light">Agregar al carrito</button>
                 </form>
             </div>

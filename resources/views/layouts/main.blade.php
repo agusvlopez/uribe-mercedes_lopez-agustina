@@ -54,7 +54,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             @if(Auth::check())
-                                <a class="nav-link fw-bold" href="{{route('user.view', ['id' => Auth::user()->id])}}">¡Hola {{ Auth::user()->name }}!</a>
+                                <a class="nav-link fw-bold" href="{{route('user.view', ['id' => Auth::user()->id])}}">¡Hola {{ Auth::user()->email }}!</a>
                             @endif
                         </li>
                         <li class="nav-item">

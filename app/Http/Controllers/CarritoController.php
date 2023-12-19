@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Recetario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class CarritoController extends Controller
 {
@@ -46,30 +48,44 @@ class CarritoController extends Controller
         ]);
     }
 
-    public function agregarAlCarrito($recetarioId)
-    {
-        // Obtener el usuario autenticado
+    public function agregarAlCarrito(Request $request)
+{
+    try {
+        $recetario_id = $request->input('recetario_id');
+        $cantidades = $request->input('cantidad');
+
         $usuario = Auth::user();
 
-        // Verificar si el usuario está autenticado
         if (!$usuario) {
-            // Redirigir o mostrar un mensaje indicando que el usuario debe iniciar sesión
             return redirect()->route('auth.login.form')->with('danger.message', 'Debes iniciar sesión para agregar recetarios al carrito.');
         }
 
-        // Obtener el recetario por ID
-        $recetario = Recetario::find($recetarioId);
+        foreach ($recetario_id as $id) {
+            // Obtener la cantidad asociada con el recetario actual
+            $cantidad = $cantidades[$id] ?? 1;
 
-        // Verificar si el recetario existe
-        if (!$recetario) {
-            // Redirigir o mostrar un mensaje indicando que el recetario no existe
-            return redirect()->route('carrito.index')->with('danger.message', 'El recetario no existe.');
+            // Verificar si el recetario ya está en el carrito
+            $recetarioEnCarrito = $usuario->recetarios()->where('recetario_id', $id)->first();
+
+            if ($recetarioEnCarrito) {
+                // Recetario ya está en el carrito, puedes manejarlo según tus necesidades
+                // Por ejemplo, podrías incrementar la cantidad en lugar de generar un error
+                $recetarioEnCarrito->pivot->update(['cantidad' => $recetarioEnCarrito->pivot->cantidad + $cantidad]);
+            } else {
+                // Agregar el recetario al carrito del usuario con la cantidad
+                $usuario->recetarios()->attach($id, ['cantidad' => $cantidad]);
+            }
         }
 
-        // Asociar el recetario al usuario en la tabla pivot
-        $usuario->recetarios()->attach($recetario);
-
-        // Redirigir o mostrar un mensaje de éxito
-        return redirect()->route('carrito.index')->with('status.message', 'Recetario agregado al carrito exitosamente.');
+        return redirect()
+            ->route('carrito.index')
+            ->with('status.message', 'Recetarios agregados al carrito exitosamente.');
+    } catch (\Exception $e) {
+        return redirect()
+            ->back()
+            ->with('danger.message', 'Error al agregar al carrito: ' . $e->getMessage())
+            ->with('status.type', 'danger')
+            ->withInput();
     }
+}
 }

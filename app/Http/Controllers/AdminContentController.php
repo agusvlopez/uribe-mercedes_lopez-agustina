@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class AdminContentController extends Controller
 {
@@ -19,18 +20,35 @@ class AdminContentController extends Controller
         return view('admin.contenido.index');
     }
 
-    public function entradasBlog()
+    public function entradasBlog(Request $request)
     {
         {
-        //Usamos el modelo para traer todos los datos de la tabla
-            // $entradas_blog = Entrada_Blog::all();
+            $searchParams = [
+                'title' => $request->query('search-title'),
+                'clasification' => $request->query('search-clasification'),
+            ];
 
-        //Como agregamos la tabla clasifications asociada con la tabla entradas_blog no debemos usar el metodo all() como hicimos arriba, sino que queremos que cargue los datos de esa relación:
-            $entradas_blog = Entrada_Blog::with(['clasification', 'consejos'])->paginate(4);
+           //busqueda de datos en los query
+            $query = Entrada_Blog::with(['clasification', 'consejos']);
+
+            if($searchParams['title'] !== null)
+            {
+                $query->where('title', 'LIKE', '%' . $searchParams['title'] . '%');
+            }
+
+            if($searchParams['clasification'] !== null) {
+                // Agregamos la condición de búsqueda para el título.
+                $query->where('clasification_id', '=', $searchParams['clasification']);
+            }
+
+            /** @var LengthAwarePaginator $query */
+            $entradas_blog = $query->paginate(4)->withQueryString();
 
         //pasaje de variables a las vistas
             return view('admin.entradas.index', [
                     'entradas_blog' => $entradas_blog,
+                    'clasifications' => Clasification::all(),
+                    'searchParams' => $searchParams
                 ]);
         }
     }
@@ -127,7 +145,6 @@ class AdminContentController extends Controller
                 // Asigna el autor antes de validar y almacenar los datos
                 $data['author'] = $user->name ?? $user->email;
             }
-
 
             if($request->hasFile('cover'))
             {
@@ -304,3 +321,5 @@ class AdminContentController extends Controller
         }
     }
 }
+
+

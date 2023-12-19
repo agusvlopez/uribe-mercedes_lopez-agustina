@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_tiene_recetarios', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users', 'id');
-            $table->foreignId('recetario_id')->constrained('recetarios', 'id');
-            $table->primary(['user_id', 'recetario_id']);
+        Schema::table('user_tiene_recetarios', function (Blueprint $table) {
             $table->unsignedInteger('cantidad')->default(1);
-            $table->timestamps();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_tiene_recetarios');
+        Schema::table('user_tiene_recetarios', function (Blueprint $table) {
+            $table->dropColumn('cantidad');
+        });
     }
 };

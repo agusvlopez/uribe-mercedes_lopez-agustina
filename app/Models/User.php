@@ -89,15 +89,22 @@ class User extends Authenticatable
         'email.required' => 'Debe ingresar un email.',
         'password.required' => 'Debe ingresar una contraseña.',
     ];
-
+    //agregar nombre de recetario y precio:
     public function recetarios(): BelongsToMany
     {
         return $this->belongsToMany(Recetario::class, 'user_tiene_recetarios',
             'user_id',  // clave foránea de la tabla user_tiene_recetarios que apunta a users
             'recetario_id', // clave foránea de la tabla user_tiene_recetarios que apunta a recetarios
             'id', // clave primaria de users
-            'id' // clave primaria de recetarios
-        )->withTimestamps();
+            'id', // clave primaria de recetarios
+        )
+        ->withPivot('cantidad')
+        ->withTimestamps();
+    }
+
+    public function compras()
+    {
+        return $this->hasMany(Compra::class, 'user_id');
     }
 }
 

@@ -2,6 +2,8 @@
 use Illuminate\Pagination\LengthAwarePaginator;
 
 /**@var \App\Models\Entrada_Blog[] | \Illuminate\Database\Eloquent\Collection|LengthAwarePaginator $entradas_blog*/
+/** @var array $searchParams */
+/** @var \App\Model\Clasification[]\Illuminate\Database\Eloquent\Collection $clasifications */
 
 ?>
 @extends('layouts.admin')
@@ -13,6 +15,32 @@ use Illuminate\Pagination\LengthAwarePaginator;
 <div class="container">
     <h1 class="mb-3">Administrar Entradas de Blog</h1>
 
+    <div class="mb-4">
+        <h2 class="mb-3">Buscar</h2>
+        <form action="{{ route('admin.blog') }}" method="get">
+            <div>
+                <label for="search-title" class="form-label">Titulo</label>
+                <input type="text" id="search-title" name="search-title" class="form-control" value="{{ $searchParams['title'] }}">
+            </div>
+            <div class="mb-2">
+                <label for="search-clasification" class="form-label">Clasificación</label>
+                <select id="search-clasification" name="search-clasification" class="form-control">
+                    <option value="">Todas las clasificaciones</option>
+                    @foreach ($clasifications as $clasification)
+                        <option
+                            value="{{$clasification->clasification_id }}"
+                            @selected($clasification->clasification_id == $searchParams['clasification'])
+                        >
+                            {{$clasification->name}}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <button type="submit" class="mt-2 btn btn-primary">Buscar</button>
+        </form>
+    </div>
+
+    @if ($entradas_blog->isNotEmpty())
     <div class="mb-2">
         <a class="letraVerde font-bold d-flex align-items-center" href="{{ route('admin.blog.form.create')}}"><span class="iconoMas"></span> Publicar nueva Entrada de Blog</a>
     </div>
@@ -61,6 +89,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
             </tbody>
         </thead>
     </table>
+    @else
+    <p>No se encontraron entradas de blog. ¡Crea la primera! (inserto boton)</p>
+    @endif
+
     {{ $entradas_blog->links() }}
 </div>
 @endsection

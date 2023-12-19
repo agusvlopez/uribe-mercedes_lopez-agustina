@@ -185,8 +185,7 @@ Route::get('/admin/usuarios/{id}', [\App\Http\Controllers\AdminContentController
 //Carrito
 Route::get('/carrito', [CarritoController::class, 'showForm'])
     ->name('carrito.index');
-Route::post('/carrito/agregar/{recetarioId}', [CarritoController::class, 'agregarAlCarrito'])
-    ->whereNumber('recetarioId')
+Route::post('/carrito/agregar', [CarritoController::class, 'agregarAlCarrito'])
     ->name('carrito.agregar');
 
 //Mercado pago
