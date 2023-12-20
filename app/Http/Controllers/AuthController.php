@@ -71,7 +71,7 @@ class AuthController extends Controller
 
             // Crear un nuevo usuario
             $user = User::create([
-                'name' => $request->input('name'),
+                'name' => '',
                 'email' => $request->input('email'),
                 'password' => bcrypt($request->input('password')),
                 'role' => 'cliente'
@@ -89,7 +89,7 @@ class AuthController extends Controller
         }
         return redirect()
             ->route('home')
-            ->with('status.message', '¡Registro exitoso! ¡Bienvenido, ' . $user->name . '!');
+            ->with('status.message', '¡Registro exitoso! ¡Bienvenido, ' . $user->email . '!');
 
     }
 }

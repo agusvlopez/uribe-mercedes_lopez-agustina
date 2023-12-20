@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Collection;
     <div class="row">
         <div class="p-4 fs-5">
             <h1 class="mb-3 text-center">Carrito de compras</h1>
-
+            @if (!$recetarios->isEmpty())
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -37,7 +37,7 @@ use Illuminate\Database\Eloquent\Collection;
                                 @if ($recetario->cover !== null)
                                 <img class="w-25 rounded mb-4" src="{{ asset('storage/' . $recetario->cover) }}" alt="{{ $recetario->cover_description }}">
                                 @else
-                                Acá iria una imagen
+                                <img src="{{ asset('imgs/no-image.jpg') }}" class="img-fluid">
                                 @endif
                             </td>
                             <td>{{ $recetario->title }}</td>
@@ -69,6 +69,12 @@ use Illuminate\Database\Eloquent\Collection;
             <div class="d-flex justify-content-end">
                 <a href="{{route('mp.pago')}}" class="btn btn-primary mb-2 d-block">Comprar</a>
             </div>
+            @else
+            <div class="d-flex p-2 gap-2 mt-4 align-items-center justify-content-center">
+                <p>No hay recetarios en el carrito aún.</p>
+                <a href="{{route('recetarios.index')}}" class="btn btn-primary mb-2 d-block">¡Obtené un recetario acá!</a>
+            </div>
+            @endif
         </div>
     </div>
 </div>

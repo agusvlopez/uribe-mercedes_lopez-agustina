@@ -58,7 +58,7 @@ use App\Models\User;
                 <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Actualizar Datos</button>
+        <button type="submit" class="btn shadow bg-verde text-light">Actualizar Datos</button>
     </form>
 </div>
 @endsection

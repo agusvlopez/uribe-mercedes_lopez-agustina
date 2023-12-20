@@ -8,8 +8,20 @@
 
 @section('content')
 <div class="container">
-        <h1 class="mb-3">Administrar Recetarios</h1>
-
+    <h1 class="mb-3">Administrar Recetarios</h1>
+    {{-- Buscador --}}
+    <div class="mb-4">
+        <h2 class="mb-3">Buscar</h2>
+        <form action="{{ route('admin.recetarios') }}" method="get">
+            <div class="d-flex gap-4">
+                <div>
+                    <label for="search-title-recetario" class="form-label">Titulo</label>
+                    <input type="text" id="search-title-recetario" name="search-title-recetario" class="form-control" value="{{ $searchParams['title'] }}">
+                </div>
+            </div>
+            <button type="submit" class="mt-2 btn shadow bg-verde text-light">Buscar</button>
+        </form>
+    </div>
         <div class="mb-2">
             <a class="letraVerde font-bold d-flex align-items-center" href="{{ route('admin.recetarios.form.create')}}"> <span class="iconoMas"></span> Publicar nuevo Recetario</a>
         </div>

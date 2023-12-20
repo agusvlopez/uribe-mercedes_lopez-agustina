@@ -14,7 +14,6 @@ class CarritoController extends Controller
     {
         $usuario = Auth::user();
 
-        // Obtén los recetarios del usuario
         $recetarios = $usuario->recetarios;
 
         $items = [];
@@ -36,6 +35,7 @@ class CarritoController extends Controller
         return view('carrito.index', [
             'recetarios' => $recetarios,
             'totalPrice' => $totalPrice,
+            'usuario' => $usuario,
         ]);
     }
 
@@ -45,13 +45,8 @@ class CarritoController extends Controller
             $recetario_id = $request->input('recetario_id');
             $cantidades = $request->input('cantidad');
 
-            $usuario = Auth::user();
-
-            if (!$usuario) {
-                return redirect()
-                    ->route('auth.login.form')
-                    ->with('danger.message', 'Debes iniciar sesión para agregar recetarios al carrito.');
-            }
+            $auth = Auth::user();
+            $usuario = User::find($auth->id);
 
             foreach ($recetario_id as $id) {
                 // Obtener la cantidad asociada con el recetario actual
@@ -70,7 +65,7 @@ class CarritoController extends Controller
 
             return redirect()
                 ->route('carrito.index')
-                ->with('status.message', 'Recetarios agregados al carrito exitosamente.');
+                ->with('status.message', 'Recetario agregado al carrito exitosamente.');
 
         } catch (\Exception $e) {
             return redirect()
@@ -81,10 +76,12 @@ class CarritoController extends Controller
         }
     }
 
-    public function eliminarDelCarrito(Request $request, $recetario_id)
+    public function eliminarDelCarrito($recetario_id)
     {
         try {
-            $usuario = Auth::user();
+
+            $auth = Auth::user();
+            $usuario = User::find($auth->id);
 
             if (!$usuario) {
                 return redirect()
@@ -103,7 +100,6 @@ class CarritoController extends Controller
                 ->with('status.message', 'Recetario eliminado del carrito exitosamente.');
 
         } catch (\Exception $e) {
-            // Manejar el caso en que el recetario no se encuentra en el carrito
             return redirect()
                 ->route('carrito.index')
                 ->with('danger.message', 'El recetario no se encuentra en el carrito.')
@@ -119,13 +115,9 @@ class CarritoController extends Controller
     public function actualizarCantidad(Request $request, $recetario_id)
     {
         try {
-            $usuario = Auth::user();
 
-            if (!$usuario) {
-                return redirect()
-                    ->route('auth.login.form')
-                    ->with('danger.message', 'Debes iniciar sesión para modificar el carrito.');
-            }
+            $auth = Auth::user();
+            $usuario = User::find($auth->id);
 
             // Buscar el recetario en el carrito del usuario
             $recetarioEnCarrito = $usuario->recetarios()->where('recetario_id', $recetario_id)->firstOrFail();

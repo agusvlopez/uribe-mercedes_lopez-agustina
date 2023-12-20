@@ -14,29 +14,31 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 <div class="container">
     <h1 class="mb-3">Administrar Entradas de Blog</h1>
-
+    {{-- Buscador --}}
     <div class="mb-4">
         <h2 class="mb-3">Buscar</h2>
         <form action="{{ route('admin.blog') }}" method="get">
-            <div>
-                <label for="search-title" class="form-label">Titulo</label>
-                <input type="text" id="search-title" name="search-title" class="form-control" value="{{ $searchParams['title'] }}">
+            <div class="d-flex gap-4">
+                <div>
+                    <label for="search-title" class="form-label">Titulo</label>
+                    <input type="text" id="search-title" name="search-title" class="form-control" value="{{ $searchParams['title'] }}">
+                </div>
+                <div class="mb-2">
+                    <label for="search-clasification" class="form-label">Clasificación</label>
+                    <select id="search-clasification" name="search-clasification" class="form-control">
+                        <option value="">Todas las clasificaciones</option>
+                        @foreach ($clasifications as $clasification)
+                            <option
+                                value="{{$clasification->clasification_id }}"
+                                @selected($clasification->clasification_id == $searchParams['clasification'])
+                            >
+                                {{$clasification->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-            <div class="mb-2">
-                <label for="search-clasification" class="form-label">Clasificación</label>
-                <select id="search-clasification" name="search-clasification" class="form-control">
-                    <option value="">Todas las clasificaciones</option>
-                    @foreach ($clasifications as $clasification)
-                        <option
-                            value="{{$clasification->clasification_id }}"
-                            @selected($clasification->clasification_id == $searchParams['clasification'])
-                        >
-                            {{$clasification->name}}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <button type="submit" class="mt-2 btn btn-primary">Buscar</button>
+            <button type="submit" class="mt-2 btn shadow bg-verde text-light">Buscar</button>
         </form>
     </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Compra;
 use App\Models\Recetario;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,11 +15,8 @@ class MercadoPagoController extends Controller
 {
     public function showForm()
     {
-        // $recetarios = Recetario::whereIn('id', [1, 3])->get();
-        // Obtén el usuario autenticado
         $usuario = Auth::user();
 
-        // Obtén los recetarios del usuario
         $recetarios = $usuario->recetarios;
         $items = [];
         $totalPrice = 0;
@@ -59,13 +57,11 @@ class MercadoPagoController extends Controller
         ]);
     }
 
-    public function success(Request $request)
+    public function success()
     {
         try {
-            // Obtén el usuario autenticado
-            $usuario = Auth::user();
-
-            // Obtén los recetarios del usuario
+            $auth = Auth::user();
+            $usuario = User::find($auth->id);
             $recetarios = $usuario->recetarios;
 
             // Realizar el proceso de compra y almacenar en la tabla de compras
@@ -80,7 +76,6 @@ class MercadoPagoController extends Controller
                         'recetario_title' => $recetario->title,
                         'recetario_price' => $recetario->price,
                         'cantidad' => $cantidad,
-                        'fecha' => now(),
                     ]);
 
                     $compra->recetario()->associate($recetario);
@@ -92,26 +87,21 @@ class MercadoPagoController extends Controller
                 $usuario->recetarios()->detach($recetarios->pluck('id'));
             });
 
-            // Resto de la lógica de la función success
-            echo 'Success!';
-            dd($request);
+            return view('compra.success');
+
         } catch (\Exception $e) {
-            // Manejar cualquier error que pueda ocurrir durante el proceso
-            // Puedes redirigir al usuario a una página de error o realizar otras acciones necesarias
             echo 'Error: ' . $e->getMessage();
         }
     }
 
 
-    public function pending(Request $request)
+    public function pending()
     {
-        echo 'Pendiente...';
-        dd($request);
+        return view('compra.pending');
     }
 
-    public function failure(Request $request)
+    public function failure()
     {
-        echo 'Error';
-        dd($request);
+        return view('compra.failure');
     }
 }

@@ -89,7 +89,12 @@ class User extends Authenticatable
         'email.required' => 'Debe ingresar un email.',
         'password.required' => 'Debe ingresar una contraseña.',
     ];
-    //agregar nombre de recetario y precio:
+
+    /**
+    * Relación muchos a muchos con Recetario.
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
     public function recetarios(): BelongsToMany
     {
         return $this->belongsToMany(Recetario::class, 'user_tiene_recetarios',
@@ -102,6 +107,11 @@ class User extends Authenticatable
         ->withTimestamps();
     }
 
+    /**
+    * Relación uno a muchos con Compra.
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
     public function compras()
     {
         return $this->hasMany(Compra::class, 'user_id');

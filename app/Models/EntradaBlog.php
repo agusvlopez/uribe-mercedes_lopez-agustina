@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
 /**
- * App\Models\Entrada_Blog
+ * App\Models\EntradaBlog
  *
  * @property int $blog_id
  * * @property int $clasification_id
@@ -20,22 +20,22 @@ use Illuminate\Support\Carbon;
  * @property string|null $cover_description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog query()
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereAuthor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereBlogId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog whereAuthor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog whereBlogId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog whereUpdatedAt($value)
  * @property-read \App\Models\Clasification $clasification
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereClasificationId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereCover($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Entrada_Blog whereCoverDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog whereClasificationId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog whereCover($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntradaBlog whereCoverDescription($value)
  * @mixin \Eloquent
  */
-class Entrada_Blog extends Model
+class EntradaBlog extends Model
 {
     //use HasFactory;
 

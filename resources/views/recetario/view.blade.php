@@ -10,14 +10,13 @@
             @if ($recetario->cover !== null)
                 <img class="w-100 rounded mb-4 p-3" src="{{ asset('storage/' . $recetario->cover)}}" alt="{{ $recetario->cover_description }}">
             @endif
+
         </div>
         <div class="p-3 col-md-8">
             <h1 class="border-bottom pb-2 mb-2">{{ $recetario->title }}</h1>
             <p class=""><span class="fw-bold">Descripcion del recetario:</span> {{ $recetario->description }}</p>
             <p class=" mt-4"><span class="fw-bold">Precio: </span>${{ number_format(($recetario->price), 2, ",", "." )}}</p>
-            <p>{{$recetario}}</p>
             <div class="d-flex justify-content-end">
-                {{-- Verificar si el usuario está autenticado --}}
                 @auth
                     @php
                         // Obtener la cantidad actual del recetario en el carrito (si está presente)
@@ -28,15 +27,16 @@
                         @csrf
                         <input type="hidden" name="recetario_id[]" value="{{ $recetario->id }}">
 
-                        <label for="cantidad_{{ $recetario->id }}">Cantidad para {{ $recetario->title }}:</label>
+                        <label for="cantidad_{{ $recetario->id }}">Cantidad:</label>
                         <input type="number" name="cantidad[{{ $recetario->id }}]" value="{{ $cantidadActual }}" min="1"><br>
 
                         <button type="submit" class="btn p-2 shadow mt-2 bg-verde text-light">Agregar al carrito</button>
                     </form>
                 @else
-                    {{-- Mostrar un mensaje o redirigir al usuario a iniciar sesión si no está autenticado --}}
-                    <p>Para agregar al carrito, inicia sesión.</p>
-                    <a href="{{ route('auth.login.form') }}" class="btn btn-primary">Iniciar sesión</a>
+                <div class="d-flex align-items-center gap-2">
+                    <p>Para agregar al carrito, iniciá sesión.</p>
+                    <a href="{{ route('auth.login.form') }}" class="btn shadow  bg-verde text-light">Iniciar sesión</a>
+                </div>
                 @endauth
             </div>
         </div>

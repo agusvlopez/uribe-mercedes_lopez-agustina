@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Consejo;
 use App\Models\Clasification;
 use App\Models\Compra;
-use App\Models\Entrada_Blog;
+use App\Models\EntradaBlog;
 use App\Models\Recetario;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,7 +30,7 @@ class AdminContentController extends Controller
             ];
 
            //busqueda de datos en los query
-            $query = Entrada_Blog::with(['clasification', 'consejos']);
+            $query = EntradaBlog::with(['clasification', 'consejos']);
 
             if($searchParams['title'] !== null)
             {
@@ -54,14 +54,28 @@ class AdminContentController extends Controller
         }
     }
 
-    public function recetarios()
+    public function recetarios(Request $request)
     {
         //Usamos el modelo para traer todos los datos de la tabla
-        $recetarios = Recetario::all();
+        $searchParams = [
+            'title' => $request->query('search-title-recetario'),
+        ];
+
+        //busqueda de datos en los query
+        $query = Recetario::query();
+
+        if($searchParams['title'] !== null)
+        {
+            $query->where('title', 'LIKE', '%' . $searchParams['title'] . '%');
+        }
+
+        /** @var LengthAwarePaginator $query */
+        $recetarios = $query->paginate(4)->withQueryString();
 
         //pasaje de variables a las vistas
         return view('admin.recetarios.index', [
                 'recetarios' => $recetarios,
+                'searchParams' => $searchParams
             ]);
     }
 
@@ -69,11 +83,17 @@ class AdminContentController extends Controller
     {
         // $users = User::with('compras.recetario')->where('role', '!=', 'admin')->get();
         $users = User::with('compras.recetario')->get();
+        $totalSpending = 0;
+        foreach ($users as $user) {
+            foreach ($user->compras as $compra) {
+                $totalSpending += $compra->recetario->price * $compra->cantidad;
+            }
+        }
 
-        //pasaje de variables a las vistas
         return view('admin.users.index', [
-                'users' => $users,
-            ]);
+            'users' => $users,
+            'totalSpending' => $totalSpending
+        ]);
     }
 
     public function viewRecetario(int $id)
@@ -88,7 +108,7 @@ class AdminContentController extends Controller
     public function viewEntradaBlog(int $id)
     {
         return view('admin.entradas.view', [
-            'entrada_blog' => Entrada_Blog::findOrFail($id),
+            'entrada_blog' => EntradaBlog::findOrFail($id),
         ]);
     }
 
@@ -136,7 +156,7 @@ class AdminContentController extends Controller
 
     public function processCreateEntrada(Request $request)
     {
-        $request->validate(Entrada_Blog::$rules, Entrada_Blog::$errorMessages);
+        $request->validate(EntradaBlog::$rules, EntradaBlog::$errorMessages);
         try
         {
             $data = $request->except(['_token']);
@@ -154,8 +174,8 @@ class AdminContentController extends Controller
 
             DB::transaction(function() use($data)
             {
-                /** @var Entrada_Blog */
-                $entrada_blog = Entrada_Blog::create($data);
+                /** @var EntradaBlog */
+                $entrada_blog = EntradaBlog::create($data);
 
                 $entrada_blog->consejos()->attach($data['consejos'] ?? []);
             });
@@ -235,7 +255,7 @@ class AdminContentController extends Controller
     public function formEditEntrada(int $id)
     {
         return view('admin.entradas.edit', [
-            'entrada_blog' =>  Entrada_Blog::findOrFail($id),
+            'entrada_blog' =>  EntradaBlog::findOrFail($id),
             'clasifications' => Clasification::all(),
             'consejos' => Consejo::orderBy('name')->get(),
     ]);
@@ -243,10 +263,10 @@ class AdminContentController extends Controller
 
     public function processEditEntrada(int $id, Request $request)
     {
-        /** @var Entrada_Blog */
-        $entrada_blog = Entrada_Blog::findOrFail($id);
+        /** @var EntradaBlog */
+        $entrada_blog = EntradaBlog::findOrFail($id);
 
-        $request->validate(Entrada_Blog::$rules, Entrada_Blog::$errorMessages);
+        $request->validate(EntradaBlog::$rules, EntradaBlog::$errorMessages);
 
         try
         {
@@ -287,7 +307,7 @@ class AdminContentController extends Controller
     public function formDeleteEntrada(int $id)
     {
         return view('admin.entradas.delete', [
-               'entrada_blog' =>  Entrada_Blog::findOrFail($id),
+               'entrada_blog' =>  EntradaBlog::findOrFail($id),
     ]);
     }
 
@@ -295,7 +315,7 @@ class AdminContentController extends Controller
     {
         try
         {
-            $entrada_blog = Entrada_Blog::findOrFail($id);
+            $entrada_blog = EntradaBlog::findOrFail($id);
 
             DB::transaction(function() use ($entrada_blog)
             {
@@ -321,18 +341,16 @@ class AdminContentController extends Controller
         }
     }
 
-    public function estadisticaRecetarioMasVendido()
+    public function recetariosMasVendidos()
     {
-        // Realizar la consulta para obtener el recetario más vendido
+        // Consulta para obtener el recetario más vendido
         $resultados = Compra::select('recetario_id', DB::raw('COUNT(*) as cantidad'))
             ->select('recetario_id', DB::raw('SUM(cantidad) as cantidad_total'))
             ->groupBy('recetario_id')
             ->orderByDesc('cantidad_total')
             ->get();
 
-        // Verificar si hay resultados antes de acceder a ellos
         if (!$resultados->isEmpty()) {
-            // Obtener el recetario más vendido
             $recetariosMasVendidos = [];
 
             foreach ($resultados as $resultado) {
@@ -344,13 +362,11 @@ class AdminContentController extends Controller
                 ];
             }
 
-            // Pasar los resultados a la vista
             return view('admin.contenido.index', [
                 'resultados' => $resultados,
                 'recetariosMasVendidos' => $recetariosMasVendidos
             ]);
         } else {
-            // No hay resultados, puedes manejar esto de acuerdo a tus necesidades
             return view('admin.contenido.index');
         }
     }

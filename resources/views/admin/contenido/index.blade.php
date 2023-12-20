@@ -19,7 +19,7 @@
     <div class="flex justify-content-center mx-auto p-3 text-center">
         @isset($recetariosMasVendidos)
             <div class="flex justify-content-center mx-auto p-3 text-center">
-                <h2>Recetarios más vendidos:</h2>
+                <h2>Recetarios más vendidos</h2>
                 <div>
                     <canvas id="myChart"></canvas>
                 </div>
@@ -42,12 +42,6 @@
                                             @foreach ($recetariosMasVendidos as $recetario)
                                                 '{{ $recetario['cantidad_total'] }}',
                                             @endforeach
-                                        ],
-                                        backgroundColor: [
-                                            'rgba(255, 159, 64, 0.2)',
-                                        ],
-                                        borderColor: [
-                                            'rgb(255, 159, 64)',
                                         ],
                                         borderWidth: 1
                                     }]

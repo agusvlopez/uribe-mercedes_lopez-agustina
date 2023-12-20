@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row my-5 justify-content-center bg-light">
             <div class="col col-md-5">
-                <h1 class="text-center mt-2 mb-5 fw-bold">Crear una Cuenta</h1>
+                <h1 class="text-center mt-2 mb-3 fw-bold">Crear una Cuenta</h1>
 
                 @if ($errors->any())
                     <p class="mb-3 text-danger">Hay campos con errores de validación. Por favor, verificar y corregir los valores indicados.</p>
@@ -18,26 +18,7 @@
 
                 <form class="row g-3" action="{{ route('auth.register.process') }}" method="post">
                     @csrf
-
-                    <div class="col-12 mb-3 w-50">
-                        <label for="name" class="form-label">Nombre</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            class="form-control @error('name') is-invalid @enderror"
-                            value="{{ old('name') }}"
-                            @error('name')
-                            aria-describedby="error-name"
-                            aria-invalid="true"
-                            @enderror
-                        >
-                        @error('name')
-                        <p class="text-danger" id="error-name">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="col-12 mb-3 w-50">
+                    <div class="col-12 mb-2 w-100">
                         <label for="email" class="form-label">Email</label>
                         <input
                             type="email"
@@ -89,7 +70,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn p-2 shadow d-block w-25 mx-auto m-2 bg-verde text-light text-uppercase">Registrarse</button>
+                    <button type="submit" class="btn p-2 shadow d-block w-50 mx-auto m-2 bg-verde text-light text-uppercase">Registrarse</button>
                 </form>
             </div>
         </div>

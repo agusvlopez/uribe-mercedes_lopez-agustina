@@ -41,13 +41,11 @@ Route::get('/usuario/{id}', [\App\Http\Controllers\UsuarioController::class, 'vi
 Route::get('/usuario/{id}/editar', [\App\Http\Controllers\UsuarioController::class, 'formEditUser'])
     ->whereNumber('id')
     ->middleware(['auth'])
-    ->middleware(['user-role:admin'])
     ->name('user.form.edit');
 
 Route::post('/usuario/{id}/editar', [\App\Http\Controllers\UsuarioController::class, 'processEditUser'])
     ->whereNumber('id')
     ->middleware(['auth'])
-    ->middleware(['user-role:admin'])
     ->name('user.process.edit');
 
 //Recetarios
@@ -73,7 +71,7 @@ Route::get('/blog/clasification/{id}', [\App\Http\Controllers\BlogController::cl
 //Admin
 // Route::get('/admin/verificar-rol',[\App\Http\Controllers\RoleVerificationController::class, 'formRole'])
 //     ->name('admin.role-verification.form');
-Route::get('/admin/contenido', [\App\Http\Controllers\AdminContentController::class, 'estadisticaRecetarioMasVendido'])
+Route::get('/admin/contenido', [\App\Http\Controllers\AdminContentController::class, 'recetariosMasVendidos'])
     ->middleware(['auth'])
     ->middleware(['user-role:admin'])
     ->name('admin.index');
@@ -192,14 +190,19 @@ Route::post('/carrito/agregar', [CarritoController::class, 'agregarAlCarrito'])
 Route::post('/carrito/{recetario_id}/eliminar', [CarritoController::class, 'eliminarDelCarrito'])
     ->name('carrito.eliminar');
 Route::post('/carrito/{recetario_id}/actualizar', [CarritoController::class, 'actualizarCantidad'])
-->name('carrito.actualizar');
+    ->name('carrito.actualizar');
 
 //Mercado pago
 Route::get('/pago', [\App\Http\Controllers\MercadoPagoController::class, 'showForm'])
+    ->middleware(['auth'])
     ->name('mp.pago');
 Route::get('/pago/exito', [\App\Http\Controllers\MercadoPagoController::class, 'success'])
+    ->middleware(['auth'])
     ->name('mp.success');
 Route::get('/pago/pendiente', [\App\Http\Controllers\MercadoPagoController::class, 'pending'])
+    ->middleware(['auth'])
     ->name('mp.pending');
 Route::get('/pago/error', [\App\Http\Controllers\MercadoPagoController::class, 'failure'])
+    ->middleware(['auth'])
     ->name('mp.failure');
+
