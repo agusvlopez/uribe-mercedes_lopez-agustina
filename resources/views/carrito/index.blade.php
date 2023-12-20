@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Collection;
                         <th>Precio</th>
                         <th>Cantidad</th>
                         <th>Subtotal</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,8 +42,22 @@ use Illuminate\Database\Eloquent\Collection;
                             </td>
                             <td>{{ $recetario->title }}</td>
                             <td>{{ $recetario->price }}</td>
-                            <td>{{ $recetario->pivot->cantidad }}</td>
+                            <td>
+                                <form action="{{ route('carrito.actualizar', ['recetario_id' => $recetario->id]) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="">
+                                    <input type="number" name="cantidad" value="{{ $recetario->pivot->cantidad }}" min="1">
+                                    <button type="submit" class="btn  btn-primary mt-2">Actualizar</button>
+                                </form>
+                            </td>
                             <td>{{ $recetario->price * $recetario->pivot->cantidad }}</td>
+                            <td>
+                                <form action="{{ route('carrito.eliminar', ['recetario_id' => $recetario->id]) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="">
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                         <tr>

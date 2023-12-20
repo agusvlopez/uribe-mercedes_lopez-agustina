@@ -73,7 +73,7 @@ Route::get('/blog/clasification/{id}', [\App\Http\Controllers\BlogController::cl
 //Admin
 // Route::get('/admin/verificar-rol',[\App\Http\Controllers\RoleVerificationController::class, 'formRole'])
 //     ->name('admin.role-verification.form');
-Route::get('/admin/contenido', [\App\Http\Controllers\AdminContentController::class, 'index'])
+Route::get('/admin/contenido', [\App\Http\Controllers\AdminContentController::class, 'estadisticaRecetarioMasVendido'])
     ->middleware(['auth'])
     ->middleware(['user-role:admin'])
     ->name('admin.index');
@@ -186,7 +186,13 @@ Route::get('/admin/usuarios/{id}', [\App\Http\Controllers\AdminContentController
 Route::get('/carrito', [CarritoController::class, 'showForm'])
     ->name('carrito.index');
 Route::post('/carrito/agregar', [CarritoController::class, 'agregarAlCarrito'])
+    ->middleware(['auth'])
     ->name('carrito.agregar');
+    //Eliminar del carrito
+Route::post('/carrito/{recetario_id}/eliminar', [CarritoController::class, 'eliminarDelCarrito'])
+    ->name('carrito.eliminar');
+Route::post('/carrito/{recetario_id}/actualizar', [CarritoController::class, 'actualizarCantidad'])
+->name('carrito.actualizar');
 
 //Mercado pago
 Route::get('/pago', [\App\Http\Controllers\MercadoPagoController::class, 'showForm'])

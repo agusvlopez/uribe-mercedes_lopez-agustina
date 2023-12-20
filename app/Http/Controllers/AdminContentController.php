@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Consejo;
 use App\Models\Clasification;
+use App\Models\Compra;
 use App\Models\Entrada_Blog;
 use App\Models\Recetario;
 use App\Models\User;
@@ -66,8 +67,8 @@ class AdminContentController extends Controller
 
     public function users()
     {
-        //Usamos el modelo para traer todos los datos de la tabla
-        $users =  User::with(['recetarios'])->get();
+        // $users = User::with('compras.recetario')->where('role', '!=', 'admin')->get();
+        $users = User::with('compras.recetario')->get();
 
         //pasaje de variables a las vistas
         return view('admin.users.index', [
@@ -180,7 +181,6 @@ class AdminContentController extends Controller
             'recetario' =>  Recetario::findOrFail($id),
     ]);
     }
-
 
     public function processEditRecetario(int $id, Request $request)
     {
@@ -318,6 +318,40 @@ class AdminContentController extends Controller
                 ->back()
                 ->with('status.message', 'Error al intentar eliminar la entrada <b>' . e($entrada_blog->title) . '</b>.')
                 ->with('status.type', 'danger');
+        }
+    }
+
+    public function estadisticaRecetarioMasVendido()
+    {
+        // Realizar la consulta para obtener el recetario más vendido
+        $resultados = Compra::select('recetario_id', DB::raw('COUNT(*) as cantidad'))
+            ->select('recetario_id', DB::raw('SUM(cantidad) as cantidad_total'))
+            ->groupBy('recetario_id')
+            ->orderByDesc('cantidad_total')
+            ->get();
+
+        // Verificar si hay resultados antes de acceder a ellos
+        if (!$resultados->isEmpty()) {
+            // Obtener el recetario más vendido
+            $recetariosMasVendidos = [];
+
+            foreach ($resultados as $resultado) {
+                $recetario = Recetario::find($resultado->recetario_id);
+
+                $recetariosMasVendidos[] = [
+                    'recetario' => $recetario,
+                    'cantidad_total' => $resultado->cantidad_total,
+                ];
+            }
+
+            // Pasar los resultados a la vista
+            return view('admin.contenido.index', [
+                'resultados' => $resultados,
+                'recetariosMasVendidos' => $recetariosMasVendidos
+            ]);
+        } else {
+            // No hay resultados, puedes manejar esto de acuerdo a tus necesidades
+            return view('admin.contenido.index');
         }
     }
 }

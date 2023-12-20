@@ -24,7 +24,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
                 </tr>
             <tbody>
             @foreach($users as $user)
-            @if($user->role !== 'admin')
             <tr>
                 <?php
                 ?>
@@ -32,9 +31,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
                 <td>{{$user->email}} </td>
                 <td>{{$user->role}} </td>
                 <td>
-                    @forelse ($user->recetarios->groupBy('title') as $title => $recetarios)
+                    @forelse ($user->compras as $compra)
                         <span class="badge bg-secondary">
-                            {{ $title }} @if($recetarios->count() > 1) x{{ $recetarios->count() }} @endif
+                            {{ $compra->recetario->title }} x{{ $compra->cantidad }}
                         </span>
                     @empty
                         <span class="small">No tiene recetarios comprados.</span>
@@ -44,7 +43,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
                     <a href="{{ route('admin.users.view', ['id' => $user->id]   )}}" class="btn btn-primary mb-2 d-block">Ver</a>
                 </td>
             </tr>
-            @endif
             @endforeach
         </tbody>
     </thead>

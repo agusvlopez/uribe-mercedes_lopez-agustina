@@ -11,6 +11,8 @@ class UsuarioController extends Controller
     {
         $usuario = User::find($id);
 
+        $compras = $usuario->compras; // Obtener las compras del usuario
+
         if ($usuario) {
             $nombre = $usuario->name;
             $email = $usuario->email;
@@ -18,6 +20,7 @@ class UsuarioController extends Controller
 
             return view('user.view', [
                 'usuario' => $usuario,
+                'compras' => $compras,
             ]);
         } else {
             return redirect()->route('home')
@@ -43,14 +46,18 @@ class UsuarioController extends Controller
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'password' => $request->filled('password') ? bcrypt($request->input('password')) : $usuario->password,
-                // ... otros campos ...
             ]);
 
             return redirect()
                 ->route('user.view', ['id' => $usuario->id])
                 ->with('status.message', 'Los datos del usuario fueron actualizados con éxito.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('danger.message', 'Hubo un error al actualizar los datos del usuario.')->withInput();
+            return redirect()
+                ->back()
+                ->with('danger.message', 'Hubo un error al actualizar los datos del usuario.')
+                ->withInput();
         }
     }
+
+
 }

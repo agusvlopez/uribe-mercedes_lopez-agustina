@@ -11,13 +11,13 @@
         <p class=""><span class="fw-bold">Email:</span> {{ $user->email }}</p>
         <dd>
             <h2>Recetarios comprados</h2>
-            @forelse ($user->recetarios->groupBy('title') as $title => $recetarios)
-                <span class="badge bg-secondary">
-                    {{ $title }} @if($recetarios->count() > 1) x{{ $recetarios->count() }} @endif
-                </span>
-            @empty
-                <span class="small">No tiene recetarios comprados.</span>
-            @endforelse
+            <ul>
+                @forelse ($user->compras as $compra)
+                <li>{{ $compra->recetario->title }} (Cantidad: {{ $compra->cantidad }})</li>
+                @empty
+                    <span class="small">No tiene compras.</span>
+                @endforelse
+            </ul>
         </dd>
     </div>
 </div>
