@@ -36,14 +36,14 @@
                         <li>
                             <form action="<?=route('auth.logout.process');?>" method="post">
                                 @csrf
-                            <button type="submit" class="nav-link">Cerrar sesión</button>
+                            <button type="submit" class="nav-link">{{ Auth::user()->email }} (Cerrar sesión)</button>
                             </form>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             @if(Auth::check())
-                                <a class="nav-link fw-bold" href="{{route('user.view', ['id' => Auth::user()->id])}}">¡Hola {{ Auth::user()->email }}!</a>
+                                <a class="nav-link fw-bold" href="{{route('user.view', ['id' => Auth::user()->id])}}"><span class="iconoUsuario"></span></a>
                             @endif
                         </li>
                         <li class="nav-item">

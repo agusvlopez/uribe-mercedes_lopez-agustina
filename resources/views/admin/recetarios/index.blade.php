@@ -31,7 +31,7 @@
             <tr>
                 <th>ID</th>
                 <th>Titulo</th>
-                <th>Fecha de estreno</th>
+                <th>Descripción</th>
                 <th>Precio</th>
                 <th>Imagen</th>
                 <th>Descripción de la imagen</th>

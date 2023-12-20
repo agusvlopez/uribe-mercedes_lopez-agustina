@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 @section('content')
 <div class="container">
-    <h1 class="text-center mb-2">Finalizar compra</h1>
+    <h1 class="text-center mb-3">Finalizar compra</h1>
 
     <table class="table table-bordered table-striped">
         <thead>
@@ -29,9 +29,9 @@ use Illuminate\Database\Eloquent\Collection;
             @foreach ($recetarios as $recetario)
                 <tr>
                     <td>{{ $recetario->title }}</td>
-                    <td>{{ $recetario->price }}</td>
+                    <td>${{ $recetario->price }}</td>
                     <td>{{ $recetario->pivot->cantidad }}</td>
-                    <td>{{ $recetario->price * $recetario->pivot->cantidad }}</td>
+                    <td>${{ $recetario->price * $recetario->pivot->cantidad }}</td>
                 </tr>
             @endforeach
                 <tr>

@@ -11,7 +11,7 @@ use App\Models\User;
 
 @section('content')
 <div class="container mx-auto m-4">
-    <h1>Editar mis datos: {{ $usuario->name }}</h1>
+    <h1>Editar mis datos</h1>
 
     @if ($errors->any())
         <p class="mb-3 text-danger">Hay campos con errores de validación. Por favor, verificar y corregir los valores indicados.</p>

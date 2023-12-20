@@ -20,6 +20,7 @@
         @isset($recetariosMasVendidos)
             <div class="flex justify-content-center mx-auto p-3 text-center">
                 <h2>Recetarios más vendidos</h2>
+                <p>Recetarios ordenados de mayor a menor teniendo en cuenta la cantidad que se vendieron.</p>
                 <div>
                     <canvas id="myChart"></canvas>
                 </div>

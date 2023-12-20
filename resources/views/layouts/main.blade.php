@@ -39,7 +39,7 @@
                         <li class="nav-item">
                             <form action="<?=route('auth.logout.process');?>" method="post">
                                 @csrf
-                               <button type="submit" class="btn">Cerrar sesión</button>
+                               <button type="submit" class="btn">{{ Auth::user()->email }} (Cerrar sesión)</button>
                             </form>
                         </li>
                         @else
@@ -54,7 +54,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             @if(Auth::check())
-                                <a class="nav-link fw-bold" href="{{route('user.view', ['id' => Auth::user()->id])}}">¡Hola {{ Auth::user()->email }}!</a>
+                                <a class="nav-link fw-bold" href="{{route('user.view', ['id' => Auth::user()->id])}}"><span class="iconoUsuario"></span></a>
                             @endif
                         </li>
                         <li class="nav-item">

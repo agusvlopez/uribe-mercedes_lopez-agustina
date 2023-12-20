@@ -84,6 +84,17 @@ h2 {
     margin-right: 0.2rem;
 }
 
+.iconoUsuario {
+    background-image: url(../imgs/iconos/usuario.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    margin-right: 0.2rem;
+}
+
 .portada p {
     color: #4b4c4e;
     font-size: 1.1rem;
@@ -149,6 +160,10 @@ h2 {
     color: #a55c0e;
     font-weight: 700;
     text-decoration: none;
+}
+
+.bg-list {
+    background-color: whitesmoke;
 }
 @media screen and (min-width:576px) {}
 

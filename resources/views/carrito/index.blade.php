@@ -41,16 +41,16 @@ use Illuminate\Database\Eloquent\Collection;
                                 @endif
                             </td>
                             <td>{{ $recetario->title }}</td>
-                            <td>{{ $recetario->price }}</td>
+                            <td>${{ $recetario->price }}</td>
                             <td>
                                 <form action="{{ route('carrito.actualizar', ['recetario_id' => $recetario->id]) }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="">
                                     <input type="number" name="cantidad" value="{{ $recetario->pivot->cantidad }}" min="1">
-                                    <button type="submit" class="btn  btn-primary mt-2">Actualizar</button>
+                                    <button type="submit" class="btn  btn-primary mt-2">Actualizar cantidad</button>
                                 </form>
                             </td>
-                            <td>{{ $recetario->price * $recetario->pivot->cantidad }}</td>
+                            <td>${{ $recetario->price * $recetario->pivot->cantidad }}</td>
                             <td>
                                 <form action="{{ route('carrito.eliminar', ['recetario_id' => $recetario->id]) }}" method="POST">
                                     @csrf
@@ -61,18 +61,18 @@ use Illuminate\Database\Eloquent\Collection;
                         </tr>
                     @endforeach
                         <tr>
-                            <td colspan="4"><b>Total:</b></td>
+                            <td colspan="5"><b>Total:</b></td>
                             <td><b>${{ $totalPrice }}</b></td>
                         </tr>
                 </tbody>
             </table>
-            <div class="d-flex justify-content-end">
-                <a href="{{route('mp.pago')}}" class="btn btn-primary mb-2 d-block">Comprar</a>
+            <div class="d-flex justify-content-end mb-2">
+                <a href="{{route('mp.pago')}}" class="btn shadow  bg-verde text-light">Comprar</a>
             </div>
             @else
             <div class="d-flex p-2 gap-2 mt-4 align-items-center justify-content-center">
                 <p>No hay recetarios en el carrito aún.</p>
-                <a href="{{route('recetarios.index')}}" class="btn btn-primary mb-2 d-block">¡Obtené un recetario acá!</a>
+                <a href="{{route('recetarios.index')}}" class="btn shadow  bg-verde text-light d-block mb-2">¡Obtené un recetario acá!</a>
             </div>
             @endif
         </div>

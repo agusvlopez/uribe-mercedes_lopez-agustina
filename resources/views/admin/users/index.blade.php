@@ -37,7 +37,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                 </span>
                             </td>
                             <td>${{ number_format($compra->recetario->price * $compra->cantidad, 2) }}</td>
-                            <td>{{ $compra->created_at->toDateString() }}</td>
+                            <td>{{ $compra->created_at }}</td>
                             <td>
                                 <a href="{{ route('admin.users.view', ['id' => $user->id]) }}" class="btn btn-primary mb-2 d-block">Ver</a>
                             </td>
